@@ -9,7 +9,9 @@
 - Bon mit Positionen, Warenwert, Pfand und Gesamtsumme
 - Geldtasten, **Passend**, automatische Rückgeldberechnung
 - **Clear** durch langes Drücken, anschließend **Rückgängig**
-- Smartphone: dauerhaft sichtbare Gesamtsumme und einblendbarer Bon; Tablet: Bon rechts
+- Smartphone: dauerhaft sichtbare Gesamtsumme und einblendbarer Bon mit abgedunkeltem, unscharfem Hintergrund; Tablet: Bon rechts
+- Kompakte Produktkacheln und separate Clear-/Rückgängig-Card unterhalb der Zahlung
+- Eigenständiges Weihnachtsmarktstand-SVG als Marken- und PWA-Symbol
 - Lokale Speicherung der laufenden Rechnung und Offline-PWA
 - Preise, Produkte und Layout über JSON konfigurierbar
 

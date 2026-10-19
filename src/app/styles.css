@@ -89,3 +89,27 @@ header{background:#173e35;color:#fff4df;padding:12px 22px;display:flex;align-ite
 .receipt-open{max-height:72dvh}}
 /* Separate the full-width deposit-return button from the drink grid. */
 .product-tile.color-green{margin-top:10px}
+
+/* Compact header and product grid for landscape tablets. */
+header{padding:7px 18px}
+.brand strong{font-size:26px}
+.brand-icon{width:36px;height:36px;object-fit:contain;flex-shrink:0}
+.product-grid{grid-template-rows:repeat(14,minmax(0,1fr));height:clamp(430px,calc(100dvh - 116px),650px);min-height:0}
+.product-tile{gap:3px;padding:6px}
+.product-tile svg{width:24px;height:24px}
+.product-tile.color-green{margin-top:7px}
+.action-card{width:100%;border:1px solid #dedbd4;border-radius:18px;background:#fff;padding:12px 16px;box-shadow:0 5px 18px #0000000b}
+.action-card .actions{margin:0;display:flex;flex-wrap:wrap}
+.action-card .clear-btn,.action-card .undo-btn{padding:10px 12px}
+.receipt-backdrop{display:none}
+@media(max-width:699px){
+  header{padding:7px 12px}
+  .brand strong{font-size:21px}
+  .brand-icon{width:31px;height:31px}
+  .product-grid{height:auto;min-height:530px;grid-template-rows:repeat(14,minmax(30px,1fr))}
+  .receipt-backdrop{display:block;position:fixed;inset:0;z-index:9;border:0;border-radius:0;background:rgba(9,26,21,.58);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .receipt-open{z-index:10;background:#f7f3e9}
+  .action-card{padding:10px;margin-top:0}
+}
+@media(max-width:699px) and (orientation:landscape){.product-grid{min-height:380px;grid-template-rows:repeat(14,minmax(25px,1fr))}}
+@media(min-width:700px) and (orientation:portrait){.product-grid{height:clamp(440px,65dvh,720px)}}

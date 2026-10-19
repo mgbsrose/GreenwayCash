@@ -152,7 +152,7 @@ export default function Home() {
     <main className="app">
       <header>
         <div className="brand">
-          <span className="snow">❄</span>
+          <img className="brand-icon" src="/icons/market-stall.svg" alt="" />
           <div>
             <strong>ROSI Cash</strong>
           </div>
@@ -180,23 +180,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="actions">
-            <LongPress
-              className="clear-btn"
-              onHold={clear}
-              delay={config.clearPressMs}
-              title="Zum Löschen 1,2 Sekunden gedrückt halten"
-            >
-              <Trash2 size={19} />
-              Clear
-            </LongPress>
-            {undo && (
-              <button className="undo-btn" onClick={restore}>
-                <Undo2 size={18} />
-                Rückgängig
-              </button>
-            )}
-          </div>
+
         </section>
 
         <div className={`checkout ${mobile ? (open ? 'receipt-open' : 'receipt-hidden') : ''}`}>
@@ -308,8 +292,30 @@ export default function Home() {
               </div>
             )}
           </aside>
+          <aside className="action-card" aria-label="Vorgang zurücksetzen">          <div className="actions">
+            <LongPress
+              className="clear-btn"
+              onHold={clear}
+              delay={config.clearPressMs}
+              title="Zum Löschen 1,2 Sekunden gedrückt halten"
+            >
+              <Trash2 size={19} />
+              Clear
+            </LongPress>
+            {undo && (
+              <button className="undo-btn" onClick={restore}>
+                <Undo2 size={18} />
+                Rückgängig
+              </button>
+            )}
+          </div>
+          </aside>
         </div>
       </div>
+
+      {mobile && open && (
+        <button className="receipt-backdrop" type="button" aria-label="Bon schließen" onClick={() => setOpen(false)} />
+      )}
 
       {mobile && (
         <div className="mobile-footer">
