@@ -7,7 +7,7 @@ button:disabled{opacity:.4}
 .app{min-height:100dvh}
 header{background:#173e35;color:#fff4df;padding:12px 22px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;gap:12px;align-items:center}
-.brand strong{font-size:30px;color:#f4d79f;letter-spacing:2px}
+.brand strong{font-size:30px;color:#ffffff;letter-spacing:2px}
 .brand small{display:block;font-size:12px}
 .snow{font-size:30px;color:#f4d79f}
 .header-actions{display:flex;align-items:center;gap:12px}
