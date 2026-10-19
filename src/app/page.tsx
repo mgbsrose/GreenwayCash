@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import config from '@/config/register.json';
 import { ProductTile } from '@/components/ProductTile';
+import { InstallPrompt } from '@/components/InstallPrompt';
 import { LongPress } from '@/components/LongPress';
 import { calculate, euro, type Counts, type Item } from '@/lib/calculator';
 
@@ -339,6 +340,8 @@ export default function Home() {
           </button>
         </div>
       )}
+
+      <InstallPrompt />
 
       {help && (
         <div className="overlay" onClick={() => setHelp(false)}>

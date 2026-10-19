@@ -134,3 +134,27 @@ header{padding:7px 18px}
 /* v1.0: Larger disclosure arrows for receipt and payment cards. */
 .receipt-head .link-btn,.cash-head .link-btn{min-width:46px;min-height:46px}
 .receipt-head .link-btn svg,.cash-head .link-btn svg{width:30px;height:30px}
+
+/* Optional PWA install suggestion, always clear of the mobile checkout bar. */
+.install-prompt{
+  position:fixed;
+  z-index:16;
+  right:18px;
+  bottom:18px;
+  width:min(340px,calc(100vw - 24px));
+  padding:16px;
+  border:1px solid #b8c9be;
+  border-radius:16px;
+  background:#fffdf8;
+  box-shadow:0 10px 36px #102e2450;
+  color:#19362e;
+}
+.install-heading{display:flex;align-items:center;gap:9px;padding-right:26px}
+.install-heading svg{color:#28594c;flex-shrink:0}
+.install-prompt p{margin:10px 0 14px;line-height:1.5;font-size:14px}
+.install-dismiss{position:absolute;top:8px;right:8px;width:34px;height:34px;display:flex;justify-content:center;align-items:center;border:0;background:transparent;color:#344e45}
+.install-action{width:100%;padding:11px;border:0;border-radius:10px;background:#173e35;color:white;font-weight:bold}
+.install-inline-icon{vertical-align:middle;display:inline-block}
+@media(max-width:699px){
+  .install-prompt{left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));width:auto}
+}

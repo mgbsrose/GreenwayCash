@@ -12,3 +12,9 @@
 **Offline:** Die Anwendung zunächst vollständig über HTTPS laden und anschließend den Offline-Neustart auf dem Gerät testen. Die aktuelle Rechnung wird nur im lokalen Browser gespeichert; es gibt keine geräteübergreifende Synchronisierung.
 
 GreenwayCash ist eine Rechenhilfe, kein Kassensystem.
+
+## App auf dem Startbildschirm installieren
+
+Wenn der Browser eine Installation unterstützt, zeigt GreenwayCash einen wegklickbaren Hinweis an. In Chrome/Edge auf „App installieren“ tippen und den Browserdialog bestätigen. Auf iPhone und iPad die Website in **Safari** öffnen und über **Teilen → Zum Home-Bildschirm** hinzufügen. Je nach iOS-Version kann die Option unter „Mehr“ liegen. Der Hinweis wird nach dem Schließen auf diesem Gerät nicht erneut gezeigt. Eine Installation ist für die normale Nutzung im Browser nicht erforderlich.
+
+Für den Offlinebetrieb die Website nach der Bereitstellung zunächst bei bestehender Verbindung vollständig laden und dann im Flugmodus testen.

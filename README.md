@@ -12,6 +12,7 @@
 - Rote **Clear**-Kachel: 1,2 Sekunden halten; **kein Rückgängig**
 - Responsive Oberfläche für Smartphone und Tablet; Smartphone-Bon als Overlay mit unscharfem Hintergrund
 - Aktuelle Rechnung im lokalen Browser-Speicher; Offlinebetrieb über Service Worker
+- Installationshinweis: native PWA-Installation in unterstützten Chromium-Browsern oder Safari-Anleitung auf iPhone/iPad; wegklickbar
 - Konfigurierbare Preise, Produkte und Raster in `src/config/register.json`
 
 ## Repository und Entwicklung

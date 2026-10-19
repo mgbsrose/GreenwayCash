@@ -17,6 +17,7 @@
 | `src/components/ProductTile.tsx` | Darstellung einer Produktkachel |
 | `src/components/LongPress.tsx` | Kurz- und Langdruck, Abbruch bei Pointer-Bewegung |
 | `src/app/page.tsx` | Aktueller Zustand, Bon, Zahlung, Responsive-Logik |
+| `src/components/InstallPrompt.tsx` | Optionaler Installationshinweis für Chromium und iOS/iPadOS |
 | `src/app/styles.css` | Layout und Farbschema |
 | `src/app/manifest.ts` | PWA-Metadaten |
 | `public/sw.js` | Offline-Cache |
@@ -77,3 +78,28 @@ GreenwayCash führt keine steuerliche Kassenaufzeichnung und keine Transaktionsh
 ## Hosting-Hinweis: reservierter `/icons/`-Pfad
 
 Auf einigen Apache-/Plesk-Servern ist `/icons/` ein Webserver-Alias. GreenwayCash verwendet daher für das App-Symbol und die PWA ausschließlich `/app-icons/`. Der Export muss diese Dateien mit enthalten. Bei Aktualisierung des `deploy`-Branches nach dem erneuten Build sollten alte Dateien durch den Deploy-Sync entfernt werden.
+
+## Installationsaufforderung
+
+Die Komponente `InstallPrompt` reagiert auf das nicht standardisierte Chromium-Ereignis `beforeinstallprompt`. **Ob und wann das Ereignis ausgelöst wird, entscheidet der Browser**; eine eigene Aufforderung kann es nicht erzwingen. In iOS/iPadOS wird stattdessen der manuelle Safari-Weg über „Teilen → Zum Home-Bildschirm“ beschrieben. Bereits installierte PWAs (Standalone-Modus) und Geräte, auf denen der Hinweis geschlossen wurde, zeigen keinen Banner. Das Wegklicken wird separat unter `greenwaycash-install-dismissed-v1` in `localStorage` gespeichert.
+
+Wichtig: Die PWA muss über HTTPS erreichbar sein, und das Manifest sowie die App-Icons müssen gültig sein. Bei Chromium sind geeignete Icons in 192 × 192 und 512 × 512 Pixel als PNG für verlässliche Installierbarkeit empfehlenswert. Solange nur das SVG-Icon hinterlegt ist, kann die native Installationsaufforderung je nach Browser ausbleiben. Der Installationshinweis ist kein Ersatz für die technische Installierbarkeit.
+
+### Deployment ohne rsync (eidolon)
+
+```bash
+cd /workspaces/local/GreenwayCash
+git pull --ff-only origin main
+npm run typecheck
+npm run build
+
+cd /workspaces/local/GreenwayCash-deploy
+# Achtung: ausschließlich im dedizierten Deploy-Worktree ausführen.
+find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf -- {} +
+cp -a ../GreenwayCash/out/. .
+git add -A
+git commit -m "deploy: GreenwayCash update"
+git push origin deploy
+```
+
+Anschließend Plesk per Webhook oder „Pull Updates“ aktualisieren.
