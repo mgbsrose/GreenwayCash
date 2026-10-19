@@ -1,109 +1,65 @@
-# GreenwayCash – Technik und Deployment (v1.0)
+# GreenwayCash – Technik, Architektur und Betrieb
+
+**Stand:** 19.10.2026 · **Version:** 1.0.0 · **Phase:** Betatest, Entwicklung zunächst abgeschlossen.
+
+Für Git-/Build-/Deployment-Kommandos siehe [eidolon-help.md](../eidolon-help.md). Für künftige KI-gestützte Entwicklung siehe [agents.md](../agents.md).
 
 ## Architektur
+- Next.js 16 (App Router), React 19, TypeScript, Lucide.
+- `next.config.ts`: `output: 'export'`, `trailingSlash: true`, `images.unoptimized: true`; Dev-Origin `eidolon3000.greenway.home.arpa`.
+- Rein statischer Build in `out/`, HTTPS-Hosting bei dogado/Plesk am Domain-Root `/`. **Kein Node.js-Prozess** auf dem Webserver.
+- Keine Datenbank, kein Backend, keine Anmeldung, keine Umsatz-/Transaktionshistorie, keine Fiskalisierung/TSE: **Rechenhilfe, keine steuerliche Kasse**.
 
-- Next.js 16 / React 19 / TypeScript mit `output: 'export'`
-- Vollständig clientseitige Berechnung in **Integer-Cent** (keine Fließkomma-Euroberechnung)
-- `localStorage` (`rosi-v1`, aus Kompatibilitätsgründen weiterhin unverändert) enthält ausschließlich die aktuelle Rechnung und die erfassten Geldbeträge; keine Transaktionshistorie
-- Statische PWA: Manifest und Service Worker; kein Backend, keine Datenbank, kein Login
-- Bereitstellung unter dem **Domain-Root `/`** über HTTPS
-
-## Projektstruktur
-
-| Datei | Verantwortung |
+## Codeübersicht
+| Pfad | Funktion |
 | --- | --- |
-| `src/config/register.json` | Artikel, Preise, Pfand, Kachelpositionen, Haltezeiten |
-| `src/lib/calculator.ts` | Warenwert, Pfand und Gesamtbetrag |
-| `src/components/ProductTile.tsx` | Darstellung einer Produktkachel |
-| `src/components/LongPress.tsx` | Kurz- und Langdruck, Abbruch bei Pointer-Bewegung |
-| `src/app/page.tsx` | Aktueller Zustand, Bon, Zahlung, Responsive-Logik |
-| `src/components/InstallPrompt.tsx` | Optionaler Installationshinweis für Chromium und iOS/iPadOS |
-| `src/app/styles.css` | Layout und Farbschema |
-| `src/app/manifest.ts` | PWA-Metadaten |
-| `public/sw.js` | Offline-Cache |
-| `next.config.ts` | Statischer Export und Entwicklungs-Host |
+| `src/config/register.json` | Preise, Produkte, Pfand, Nennwerte, Layouts, Haltezeiten |
+| `src/lib/calculator.ts` | Cent-basierte Kalkulation |
+| `src/app/page.tsx` | Clientzustand, Produktwahl, Bon, Geld, Hilfe, responsive Anzeige, SW-Registrierung |
+| `src/components/ProductTile.tsx` | Getränkekacheln |
+| `src/components/LongPress.tsx` | Pointer-Tap/Hold, Abbruch bei 14px Bewegung, einmaliges Auslösen |
+| `src/components/InstallPrompt.tsx` | Chromium-`beforeinstallprompt`, iOS-Safari-Anleitung |
+| `src/app/styles.css` | Farben, Raster, Mobile-Ansichten und Header-Buttons |
+| `src/app/manifest.ts` | Statisches PWA-Manifest |
+| `src/app/impressum/page.tsx` | Informationen, Betreiberangaben, Datenschutz |
+| `public/sw.js` | Cache- und Offline-Strategie |
+| `public/app-icons/` | SVG-Icons (Pfad nicht in `/icons/` ändern) |
 
-## Build
+## Geld und Zustand
+Alle Preise/Gesamtwerte als **ganze Cent**. Fünf Produkte haben automatisch 200 Cent Pfand: Glühwein, Apfelpunsch, Kakao, Superbecher, Kaffee. „Pfand zurück“ ist eine negative Position, auch reine Auszahlungen möglich. Produkt-Tap +1, Halten 600ms −1, Clear 1200ms **unwiderruflich**; kein Undo.
 
-```bash
-git pull --ff-only origin main
-npm install
-npm run typecheck
-npm run build
-```
+Bon anfangs **eingeklappt** (`receiptExpanded=false`), Gegeben & Rückgeld anfangs **ausgeklappt** (`cashOpen=true`). Smartphones verwenden fixen Summenbalken und Bon-Overlay. (i) und (?) identisch ausgerichtet: je 40×40px Klickfläche und 24×24px Icon.
 
-Das Ergebnis liegt in `out/`. **Nur den Inhalt dieses Verzeichnisses** auf den Webserver übertragen, zum Beispiel mit:
+Die laufende Rechnung wird ausschließlich lokal in `localStorage['rosi-v1']` als `{counts,money}` gespeichert. **Schlüssel nicht ohne Migration umbenennen!** Ein weggeklickter Installationshinweis wird als `greenwaycash-install-dismissed-v1` gespeichert. Browserdaten löschen kann die aktuelle Rechnung entfernen.
 
-```bash
-rsync -av --delete out/ user@webserver:/var/www/rosi/
-```
+## PWA und Offline – Einschränkungen
+- Service Worker nur im **Production-Build** registriert. Shell/Assets werden gecached; Netzwerk zuerst bei Navigation, Cache zuerst bei Assets. Cache-Name in `public/sw.js` bei relevanten Releases anpassen.
+- **Bekannte technische Schwachstelle:** Erfolgreiche Navigationen (auch `/impressum/`) werden derzeit unter Cache-Key `/` abgelegt. Dadurch kann eine andere Seite als Offline-Fallback der Startseite erscheinen. Bei Wiederaufnahme pro URL korrekt cachen, offline gezielt testen.
+- Die Installationsaufforderung hängt vom Browser ab; iOS/iPadOS nutzt die manuelle Safari-Installation.
+- Aktuell enthält das Manifest **SVG-Icons**, keine dedizierten PNG 192×192 und 512×512. Für verlässliche Browser-Installierbarkeit ggf. ergänzen; echter Geräte-Test erforderlich.
+- Ein erfolgreicher Build **belegt weder Offlinefunktion noch Installierbarkeit**. Erst vollständig online laden und dann Flugmodus/offline neu starten und testen.
+- Hosterproblem: `/icons/` zeigte Server-/Apache-Symbole. Deshalb bewusst `/app-icons/` verwenden.
 
-Den Zielpfad anpassen. **Achtung:** `--delete` entfernt Dateien im Zielverzeichnis, die nicht in `out/` liegen; nur für ein ausschließlich dieser Anwendung gewidmetes Verzeichnis verwenden.
+## Git, Eidolon, Plesk
+- Öffentliches Repository: https://github.com/mgbsrose/GreenwayCash, MIT.
+- Branch **`main`**: Quellcode und Dokumentation. Branch **`deploy`**: ausschließlich Dateien des gebauten `out/`-Verzeichnisses. **Dogado/Plesk zieht `deploy`** für https://cash.introsinet.de/.
+- Eidolon-Container: `/workspaces/local/GreenwayCash` und Deploy-Worktree `/workspaces/local/GreenwayCash-deploy`; **keine Root-Rechte und kein rsync**.
+- Bekannter Ablauf: `git pull --ff-only origin main`, `npm run typecheck`, `npm run build`; im sicheren Deploy-Worktree Dateien außer `.git` mittels `find` entfernen, `cp -a ../GreenwayCash/out/. .`, `git add -A`, commit, `git push origin deploy`. In Plesk gegebenenfalls **Pull Updates**. Ein aktiver automatischer Webhook ist **nicht bestätigt**.
+- Exakt kopierbare Befehle und Löschwarnungen: [eidolon-help.md](../eidolon-help.md).
 
-Ein Nginx-Beispiel für den statischen Webserver:
+## Impressum und Datenschutz
+`src/app/impressum/page.tsx` wird zu `/impressum/` exportiert und über (i) geöffnet. Die Betreiberangaben liegen in dieser Datei; nicht an anderen Stellen duplizieren. Die App selbst überträgt keine Artikel-/Geldbeträge an einen Server. Dogado protokolliert Zugriffe und bietet AWStats an. Laut dogado-Angaben zu Webhosting-Tarifen: IP-Anonymisierung nach 24 Stunden, Log-Löschung spätestens nach sieben Tagen. **Tarifkonkrete Gültigkeit und Speicherdauer aggregierter AWStats sind ungeklärt**; keine juristische Komplettprüfung behaupten.
 
-```nginx
-server {
-    listen 80;
-    server_name rosi.example.org;
-    root /var/www/rosi;
-    index index.html;
+## Betatest- und Abnahmecheckliste
+- [ ] Typecheck und Production-Build der **letzten Codeänderung** erfolgreich
+- [ ] Alle Artikel, Centpreise, automatisches Pfand der fünf Getränke, reine Pfandrückgabe
+- [ ] Tap/Hold ohne Doppelauslösung; Clear erst nach 1,2 Sekunden, kein Undo
+- [ ] Geldtasten, Passend, Zurücksetzen, Rückgeld/noch offen
+- [ ] Bon anfangs zu, Geldbereich anfangs offen; beide unabhängig bedienbar
+- [ ] Smartphone/Tablet hoch/quer, (i)/(?) ausgerichtet und erreichbar
+- [ ] Installationsprompt, realer Offline-Neustart, SW-Update, Impressum
+- [ ] HTTPS-Live-URLs `/`, `/impressum/`, `/manifest.webmanifest`, `/sw.js`, `/app-icons/icon.svg`
+- [ ] Bei Plesk tatsächlich aktuellen `deploy`-Stand geladen
+- [ ] Betatestergebnisse und rechtliche Restpunkte abschließend bewertet
 
-    location / {
-        try_files $uri $uri/ =404;
-    }
-}
-```
-
-Dieses Beispiel ist für die Anbindung an einen vorgelagerten HTTPS-Reverse-Proxy gedacht; öffentliche Bereitstellung nur über HTTPS. `sw.js` und `manifest.webmanifest` müssen erreichbar sein. Der Export ist für `/` vorgesehen, nicht für einen Unterpfad.
-
-## Cache und Updates
-
-Der Service Worker speichert App-Dateien für den Offlinebetrieb. Bei Änderungen muss der Cache-Stand aktualisiert werden; ältere Browser können bis zum nächsten Online-Aufruf/Reload noch eine vorige Version anzeigen. Vor einer Veranstaltung neue Releases auf dem Zielgerät online laden, dann offline testen.
-
-## Abnahmecheckliste
-
-- `npm run typecheck` und `npm run build` erfolgreich
-- Artikel +1/−1 und Langdruck ohne Doppelauslösung
-- Pfandpflichtige Artikel und Pfandrückgaben korrekt
-- Reine Pfandrückgabe zeigt Auszahlungsbetrag
-- Geldtasten, „Passend“, „Zurücksetzen“, Rückgeld und Fehlbetrag
-- Clear nur nach 1,2 Sekunden; **keine Wiederherstellung**
-- Bon und Zahlungsbereich unabhängig einklappbar
-- Tablet und Smartphone in Hoch- und Querformat
-- Installation, Offline-Neustart und PWA-Update nach Deployment
-
-GreenwayCash führt keine steuerliche Kassenaufzeichnung und keine Transaktionshistorie.
-
-## Hosting-Hinweis: reservierter `/icons/`-Pfad
-
-Auf einigen Apache-/Plesk-Servern ist `/icons/` ein Webserver-Alias. GreenwayCash verwendet daher für das App-Symbol und die PWA ausschließlich `/app-icons/`. Der Export muss diese Dateien mit enthalten. Bei Aktualisierung des `deploy`-Branches nach dem erneuten Build sollten alte Dateien durch den Deploy-Sync entfernt werden.
-
-## Installationsaufforderung
-
-Die Komponente `InstallPrompt` reagiert auf das nicht standardisierte Chromium-Ereignis `beforeinstallprompt`. **Ob und wann das Ereignis ausgelöst wird, entscheidet der Browser**; eine eigene Aufforderung kann es nicht erzwingen. In iOS/iPadOS wird stattdessen der manuelle Safari-Weg über „Teilen → Zum Home-Bildschirm“ beschrieben. Bereits installierte PWAs (Standalone-Modus) und Geräte, auf denen der Hinweis geschlossen wurde, zeigen keinen Banner. Das Wegklicken wird separat unter `greenwaycash-install-dismissed-v1` in `localStorage` gespeichert.
-
-Wichtig: Die PWA muss über HTTPS erreichbar sein, und das Manifest sowie die App-Icons müssen gültig sein. Bei Chromium sind geeignete Icons in 192 × 192 und 512 × 512 Pixel als PNG für verlässliche Installierbarkeit empfehlenswert. Solange nur das SVG-Icon hinterlegt ist, kann die native Installationsaufforderung je nach Browser ausbleiben. Der Installationshinweis ist kein Ersatz für die technische Installierbarkeit.
-
-### Deployment ohne rsync (eidolon)
-
-```bash
-cd /workspaces/local/GreenwayCash
-git pull --ff-only origin main
-npm run typecheck
-npm run build
-
-cd /workspaces/local/GreenwayCash-deploy
-# Achtung: ausschließlich im dedizierten Deploy-Worktree ausführen.
-find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf -- {} +
-cp -a ../GreenwayCash/out/. .
-git add -A
-git commit -m "deploy: GreenwayCash update"
-git push origin deploy
-```
-
-Anschließend Plesk per Webhook oder „Pull Updates“ aktualisieren.
-
-## Rechtliche Informationen
-
-Die Seite `src/app/impressum/page.tsx` wird beim statischen Build unter `/impressum/` ausgegeben und ist über das (i)-Symbol in der Kopfzeile erreichbar. Die Impressumsseite enthält die hinterlegten Kontaktdaten sowie Hinweise zu lokaler Speicherung, dogado-Serverprotokollen und Betroffenenrechten. dogado nennt für Webhosting-Tarife eine IP-Anonymisierung nach 24 Stunden und Logdatei-Löschung spätestens nach sieben Tagen; die Speicherfrist der aggregierten AWStats-Auswertung ist unbekannt. Eine rechtliche Abschlussprüfung und gegebenenfalls eine tarifbezogene Klärung sind weiterhin erforderlich.
+**Verifizierungsstatus:** Nutzer meldete frühere erfolgreiche Next.js-Produktionsbuilds auf eidolon. Bei diesem reinen Dokumentationsabschluss wurde **kein neuer lokaler Build oder Endgeräte-Test** ausgeführt.
