@@ -45,6 +45,7 @@ export default function Home() {
   const [size, setSize] = useState({ w: 1024, h: 768 });
   const [online, setOnline] = useState(true);
   const [cashOpen, setCashOpen] = useState(true);
+  const [receiptExpanded, setReceiptExpanded] = useState(true);
   const [awake, setAwake] = useState(false);
   const wake = useRef<{ release: () => Promise<void> } | null>(null);
 
@@ -178,9 +179,18 @@ export default function Home() {
                 onChange={adjust}
               />
             ))}
+            <LongPress
+              className={`product-tile reset-tile ${undo ? 'undo-tile' : ''}`}
+              style={{ gridColumn: layout === 'mobilePortrait' ? '9 / span 4' : '9 / span 4', gridRow: '13 / span 2' }}
+              onTap={undo ? restore : undefined}
+              onHold={undo ? restore : clear}
+              delay={config.clearPressMs}
+              title={undo ? 'Tippen: letzten Vorgang wiederherstellen' : 'Zum Löschen 1,2 Sekunden halten'}
+            >
+              {undo ? <Undo2 size={27} /> : <Trash2 size={27} />}
+              <span className="product-name">{undo ? 'Rückgängig' : 'Clear'}</span>
+            </LongPress>
           </div>
-
-
         </section>
 
         <div className={`checkout ${mobile ? (open ? 'receipt-open' : 'receipt-hidden') : ''}`}>
@@ -188,27 +198,32 @@ export default function Home() {
             <div className="receipt-head">
               <h2>Bon</h2>
               <div className="receipt-head-actions">
-                {undo && (
-                  <button className="receipt-undo" onClick={restore} aria-label="Rückgängig" title="Clear rückgängig machen">
-                    <Undo2 size={20} />
-                  </button>
-                )}
-                <LongPress
-                  className="receipt-clear"
-                  onHold={clear}
-                  delay={config.clearPressMs}
-                  title="Bon löschen: 1,2 Sekunden halten"
+                <button
+                  className="link-btn"
+                  type="button"
+                  onClick={() => setReceiptExpanded((current) => !current)}
+                  aria-label={receiptExpanded ? 'Bon einklappen' : 'Bon aufklappen'}
+                  aria-expanded={receiptExpanded}
                 >
-                  <Trash2 size={20} />
-                </LongPress>
+                  <ChevronDown
+                    size={22}
+                    className={receiptExpanded ? 'chevron-open' : 'chevron-closed'}
+                  />
+                </button>
                 {mobile && (
-                  <button className="receipt-close" onClick={() => setOpen(false)} aria-label="Bon schließen">
+                  <button
+                    className="receipt-close"
+                    onClick={() => setOpen(false)}
+                    aria-label="Bon schließen"
+                  >
                     <X size={20} />
                   </button>
                 )}
               </div>
             </div>
 
+            {receiptExpanded ? (
+              <>
             <div className="receipt-lines">
               <div className="line heading">
                 <span>POSITION</span>
@@ -238,11 +253,19 @@ export default function Home() {
                 <span>Pfand zurück</span>
                 <span>{euro(calc.returnsCents)}</span>
               </div>
-              <div className="line grand">
+>
+            </div>
+                <div className="line grand">
+                <strong>{calc.totalCents < 0 ? 'Auszuzahlen' : 'Zu zahlen'}</strong>
+                <strong>{euro(Math.abs(calc.totalCents))}</strong>
+              </div
+              </>
+            ) : (
+              <div className="line grand receipt-summary">
                 <strong>{calc.totalCents < 0 ? 'Auszuzahlen' : 'Zu zahlen'}</strong>
                 <strong>{euro(Math.abs(calc.totalCents))}</strong>
               </div>
-            </div>
+            )}
           </aside>
 
           <aside className="payment-card" aria-label="Bezahlung und Rückgeld">
