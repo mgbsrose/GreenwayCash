@@ -58,7 +58,7 @@
       "priceCents": 250,
       "deposit": true,
       "type": "product",
-      "color": "orange",
+      "color": "green",
       "layout": {
         "tabletLandscape": [
           5,
@@ -443,7 +443,7 @@
       "priceCents": -200,
       "deposit": false,
       "type": "return",
-      "color": "green",
+      "color": "marron",
       "layout": {
         "tabletLandscape": [
           1,
