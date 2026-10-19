@@ -17,111 +17,6 @@
   ],
   "buttons": [
     {
-      "id": "kaffee",
-      "title": "Kaffee",
-      "icon": "coffee",
-      "priceCents": 150,
-      "deposit": true,
-      "type": "product",
-      "color": "brown",
-      "layout": {
-        "tabletLandscape": [
-          1,
-          1,
-          3,
-          3
-        ],
-        "tabletPortrait": [
-          1,
-          1,
-          6,
-          2
-        ],
-        "mobilePortrait": [
-          1,
-          1,
-          6,
-          2
-        ],
-        "mobileLandscape": [
-          1,
-          1,
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "id": "kakao",
-      "title": "Kakao",
-      "icon": "coffee",
-      "priceCents": 200,
-      "deposit": true,
-      "type": "product",
-      "color": "brown",
-      "layout": {
-        "tabletLandscape": [
-          4,
-          1,
-          3,
-          3
-        ],
-        "tabletPortrait": [
-          7,
-          1,
-          6,
-          2
-        ],
-        "mobilePortrait": [
-          7,
-          1,
-          6,
-          2
-        ],
-        "mobileLandscape": [
-          4,
-          1,
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "id": "superbecher",
-      "title": "Superbecher",
-      "icon": "cup-soda",
-      "priceCents": 300,
-      "deposit": true,
-      "type": "product",
-      "color": "gold",
-      "layout": {
-        "tabletLandscape": [
-          7,
-          1,
-          3,
-          3
-        ],
-        "tabletPortrait": [
-          1,
-          3,
-          6,
-          2
-        ],
-        "mobilePortrait": [
-          1,
-          3,
-          6,
-          2
-        ],
-        "mobileLandscape": [
-          7,
-          1,
-          3,
-          3
-        ]
-      }
-    },
-    {
       "id": "gluehwein",
       "title": "Glühwein",
       "icon": "wine",
@@ -131,27 +26,27 @@
       "color": "red",
       "layout": {
         "tabletLandscape": [
-          10,
           1,
-          3,
+          1,
+          4,
           3
         ],
         "tabletPortrait": [
-          7,
-          3,
-          6,
-          2
+          1,
+          1,
+          4,
+          3
         ],
         "mobilePortrait": [
-          7,
-          3,
+          1,
+          1,
           6,
           2
         ],
         "mobileLandscape": [
-          10,
           1,
-          3,
+          1,
+          4,
           3
         ]
       }
@@ -166,62 +61,27 @@
       "color": "orange",
       "layout": {
         "tabletLandscape": [
+          5,
           1,
           4,
-          3,
           3
         ],
         "tabletPortrait": [
-          1,
           5,
-          6,
-          2
+          1,
+          4,
+          3
         ],
         "mobilePortrait": [
+          7,
           1,
-          5,
           6,
           2
         ],
         "mobileLandscape": [
+          5,
           1,
           4,
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "id": "sahne",
-      "title": "mit Sahne",
-      "icon": "ice-cream-bowl",
-      "priceCents": 50,
-      "deposit": false,
-      "type": "product",
-      "color": "cream",
-      "layout": {
-        "tabletLandscape": [
-          4,
-          4,
-          3,
-          3
-        ],
-        "tabletPortrait": [
-          7,
-          5,
-          6,
-          2
-        ],
-        "mobilePortrait": [
-          7,
-          5,
-          6,
-          2
-        ],
-        "mobileLandscape": [
-          4,
-          4,
-          3,
           3
         ]
       }
@@ -236,97 +96,132 @@
       "color": "purple",
       "layout": {
         "tabletLandscape": [
-          7,
+          9,
+          1,
           4,
-          3,
           3
         ],
         "tabletPortrait": [
+          9,
           1,
-          7,
-          6,
-          2
+          4,
+          3
         ],
         "mobilePortrait": [
           1,
-          7,
+          3,
           6,
           2
         ],
         "mobileLandscape": [
-          7,
+          9,
+          1,
           4,
-          3,
           3
         ]
       }
     },
     {
-      "id": "softdrinks",
-      "title": "Softdrinks",
-      "icon": "glass-water",
-      "priceCents": 100,
-      "deposit": false,
+      "id": "kakao",
+      "title": "Kakao",
+      "icon": "coffee",
+      "priceCents": 200,
+      "deposit": true,
       "type": "product",
-      "color": "blue",
+      "color": "brown",
       "layout": {
         "tabletLandscape": [
-          10,
+          1,
           4,
-          3,
+          4,
           3
         ],
         "tabletPortrait": [
-          7,
-          7,
-          6,
-          2
+          1,
+          4,
+          4,
+          3
         ],
         "mobilePortrait": [
           7,
-          7,
+          3,
           6,
           2
         ],
         "mobileLandscape": [
-          10,
+          1,
           4,
-          3,
+          4,
           3
         ]
       }
     },
     {
-      "id": "wasser",
-      "title": "Wasser",
-      "icon": "droplets",
-      "priceCents": 100,
-      "deposit": false,
+      "id": "superbecher",
+      "title": "Superbecher",
+      "icon": "cup-soda",
+      "priceCents": 300,
+      "deposit": true,
       "type": "product",
-      "color": "blue",
+      "color": "gold",
       "layout": {
         "tabletLandscape": [
-          1,
-          7,
-          3,
+          5,
+          4,
+          4,
           3
         ],
         "tabletPortrait": [
-          1,
-          9,
-          6,
-          2
+          5,
+          4,
+          4,
+          3
         ],
         "mobilePortrait": [
           1,
-          9,
+          5,
           6,
           2
         ],
         "mobileLandscape": [
-          1,
+          5,
+          4,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "id": "sahne",
+      "title": "mit Sahne",
+      "icon": "ice-cream-bowl",
+      "priceCents": 50,
+      "deposit": false,
+      "type": "product",
+      "color": "cream",
+      "layout": {
+        "tabletLandscape": [
+          9,
+          4,
+          4,
+          3
+        ],
+        "tabletPortrait": [
+          9,
+          4,
+          4,
+          3
+        ],
+        "mobilePortrait": [
           7,
-          3,
+          5,
+          6,
+          2
+        ],
+        "mobileLandscape": [
+          9,
+          4,
+          4,
           3
         ]
       }
@@ -341,27 +236,62 @@
       "color": "gold",
       "layout": {
         "tabletLandscape": [
-          4,
+          1,
           7,
-          3,
+          4,
           3
         ],
         "tabletPortrait": [
+          1,
           7,
-          9,
-          6,
-          2
+          4,
+          3
         ],
         "mobilePortrait": [
+          1,
           7,
-          9,
           6,
           2
         ],
         "mobileLandscape": [
-          4,
+          1,
           7,
-          3,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "id": "bier-alkoholfrei",
+      "title": "Bier (Alkoholfrei)",
+      "icon": "beer",
+      "priceCents": 200,
+      "deposit": false,
+      "type": "product",
+      "color": "gold",
+      "layout": {
+        "tabletLandscape": [
+          5,
+          7,
+          4,
+          3
+        ],
+        "tabletPortrait": [
+          5,
+          7,
+          4,
+          3
+        ],
+        "mobilePortrait": [
+          7,
+          7,
+          6,
+          2
+        ],
+        "mobileLandscape": [
+          5,
+          7,
+          4,
           3
         ]
       }
@@ -376,16 +306,86 @@
       "color": "purple",
       "layout": {
         "tabletLandscape": [
+          9,
           7,
+          4,
+          3
+        ],
+        "tabletPortrait": [
+          9,
           7,
-          3,
+          4,
+          3
+        ],
+        "mobilePortrait": [
+          1,
+          9,
+          6,
+          2
+        ],
+        "mobileLandscape": [
+          9,
+          7,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "id": "kaffee",
+      "title": "Kaffee",
+      "icon": "coffee",
+      "priceCents": 150,
+      "deposit": true,
+      "type": "product",
+      "color": "brown",
+      "layout": {
+        "tabletLandscape": [
+          1,
+          10,
+          4,
           3
         ],
         "tabletPortrait": [
           1,
-          11,
+          10,
+          4,
+          3
+        ],
+        "mobilePortrait": [
+          7,
+          9,
           6,
           2
+        ],
+        "mobileLandscape": [
+          1,
+          10,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "id": "softdrinks",
+      "title": "Softdrinks",
+      "icon": "glass-water",
+      "priceCents": 100,
+      "deposit": false,
+      "type": "product",
+      "color": "blue",
+      "layout": {
+        "tabletLandscape": [
+          5,
+          10,
+          4,
+          3
+        ],
+        "tabletPortrait": [
+          5,
+          10,
+          4,
+          3
         ],
         "mobilePortrait": [
           1,
@@ -394,9 +394,44 @@
           2
         ],
         "mobileLandscape": [
+          5,
+          10,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "id": "wasser",
+      "title": "Wasser",
+      "icon": "droplets",
+      "priceCents": 100,
+      "deposit": false,
+      "type": "product",
+      "color": "blue",
+      "layout": {
+        "tabletLandscape": [
+          9,
+          10,
+          4,
+          3
+        ],
+        "tabletPortrait": [
+          9,
+          10,
+          4,
+          3
+        ],
+        "mobilePortrait": [
           7,
-          7,
-          3,
+          11,
+          6,
+          2
+        ],
+        "mobileLandscape": [
+          9,
+          10,
+          4,
           3
         ]
       }
@@ -412,27 +447,27 @@
       "layout": {
         "tabletLandscape": [
           1,
-          10,
-          6,
-          3
+          13,
+          12,
+          2
         ],
         "tabletPortrait": [
           1,
-          11,
+          13,
           12,
           2
         ],
         "mobilePortrait": [
           1,
-          11,
+          13,
           12,
           2
         ],
         "mobileLandscape": [
-          9,
-          7,
-          4,
-          3
+          1,
+          13,
+          12,
+          2
         ]
       }
     }

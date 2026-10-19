@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Check,
+  ChevronDown,
   HelpCircle,
   ReceiptText,
   RotateCcw,
@@ -250,8 +251,8 @@ export default function Home() {
               <>
                 <div className="cash-head">
                   <h3>Gegeben & Rückgeld</h3>
-                  <button className="link-btn" onClick={() => setCashOpen(!cashOpen)}>
-                    {cashOpen ? 'Einklappen' : 'Aufklappen'}
+                  <button className="link-btn" onClick={() => setCashOpen(!cashOpen)} aria-label={cashOpen ? "Geldtasten einklappen" : "Geldtasten aufklappen"} aria-expanded={cashOpen}>
+                    <ChevronDown size={22} className={cashOpen ? 'chevron-open' : 'chevron-closed'} />
                   </button>
                 </div>
 
@@ -285,7 +286,7 @@ export default function Home() {
                       </button>
                       <button onClick={() => setMoney({})}>
                         <RotateCcw size={16} />
-                        Geld löschen
+                        Zurücksetzen
                       </button>
                     </div>
                   </>

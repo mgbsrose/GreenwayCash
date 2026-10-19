@@ -25,6 +25,9 @@ Alle Preise als **ganze Centbeträge** speichern. Änderungen an der JSON-Datei 
 | Softdrinks | 1,00 € | Nein |
 | Wasser | 1,00 € | Nein |
 | Bier | 2,00 € | Nein |
+| Bier (Alkoholfrei) | 2,00 € | Nein |
 | Schnaps | 1,50 € | Nein |
 
-Pfand je Becher: **2,00 €**. „Superbecher“ ist derzeit als pfandpflichtiger Artikel konfiguriert; bei abweichender Bedeutung in der Konfiguration anpassen.
+Pfand je Becher: **2,00 €**. Pfandpflichtig sind Kaffee, Kakao, Superbecher, Glühwein und Apfelpunsch.
+
+Breite Ansichten: vier Reihen mit drei Produkten, darunter Pfandrückgabe über die volle Breite. Smartphone-Hochformat: zwei Produktspalten.
