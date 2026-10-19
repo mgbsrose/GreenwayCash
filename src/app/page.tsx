@@ -224,41 +224,39 @@ export default function Home() {
 
             {receiptExpanded ? (
               <>
-            <div className="receipt-lines">
-              <div className="line heading">
-                <span>POSITION</span>
-                <span>BETRAG</span>
-              </div>
-              {productLines.map((line) => (
-                <div className="line" key={line.id}>
-                  <span>{line.quantity} × {line.title}</span>
-                  <span>{euro(line.lineCents)}</span>
+                <div className="receipt-lines">
+                  <div className="line heading">
+                    <span>POSITION</span>
+                    <span>BETRAG</span>
+                  </div>
+                  {productLines.map((line) => (
+                    <div className="line" key={line.id}>
+                      <span>{line.quantity} × {line.title}</span>
+                      <span>{euro(line.lineCents)}</span>
+                    </div>
+                  ))}
+                  {productLines.length === 0 && (
+                    <p className="empty">Noch keine Getränke ausgewählt</p>
+                  )}
                 </div>
-              ))}
-              {productLines.length === 0 && (
-                <p className="empty">Noch keine Getränke ausgewählt</p>
-              )}
-            </div>
-
-            <div className="receipt-totals">
-              <div className="line">
-                <span>Warenwert</span>
-                <span>{euro(calc.goodsCents)}</span>
-              </div>
-              <div className="line">
-                <span>Pfand ({calc.depositQuantity} × {euro(config.depositCents)})</span>
-                <span>{euro(calc.depositTotalCents)}</span>
-              </div>
-              <div className="line">
-                <span>Pfand zurück</span>
-                <span>{euro(calc.returnsCents)}</span>
-              </div>
->
-            </div>
-                <div className="line grand">
-                <strong>{calc.totalCents < 0 ? 'Auszuzahlen' : 'Zu zahlen'}</strong>
-                <strong>{euro(Math.abs(calc.totalCents))}</strong>
-              </div
+                <div className="receipt-totals">
+                  <div className="line">
+                    <span>Warenwert</span>
+                    <span>{euro(calc.goodsCents)}</span>
+                  </div>
+                  <div className="line">
+                    <span>Pfand ({calc.depositQuantity} × {euro(config.depositCents)})</span>
+                    <span>{euro(calc.depositTotalCents)}</span>
+                  </div>
+                  <div className="line">
+                    <span>Pfand zurück</span>
+                    <span>{euro(calc.returnsCents)}</span>
+                  </div>
+                  <div className="line grand">
+                    <strong>{calc.totalCents < 0 ? 'Auszuzahlen' : 'Zu zahlen'}</strong>
+                    <strong>{euro(Math.abs(calc.totalCents))}</strong>
+                  </div>
+                </div>
               </>
             ) : (
               <div className="line grand receipt-summary">
