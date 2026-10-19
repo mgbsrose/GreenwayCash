@@ -30,6 +30,7 @@ header{background:#173e35;color:#fff4df;padding:12px 22px;display:flex;align-ite
 .color-purple{background:#dfc9ee}
 .color-cream{background:#f7e9bd}
 .color-green{background:#cbe7d2}
+.color-magenta{background:#df3eba}
 .actions{display:flex;gap:10px;margin-top:12px}
 .clear-btn,.undo-btn{border:1px solid #b9c6c0;background:#fff;border-radius:10px;padding:13px;display:flex;gap:8px;align-items:center}
 .clear-btn{color:#a43232}

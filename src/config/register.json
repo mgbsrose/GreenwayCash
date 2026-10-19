@@ -443,7 +443,7 @@
       "priceCents": -200,
       "deposit": false,
       "type": "return",
-      "color": "marron",
+      "color": "magenta",
       "layout": {
         "tabletLandscape": [
           1,
