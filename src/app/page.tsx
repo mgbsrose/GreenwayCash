@@ -187,11 +187,26 @@ export default function Home() {
           <aside className="receipt" aria-label="Bon">
             <div className="receipt-head">
               <h2>Bon</h2>
-              {mobile && (
-                <button className="icon-btn" onClick={() => setOpen(false)} aria-label="Bon schließen">
-                  <X />
-                </button>
-              )}
+              <div className="receipt-head-actions">
+                {undo && (
+                  <button className="receipt-undo" onClick={restore} aria-label="Rückgängig" title="Clear rückgängig machen">
+                    <Undo2 size={20} />
+                  </button>
+                )}
+                <LongPress
+                  className="receipt-clear"
+                  onHold={clear}
+                  delay={config.clearPressMs}
+                  title="Bon löschen: 1,2 Sekunden halten"
+                >
+                  <Trash2 size={20} />
+                </LongPress>
+                {mobile && (
+                  <button className="receipt-close" onClick={() => setOpen(false)} aria-label="Bon schließen">
+                    <X size={20} />
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="receipt-lines">
@@ -292,24 +307,7 @@ export default function Home() {
               </div>
             )}
           </aside>
-          <aside className="action-card" aria-label="Vorgang zurücksetzen">          <div className="actions">
-            <LongPress
-              className="clear-btn"
-              onHold={clear}
-              delay={config.clearPressMs}
-              title="Zum Löschen 1,2 Sekunden gedrückt halten"
-            >
-              <Trash2 size={19} />
-              Clear
-            </LongPress>
-            {undo && (
-              <button className="undo-btn" onClick={restore}>
-                <Undo2 size={18} />
-                Rückgängig
-              </button>
-            )}
-          </div>
-          </aside>
+
         </div>
       </div>
 
