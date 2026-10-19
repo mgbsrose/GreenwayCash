@@ -8,7 +8,6 @@ import {
   ReceiptText,
   RotateCcw,
   Trash2,
-  Undo2,
   X,
 } from 'lucide-react';
 import config from '@/config/register.json';
@@ -25,8 +24,6 @@ type LayoutName =
   | 'mobileLandscape'
   | 'mobilePortrait';
 
-type Snapshot = { counts: Counts; money: Counts };
-
 function deviceLayout(width: number, height: number): LayoutName {
   if (width < 700) {
     return width > height ? 'mobileLandscape' : 'mobilePortrait';
@@ -40,7 +37,6 @@ export default function Home() {
   const [money, setMoney] = useState<Counts>({});
   const [open, setOpen] = useState(false);
   const [help, setHelp] = useState(false);
-  const [undo, setUndo] = useState<Snapshot | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [size, setSize] = useState({ w: 1024, h: 768 });
   const [online, setOnline] = useState(true);
@@ -111,19 +107,11 @@ export default function Home() {
     }));
   };
 
-  // Clear is protected by a long press; one snapshot can be restored.
+  // Clear permanently resets the current transaction after a long press.
   const clear = () => {
-    setUndo({ counts, money });
     setCounts({});
     setMoney({});
     setOpen(false);
-  };
-
-  const restore = () => {
-    if (!undo) return;
-    setCounts(undo.counts);
-    setMoney(undo.money);
-    setUndo(null);
   };
 
   const toggleWake = async () => {
@@ -180,15 +168,14 @@ export default function Home() {
               />
             ))}
             <LongPress
-              className={`product-tile reset-tile ${undo ? 'undo-tile' : ''}`}
+              className="product-tile reset-tile"
               style={{ gridColumn: layout === 'mobilePortrait' ? '9 / span 4' : '9 / span 4', gridRow: '13 / span 2' }}
-              onTap={undo ? restore : undefined}
-              onHold={undo ? restore : clear}
+              onHold={clear}
               delay={config.clearPressMs}
-              title={undo ? 'Tippen: letzten Vorgang wiederherstellen' : 'Zum Löschen 1,2 Sekunden halten'}
+              title="Zum Löschen 1,2 Sekunden halten"
             >
-              {undo ? <Undo2 size={27} /> : <Trash2 size={27} />}
-              <span className="product-name">{undo ? 'Rückgängig' : 'Clear'}</span>
+              <Trash2 size={27} />
+              <span className="product-name">Clear</span>
             </LongPress>
           </div>
         </section>
@@ -362,7 +349,7 @@ export default function Home() {
             <p><b>Pfand:</b> Bei entsprechend konfigurierten Getränken automatisch; Rückgaben separat erfassen.</p>
             <p><b>Bon:</b> Positionen, Pfand und Gesamtsumme auf einen Blick.</p>
             <p><b>Gegeben:</b> Münzen und Scheine antippen; langer Druck zieht den Betrag ab. „Passend“ setzt die exakte Summe.</p>
-            <p><b>Clear:</b> 1,2 Sekunden halten, um alles zurückzusetzen. Danach ist Rückgängig möglich.</p>
+            <p><b>Clear:</b> 1,2 Sekunden halten, um alles zurückzusetzen. Der Vorgang kann nicht rückgängig gemacht werden.</p>
             <p><b>Offline:</b> Nach dem ersten vollständigen Laden und Installieren auch ohne Internet nutzbar.</p>
             <button className="wake" onClick={toggleWake}>
               {awake ? 'Display-Wachhalten beenden' : 'Display wach halten (falls unterstützt)'}
