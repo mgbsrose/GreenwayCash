@@ -56,7 +56,7 @@ export function ProductTile({
 
   return (
     <LongPress
-      className={`product-tile color-${item.color}`}
+      className={`product-tile color-${item.color}${item.type === 'return' ? ' return-tile' : ''}`}
       style={{
         gridColumn: `${x} / span ${width}`,
         gridRow: `${y} / span ${height}`,
