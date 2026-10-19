@@ -129,3 +129,7 @@ header{padding:7px 18px}
 .reset-tile.undo-tile{background:#f1c8c3}
 .reset-tile .product-name{font-weight:700}
 .receipt-summary{margin:4px 0 0}
+
+/* v1.0: Larger disclosure arrows for receipt and payment cards. */
+.receipt-head .link-btn,.cash-head .link-btn{min-width:46px;min-height:46px}
+.receipt-head .link-btn svg,.cash-head .link-btn svg{width:30px;height:30px}

@@ -1,47 +1,51 @@
-# 🎄 ROSI Cash
+# ROSI Cash – Version 1.0
 
-**ROSI Cash** ist eine installierbare, offlinefähige Rechenhilfe für den Getränkeverkauf am Weihnachtsmarkt. Kein Kassensystem, keine Umsatzaufzeichnung, kein Backend.
+**ROSI Cash** ist eine installierbare, offlinefähige Rechenhilfe für den Getränkeverkauf auf dem Weihnachtsmarkt. **Keine elektronische Registrierkasse**, keine Umsatzaufzeichnung, keine Datenbank und kein Backend.
 
 ## Funktionen
 
-- Tippen auf ein Getränk: **+1**; langes Drücken: **−1**
-- Automatisches Pfand für konfigurierte Getränke und separate Pfandrückgabe
-- Bon mit Positionen, Warenwert, Pfand und Gesamtsumme
-- Geldtasten, **Passend**, automatische Rückgeldberechnung
-- **Clear** durch langes Drücken, anschließend **Rückgängig**
-- Smartphone: dauerhaft sichtbare Gesamtsumme und einblendbarer Bon mit abgedunkeltem, unscharfem Hintergrund; Tablet: Bon rechts
-- Kompakte Produktkacheln und separate Clear-/Rückgängig-Card unterhalb der Zahlung
-- Eigenständiges Weihnachtsmarktstand-SVG als Marken- und PWA-Symbol
-- Lokale Speicherung der laufenden Rechnung und Offline-PWA
-- Preise, Produkte und Layout über JSON konfigurierbar
+- Getränk antippen: Menge +1; lange halten (600 ms): Menge −1, nicht unter null
+- Automatische Pfandberechnung für Kaffee, Kakao, Superbecher, Glühwein und Apfelpunsch (je 2,00 €)
+- Pfandrückgabe unabhängig von einem Verkauf; auch reine Auszahlungen möglich
+- Einklappbarer Bon mit Warenwert, Pfand, Pfandrückgabe und Gesamtsumme
+- Separat einklappbare Geldtasten, „Passend“, „Zurücksetzen“, Rückgeld und Fehlbetrag
+- Rote **Clear**-Kachel: 1,2 Sekunden halten; **kein Rückgängig**
+- Responsive Oberfläche für Smartphone und Tablet; Smartphone-Bon als Overlay mit unscharfem Hintergrund
+- Aktuelle Rechnung im lokalen Browser-Speicher; Offlinebetrieb über Service Worker
+- Konfigurierbare Preise, Produkte und Raster in `src/config/register.json`
 
-## Start
+## Entwicklung
 
-Node.js in einer für Next.js 16 unterstützten Version vorausgesetzt.
+Voraussetzung: Node.js in einer mit Next.js 16 kompatiblen Version.
 
 ```bash
+git pull --ff-only origin main
 npm install
 npm run dev
 ```
 
-Produktionsbuild:
+## Produktionsbuild und Veröffentlichung
 
 ```bash
 npm run typecheck
 npm run build
 ```
 
-Das Verzeichnis `out/` als statische Website über HTTPS ausliefern. PWA einmal online laden und anschließend Offline-Neustart testen.
+Der statische Export liegt anschließend in **`out/`**. Den **gesamten Inhalt** von `out/` in das Document Root des Webservers kopieren. Dazu gehören `index.html`, `_next/`, `manifest.webmanifest`, `sw.js` und `icons/`. Auf dem Webserver ist **kein Node.js-Prozess** erforderlich.
+
+**HTTPS ist für die installierbare PWA und den Service Worker erforderlich** (Ausnahme: lokales `localhost`). Die Anwendung erwartet die Bereitstellung am Domain-Root `/`. Ein Unterverzeichnis erfordert weitere Konfiguration.
+
+Nach einem Update gegebenenfalls die PWA neu laden; den Offlinebetrieb und das Update-Verhalten auf dem Zielgerät prüfen. Details: [Technik und Deployment](docs/TECHNIK.md).
 
 ## Dokumentation
 
 - [Bedienung](docs/BEDIENUNG.md)
-- [Konfiguration](docs/KONFIGURATION.md)
-- [Technik und Deployment](docs/TECHNIK.md)
+- [Konfiguration und Preise](docs/KONFIGURATION.md)
+- [Technik, Deployment und Testcheckliste](docs/TECHNIK.md)
 
 ## Status
 
-**v0.2 – Prototyp, nicht produktiv abgenommen.** Touch-, Build-, Pfand- und Offline-Tests auf Zielgeräten erforderlich. Keine steuerliche Kassenfunktion.
+**Version 1.0 – Funktionsumfang festgelegt.** Der produktive Einsatz setzt einen erfolgreichen Build und die Prüfung auf den tatsächlich verwendeten Geräten voraus. ROSI Cash ersetzt keine gesetzlich vorgeschriebenen Kassen- oder Aufzeichnungspflichten.
 
 ## Lizenz
 

@@ -16,6 +16,7 @@ import { LongPress } from '@/components/LongPress';
 import { calculate, euro, type Counts, type Item } from '@/lib/calculator';
 
 const items = config.buttons as Item[];
+// Keep the existing key so an upgrade does not discard an active transaction.
 const storageKey = 'rosi-v1';
 
 type LayoutName =
@@ -24,6 +25,7 @@ type LayoutName =
   | 'mobileLandscape'
   | 'mobilePortrait';
 
+/** Select the grid configuration from viewport width and orientation. */
 function deviceLayout(width: number, height: number): LayoutName {
   if (width < 700) {
     return width > height ? 'mobileLandscape' : 'mobilePortrait';
@@ -81,6 +83,7 @@ export default function Home() {
     }
   }, [counts, money, loaded]);
 
+  // Monetary values are always calculated in integer cents.
   const calc = useMemo(
     () => calculate(items, counts, config.depositCents),
     [counts],
@@ -93,6 +96,7 @@ export default function Home() {
   const mobile = size.w < 700;
   const productLines = calc.lines.filter((line) => line.type === 'product');
 
+  // A long press decrements but never allows negative item quantities.
   const adjust = (id: string, delta: number) => {
     setCounts((current) => ({
       ...current,
@@ -193,7 +197,7 @@ export default function Home() {
                   aria-expanded={receiptExpanded}
                 >
                   <ChevronDown
-                    size={22}
+                    size={30}
                     className={receiptExpanded ? 'chevron-open' : 'chevron-closed'}
                   />
                 </button>
@@ -259,7 +263,7 @@ export default function Home() {
                 <div className="cash-head">
                   <h3>Gegeben & Rückgeld</h3>
                   <button className="link-btn" onClick={() => setCashOpen(!cashOpen)} aria-label={cashOpen ? "Geldtasten einklappen" : "Geldtasten aufklappen"} aria-expanded={cashOpen}>
-                    <ChevronDown size={22} className={cashOpen ? 'chevron-open' : 'chevron-closed'} />
+                    <ChevronDown size={30} className={cashOpen ? 'chevron-open' : 'chevron-closed'} />
                   </button>
                 </div>
 

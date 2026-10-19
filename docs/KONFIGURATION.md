@@ -7,7 +7,7 @@ Die Konfiguration befindet sich in `src/config/register.json`.
 - `denominationsCents`: Geldtasten in Cent
 - `buttons`: Produkte und Pfandrückgabe mit `id`, `title`, `icon`, `priceCents`, `deposit`, `type`, `color`, `layout`
 
-`layout` enthält für `tabletLandscape`, `tabletPortrait`, `mobileLandscape` und `mobilePortrait` jeweils `[x,y,w,h]` in einem 12×12-CSS-Grid. Koordinaten beginnen bei 1.
+`layout` enthält für `tabletLandscape`, `tabletPortrait`, `mobileLandscape` und `mobilePortrait` jeweils `[x,y,w,h]` in einem 12-Spalten-CSS-Grid mit 14 Rasterzeilen. Koordinaten beginnen bei 1.
 
 Alle Preise als **ganze Centbeträge** speichern. Änderungen an der JSON-Datei erfordern einen neuen Build.
 
@@ -30,4 +30,4 @@ Alle Preise als **ganze Centbeträge** speichern. Änderungen an der JSON-Datei 
 
 Pfand je Becher: **2,00 €**. Pfandpflichtig sind Kaffee, Kakao, Superbecher, Glühwein und Apfelpunsch.
 
-Breite Ansichten: vier Reihen mit drei Produkten, darunter Pfandrückgabe über die volle Breite. Smartphone-Hochformat: zwei Produktspalten.
+Breite Ansichten: vier Reihen mit drei Produkten; darunter Pfandrückgabe über acht Spalten und die rote Clear-Kachel über vier Spalten. Smartphone-Hochformat: zwei Produktspalten, Pfandrückgabe und Clear teilen sich die letzte Rasterzeile. Clear wird separat in `src/app/page.tsx` positioniert und ist kein Eintrag in `buttons`.
