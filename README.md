@@ -1,6 +1,6 @@
-# 🎄 ROSI zählt für euch!
+# 🎄 ROSI Cash
 
-**ROSI** ist eine installierbare, offlinefähige Rechenhilfe für den Getränkeverkauf am Weihnachtsmarkt. Kein Kassensystem, keine Umsatzaufzeichnung, kein Backend.
+**ROSI Cash** ist eine installierbare, offlinefähige Rechenhilfe für den Getränkeverkauf am Weihnachtsmarkt. Kein Kassensystem, keine Umsatzaufzeichnung, kein Backend.
 
 ## Funktionen
 
@@ -39,7 +39,7 @@ Das Verzeichnis `out/` als statische Website über HTTPS ausliefern. PWA einmal 
 
 ## Status
 
-**v0.1 – Prototyp, nicht produktiv abgenommen.** Touch-, Build-, Pfand- und Offline-Tests auf Zielgeräten erforderlich. Keine steuerliche Kassenfunktion.
+**v0.2 – Prototyp, nicht produktiv abgenommen.** Touch-, Build-, Pfand- und Offline-Tests auf Zielgeräten erforderlich. Keine steuerliche Kassenfunktion.
 
 ## Lizenz
 

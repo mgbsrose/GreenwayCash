@@ -10,3 +10,21 @@ Die Konfiguration befindet sich in `src/config/register.json`.
 `layout` enthält für `tabletLandscape`, `tabletPortrait`, `mobileLandscape` und `mobilePortrait` jeweils `[x,y,w,h]` in einem 12×12-CSS-Grid. Koordinaten beginnen bei 1.
 
 Alle Preise als **ganze Centbeträge** speichern. Änderungen an der JSON-Datei erfordern einen neuen Build.
+
+## Preise (Stand Oktober 2026)
+
+| Artikel | Preis | Automatisches Pfand |
+| --- | ---: | :---: |
+| Kaffee | 1,50 € | Ja |
+| Kakao | 2,00 € | Ja |
+| Superbecher | 3,00 € | Ja |
+| Glühwein | 3,00 € | Ja |
+| Apfelpunsch | 2,50 € | Ja |
+| mit Sahne | 0,50 € | Nein |
+| mit Schuss | 0,50 € | Nein |
+| Softdrinks | 1,00 € | Nein |
+| Wasser | 1,00 € | Nein |
+| Bier | 2,00 € | Nein |
+| Schnaps | 1,50 € | Nein |
+
+Pfand je Becher: **2,00 €**. „Superbecher“ ist derzeit als pfandpflichtiger Artikel konfiguriert; bei abweichender Bedeutung in der Konfiguration anpassen.

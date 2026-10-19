@@ -1,28 +1,352 @@
 'use client';
-import {useEffect,useMemo,useRef,useState} from 'react';
-import {Wine,Apple,Coffee,Beer,GlassWater,Plus,IceCreamBowl,Undo2,HelpCircle,ReceiptText,X,Trash2,Check,RotateCcw} from 'lucide-react';
+
+import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Check,
+  HelpCircle,
+  ReceiptText,
+  RotateCcw,
+  Trash2,
+  Undo2,
+  X,
+} from 'lucide-react';
 import config from '@/config/register.json';
-import {calculate,euro,type Counts,type Item} from '@/lib/calculator';
-import {LongPress} from '@/components/LongPress';
-const icons:Record<string,React.ComponentType<{size?:number}>>={wine:Wine,apple:Apple,coffee:Coffee,beer:Beer,'glass-water':GlassWater,plus:Plus,'ice-cream-bowl':IceCreamBowl,'undo-2':Undo2};
-const items=config.buttons as Item[];
-const savedKey='rosi-v1';
-function deviceLayout(w:number,h:number){if(w<700)return w>h?'mobileLandscape':'mobilePortrait';return w>h?'tabletLandscape':'tabletPortrait'}
-export default function Home(){
- const [counts,setCounts]=useState<Counts>({});const [money,setMoney]=useState<Counts>({});const [open,setOpen]=useState(false);const [help,setHelp]=useState(false);const [undo,setUndo]=useState<{counts:Counts;money:Counts}|null>(null);const [loaded,setLoaded]=useState(false);const [size,setSize]=useState({w:1024,h:768});const [online,setOnline]=useState(true);
- const [cashOpen,setCashOpen]=useState(true);const [awake,setAwake]=useState(false);const wake=useRef<{release:()=>Promise<void>}|null>(null);
- useEffect(()=>{try{const x=JSON.parse(localStorage.getItem(savedKey)||'{}');setCounts(x.counts||{});setMoney(x.money||{})}catch{}setLoaded(true);const resize=()=>setSize({w:innerWidth,h:innerHeight});resize();addEventListener('resize',resize);const status=()=>setOnline(navigator.onLine);status();addEventListener('online',status);addEventListener('offline',status);if('serviceWorker'in navigator&&process.env.NODE_ENV==='production')navigator.serviceWorker.register('/sw.js').catch(()=>{});return()=>{removeEventListener('resize',resize);removeEventListener('online',status);removeEventListener('offline',status)}},[]);
- useEffect(()=>{if(loaded)localStorage.setItem(savedKey,JSON.stringify({counts,money}))},[counts,money,loaded]);
- const calc=useMemo(()=>calculate(items,counts,config.depositCents),[counts]);const given=Object.entries(money).reduce((s,[k,n])=>s+Number(k)*n,0);const layout=deviceLayout(size.w,size.h);const mobile=size.w<700;
- const adjust=(id:string,n:number)=>setCounts(c=>({...c,[id]:Math.max(0,(c[id]||0)+n)}));
- const adjustMoney=(v:number,n:number)=>setMoney(c=>({...c,[v]:Math.max(0,(c[v]||0)+n)}));
- const clear=()=>{setUndo({counts,money});setCounts({});setMoney({});setOpen(false)};
- const toggleWake=async()=>{if(awake){await wake.current?.release();wake.current=null;setAwake(false);return}try{const nav=navigator as Navigator&{wakeLock?:{request:(type:'screen')=>Promise<{release:()=>Promise<void>}>}};if(nav.wakeLock){wake.current=await nav.wakeLock.request('screen');setAwake(true)}}catch{setAwake(false)}};
- return <main className="app"><header><div className="brand"><span className="snow">❄</span><div><strong>ROSI</strong><small>zählt für euch!</small></div></div><div className="header-actions"><span className="connection">{online?'● Online':'○ Offline'}</span><button className="icon-btn" onClick={()=>setHelp(true)} aria-label="Hilfe"><HelpCircle/></button></div></header>
- <div className="workspace"><section className="products"><div className="product-grid">{items.map(item=>{const Icon=icons[item.icon]||GlassWater;const [x,y,w,h]=item.layout[layout]||[1,1,6,2];return <LongPress key={item.id} className={`product-tile color-${item.color}`} style={{gridColumn:`${x} / span ${w}`,gridRow:`${y} / span ${h}`}} onTap={()=>adjust(item.id,1)} onHold={()=>adjust(item.id,-1)} delay={config.longPressMs} title="Tippen: +1 · Halten: −1"><Icon size={27}/><span className="product-name">{item.title}</span><span className="price">{euro(item.priceCents)}</span><span className="qty">{counts[item.id]||0}</span></LongPress>})}</div><div className="actions"><LongPress className="clear-btn" onHold={clear} delay={config.clearPressMs}><Trash2 size={19}/> Clear halten</LongPress>{undo&&<button className="undo-btn" onClick={()=>{setCounts(undo.counts);setMoney(undo.money);setUndo(null)}}><Undo2 size={18}/> Rückgängig</button>}</div></section>
- <aside className={`receipt ${mobile?(open?'receipt-open':'receipt-hidden'):''}`} aria-label="Bon"><div className="receipt-head"><div><span className="eyebrow">ROSI · WEIHNACHTSMARKT</span><h2>Dein Bon</h2></div>{mobile&&<button className="icon-btn" onClick={()=>setOpen(false)} aria-label="Bon schließen"><X/></button>}</div><div className="receipt-lines"><div className="line heading"><span>POSITION</span><span>BETRAG</span></div>{calc.lines.filter(l=>l.type==='product').map(l=><div className="line" key={l.id}><span>{l.quantity} × {l.title}</span><span>{euro(l.lineCents)}</span></div>)}{calc.lines.filter(l=>l.type==='product').length===0&&<p className="empty">Noch keine Getränke ausgewählt</p>}</div><div className="receipt-totals"><div className="line"><span>Warenwert</span><span>{euro(calc.goodsCents)}</span></div><div className="line"><span>Pfand ({calc.depositQuantity} × {euro(config.depositCents)})</span><span>{euro(calc.depositTotalCents)}</span></div><div className="line"><span>Pfand zurück</span><span>{euro(calc.returnsCents)}</span></div><div className="line grand"><strong>{calc.totalCents<0?'Auszuzahlen':'Zu zahlen'}</strong><strong>{euro(Math.abs(calc.totalCents))}</strong></div></div>
- {calc.totalCents>=0?<div className="cash"><div className="cash-head"><h3>Gegeben</h3><button className="link-btn" onClick={()=>setCashOpen(!cashOpen)}>{cashOpen?'Einklappen':'Aufklappen'}</button></div>{cashOpen&&<><div className="cash-grid">{config.denominationsCents.map(d=><LongPress key={d} className="cash-key" onTap={()=>adjustMoney(d,1)} onHold={()=>adjustMoney(d,-1)} title="Tippen: addieren · Halten: abziehen">{d<100?`${d} ct`:`${d/100} €`}{money[d]>0&&<span className="cash-count">{money[d]}×</span>}</LongPress>)}</div><div className="cash-actions"><button onClick={()=>setMoney({[calc.totalCents]:1})} disabled={calc.totalCents===0}><Check size={16}/> Passend</button><button onClick={()=>setMoney({})}><RotateCcw size={16}/> Geld löschen</button></div></>}<div className="line paid"><span>Gegeben</span><strong>{euro(given)}</strong></div><div className="change"><span>{given>=calc.totalCents?'Rückgeld':'Noch offen'}</span><strong>{euro(Math.abs(given-calc.totalCents))}</strong></div></div>:<div className="change"><span>An Kunden auszahlen</span><strong>{euro(-calc.totalCents)}</strong></div>}</aside></div>
- {mobile&&<div className="mobile-footer"><div><small>{calc.totalCents<0?'AUSZAHLEN':'ZU ZAHLEN'}</small><strong>{euro(Math.abs(calc.totalCents))}</strong></div><button onClick={()=>setOpen(v=>!v)}><ReceiptText size={19}/>{open?'Bon schließen':'Bon anzeigen'}</button></div>}
- {help&&<div className="overlay" onClick={()=>setHelp(false)}><section className="dialog" onClick={e=>e.stopPropagation()}><div className="dialog-head"><h2>So funktioniert ROSI</h2><button className="icon-btn" onClick={()=>setHelp(false)}><X/></button></div><p><b>Getränke:</b> Kurz tippen = +1, lange halten = −1.</p><p><b>Pfand:</b> Bei Heißgetränken automatisch; Rückgaben separat erfassen.</p><p><b>Bon:</b> Positionen, Pfand und Gesamtsumme auf einen Blick.</p><p><b>Gegeben:</b> Münzen und Scheine antippen; langer Druck zieht den Betrag ab. „Passend“ setzt die exakte Summe.</p><p><b>Clear:</b> 1,2 Sekunden halten, um alles zurückzusetzen. Danach ist Rückgängig möglich.</p><p><b>Offline:</b> Nach dem ersten vollständigen Laden und Installieren auch ohne Internet nutzbar.</p><button className="wake" onClick={toggleWake}>{awake?'Display-Wachhalten beenden':'Display wach halten (falls unterstützt)'}</button><button className="close" onClick={()=>setHelp(false)}>Verstanden</button></section></div>}
- </main>
+import { ProductTile } from '@/components/ProductTile';
+import { LongPress } from '@/components/LongPress';
+import { calculate, euro, type Counts, type Item } from '@/lib/calculator';
+
+const items = config.buttons as Item[];
+const storageKey = 'rosi-v1';
+
+type LayoutName =
+  | 'tabletLandscape'
+  | 'tabletPortrait'
+  | 'mobileLandscape'
+  | 'mobilePortrait';
+
+type Snapshot = { counts: Counts; money: Counts };
+
+function deviceLayout(width: number, height: number): LayoutName {
+  if (width < 700) {
+    return width > height ? 'mobileLandscape' : 'mobilePortrait';
+  }
+  return width > height ? 'tabletLandscape' : 'tabletPortrait';
+}
+
+export default function Home() {
+  // Only the current transaction is persisted; there is no sales history.
+  const [counts, setCounts] = useState<Counts>({});
+  const [money, setMoney] = useState<Counts>({});
+  const [open, setOpen] = useState(false);
+  const [help, setHelp] = useState(false);
+  const [undo, setUndo] = useState<Snapshot | null>(null);
+  const [loaded, setLoaded] = useState(false);
+  const [size, setSize] = useState({ w: 1024, h: 768 });
+  const [online, setOnline] = useState(true);
+  const [cashOpen, setCashOpen] = useState(true);
+  const [awake, setAwake] = useState(false);
+  const wake = useRef<{ release: () => Promise<void> } | null>(null);
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      setCounts(saved.counts || {});
+      setMoney(saved.money || {});
+    } catch {
+      // Ignore invalid local state and start with an empty transaction.
+    }
+    setLoaded(true);
+
+    const resize = () => setSize({ w: innerWidth, h: innerHeight });
+    const updateOnline = () => setOnline(navigator.onLine);
+
+    resize();
+    updateOnline();
+    addEventListener('resize', resize);
+    addEventListener('online', updateOnline);
+    addEventListener('offline', updateOnline);
+
+    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+
+    return () => {
+      removeEventListener('resize', resize);
+      removeEventListener('online', updateOnline);
+      removeEventListener('offline', updateOnline);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (loaded) {
+      localStorage.setItem(storageKey, JSON.stringify({ counts, money }));
+    }
+  }, [counts, money, loaded]);
+
+  const calc = useMemo(
+    () => calculate(items, counts, config.depositCents),
+    [counts],
+  );
+  const given = Object.entries(money).reduce(
+    (sum, [denomination, quantity]) => sum + Number(denomination) * quantity,
+    0,
+  );
+  const layout = deviceLayout(size.w, size.h);
+  const mobile = size.w < 700;
+  const productLines = calc.lines.filter((line) => line.type === 'product');
+
+  const adjust = (id: string, delta: number) => {
+    setCounts((current) => ({
+      ...current,
+      [id]: Math.max(0, (current[id] || 0) + delta),
+    }));
+  };
+
+  const adjustMoney = (denomination: number, delta: number) => {
+    setMoney((current) => ({
+      ...current,
+      [denomination]: Math.max(0, (current[denomination] || 0) + delta),
+    }));
+  };
+
+  // Clear is protected by a long press; one snapshot can be restored.
+  const clear = () => {
+    setUndo({ counts, money });
+    setCounts({});
+    setMoney({});
+    setOpen(false);
+  };
+
+  const restore = () => {
+    if (!undo) return;
+    setCounts(undo.counts);
+    setMoney(undo.money);
+    setUndo(null);
+  };
+
+  const toggleWake = async () => {
+    if (awake) {
+      await wake.current?.release();
+      wake.current = null;
+      setAwake(false);
+      return;
+    }
+
+    try {
+      const nav = navigator as Navigator & {
+        wakeLock?: {
+          request: (type: 'screen') => Promise<{ release: () => Promise<void> }>;
+        };
+      };
+      if (nav.wakeLock) {
+        wake.current = await nav.wakeLock.request('screen');
+        setAwake(true);
+      }
+    } catch {
+      setAwake(false);
+    }
+  };
+
+  return (
+    <main className="app">
+      <header>
+        <div className="brand">
+          <span className="snow">❄</span>
+          <div>
+            <strong>ROSI Cash</strong>
+          </div>
+        </div>
+        <div className="header-actions">
+          <span className="connection">{online ? '● Online' : '○ Offline'}</span>
+          <button className="icon-btn" onClick={() => setHelp(true)} aria-label="Hilfe">
+            <HelpCircle />
+          </button>
+        </div>
+      </header>
+
+      <div className="workspace">
+        <section className="products" aria-label="Produkte">
+          <div className="product-grid">
+            {items.map((item) => (
+              <ProductTile
+                key={item.id}
+                item={item}
+                count={counts[item.id] || 0}
+                layout={layout}
+                longPressMs={config.longPressMs}
+                onChange={adjust}
+              />
+            ))}
+          </div>
+
+          <div className="actions">
+            <LongPress
+              className="clear-btn"
+              onHold={clear}
+              delay={config.clearPressMs}
+              title="Zum Löschen 1,2 Sekunden gedrückt halten"
+            >
+              <Trash2 size={19} />
+              Clear
+            </LongPress>
+            {undo && (
+              <button className="undo-btn" onClick={restore}>
+                <Undo2 size={18} />
+                Rückgängig
+              </button>
+            )}
+          </div>
+        </section>
+
+        <div className={`checkout ${mobile ? (open ? 'receipt-open' : 'receipt-hidden') : ''}`}>
+          <aside className="receipt" aria-label="Bon">
+            <div className="receipt-head">
+              <h2>Bon</h2>
+              {mobile && (
+                <button className="icon-btn" onClick={() => setOpen(false)} aria-label="Bon schließen">
+                  <X />
+                </button>
+              )}
+            </div>
+
+            <div className="receipt-lines">
+              <div className="line heading">
+                <span>POSITION</span>
+                <span>BETRAG</span>
+              </div>
+              {productLines.map((line) => (
+                <div className="line" key={line.id}>
+                  <span>{line.quantity} × {line.title}</span>
+                  <span>{euro(line.lineCents)}</span>
+                </div>
+              ))}
+              {productLines.length === 0 && (
+                <p className="empty">Noch keine Getränke ausgewählt</p>
+              )}
+            </div>
+
+            <div className="receipt-totals">
+              <div className="line">
+                <span>Warenwert</span>
+                <span>{euro(calc.goodsCents)}</span>
+              </div>
+              <div className="line">
+                <span>Pfand ({calc.depositQuantity} × {euro(config.depositCents)})</span>
+                <span>{euro(calc.depositTotalCents)}</span>
+              </div>
+              <div className="line">
+                <span>Pfand zurück</span>
+                <span>{euro(calc.returnsCents)}</span>
+              </div>
+              <div className="line grand">
+                <strong>{calc.totalCents < 0 ? 'Auszuzahlen' : 'Zu zahlen'}</strong>
+                <strong>{euro(Math.abs(calc.totalCents))}</strong>
+              </div>
+            </div>
+          </aside>
+
+          <aside className="payment-card" aria-label="Bezahlung und Rückgeld">
+            {calc.totalCents >= 0 ? (
+              <>
+                <div className="cash-head">
+                  <h3>Gegeben & Rückgeld</h3>
+                  <button className="link-btn" onClick={() => setCashOpen(!cashOpen)}>
+                    {cashOpen ? 'Einklappen' : 'Aufklappen'}
+                  </button>
+                </div>
+
+                {cashOpen && (
+                  <>
+                    <div className="cash-grid">
+                      {config.denominationsCents.map((denomination) => (
+                        <LongPress
+                          key={denomination}
+                          className="cash-key"
+                          onTap={() => adjustMoney(denomination, 1)}
+                          onHold={() => adjustMoney(denomination, -1)}
+                          title="Tippen: addieren · Halten: abziehen"
+                        >
+                          {denomination < 100
+                            ? `${denomination} ct`
+                            : `${denomination / 100} €`}
+                          {money[denomination] > 0 && (
+                            <span className="cash-count">{money[denomination]}×</span>
+                          )}
+                        </LongPress>
+                      ))}
+                    </div>
+                    <div className="cash-actions">
+                      <button
+                        onClick={() => setMoney({ [calc.totalCents]: 1 })}
+                        disabled={calc.totalCents === 0}
+                      >
+                        <Check size={16} />
+                        Passend
+                      </button>
+                      <button onClick={() => setMoney({})}>
+                        <RotateCcw size={16} />
+                        Geld löschen
+                      </button>
+                    </div>
+                  </>
+                )}
+
+                <div className="line paid">
+                  <span>Gegeben</span>
+                  <strong>{euro(given)}</strong>
+                </div>
+                <div className="change">
+                  <span>{given >= calc.totalCents ? 'Rückgeld' : 'Noch offen'}</span>
+                  <strong>{euro(Math.abs(given - calc.totalCents))}</strong>
+                </div>
+              </>
+            ) : (
+              <div className="change">
+                <span>An Kunden auszahlen</span>
+                <strong>{euro(-calc.totalCents)}</strong>
+              </div>
+            )}
+          </aside>
+        </div>
+      </div>
+
+      {mobile && (
+        <div className="mobile-footer">
+          <div>
+            <small>{calc.totalCents < 0 ? 'AUSZAHLEN' : 'ZU ZAHLEN'}</small>
+            <strong>{euro(Math.abs(calc.totalCents))}</strong>
+          </div>
+          <button onClick={() => setOpen((current) => !current)}>
+            <ReceiptText size={19} />
+            {open ? 'Bon schließen' : 'Bon anzeigen'}
+          </button>
+        </div>
+      )}
+
+      {help && (
+        <div className="overlay" onClick={() => setHelp(false)}>
+          <section className="dialog" onClick={(event) => event.stopPropagation()}>
+            <div className="dialog-head">
+              <h2>So funktioniert ROSI Cash</h2>
+              <button className="icon-btn" onClick={() => setHelp(false)}>
+                <X />
+              </button>
+            </div>
+            <p><b>Getränke:</b> Kurz tippen = +1, lange halten = −1.</p>
+            <p><b>Pfand:</b> Bei entsprechend konfigurierten Getränken automatisch; Rückgaben separat erfassen.</p>
+            <p><b>Bon:</b> Positionen, Pfand und Gesamtsumme auf einen Blick.</p>
+            <p><b>Gegeben:</b> Münzen und Scheine antippen; langer Druck zieht den Betrag ab. „Passend“ setzt die exakte Summe.</p>
+            <p><b>Clear:</b> 1,2 Sekunden halten, um alles zurückzusetzen. Danach ist Rückgängig möglich.</p>
+            <p><b>Offline:</b> Nach dem ersten vollständigen Laden und Installieren auch ohne Internet nutzbar.</p>
+            <button className="wake" onClick={toggleWake}>
+              {awake ? 'Display-Wachhalten beenden' : 'Display wach halten (falls unterstützt)'}
+            </button>
+            <button className="close" onClick={() => setHelp(false)}>
+              Verstanden
+            </button>
+          </section>
+        </div>
+      )}
+    </main>
+  );
 }

@@ -1,4 +1,4 @@
-# ROSI – Bedienung
+# ROSI Cash – Bedienung
 
 1. **Getränk:** kurz antippen = +1; lange halten (ca. 600 ms) = −1.
 2. **Pfand:** für konfigurierte Heißgetränke automatisch, auf dem Bon separat.

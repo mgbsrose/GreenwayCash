@@ -5,7 +5,8 @@ Next.js 16, React 19, TypeScript und statischer Export. Kein Backend. Berechnung
 - `src/config/register.json`: Preise, Pfand, Raster
 - `src/lib/calculator.ts`: Summenberechnung
 - `src/components/LongPress.tsx`: Touch-Interaktion
-- `src/app/page.tsx`: Bedienoberfläche
+- `src/app/page.tsx`: Anwendungszustand und Bedienoberfläche
+- `src/components/ProductTile.tsx`: einzelne Produktkachel
 - `src/app/styles.css`: Layout
 - `src/app/manifest.ts`: PWA-Manifest
 - `public/sw.js`: Service Worker

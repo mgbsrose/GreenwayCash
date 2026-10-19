@@ -4,8 +4,8 @@ export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'ROSI zählt für euch!',
-    short_name: 'ROSI',
+    name: 'ROSI Cash',
+    short_name: 'ROSI Cash',
     description: 'Die Weihnachtsmarkt-Rechenhilfe',
     start_url: '/',
     display: 'standalone',
