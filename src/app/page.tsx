@@ -5,6 +5,7 @@ import {
   Check,
   ChevronDown,
   HelpCircle,
+  Info,
   ReceiptText,
   RotateCcw,
   Trash2,
@@ -153,6 +154,9 @@ export default function Home() {
         </div>
         <div className="header-actions">
           <span className="connection">{online ? '● Online' : '○ Offline'}</span>
+          <a className="icon-btn info-link" href="/impressum/" aria-label="Informationen und Impressum" title="Informationen und Impressum">
+            <Info />
+          </a>
           <button className="icon-btn" onClick={() => setHelp(true)} aria-label="Hilfe">
             <HelpCircle />
           </button>

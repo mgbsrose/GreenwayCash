@@ -158,3 +158,12 @@ header{padding:7px 18px}
 @media(max-width:699px){
   .install-prompt{left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));width:auto}
 }
+
+/* Impressum / info is reachable from the global header, including on mobile. */
+.info-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-width:40px;min-height:40px}
+.legal-page{max-width:780px;margin:0 auto;padding:24px 18px 64px;line-height:1.6}
+.legal-page h1{margin:0 0 12px}
+.legal-page h2{margin:28px 0 8px}
+.legal-page .legal-card{background:#fff;border:1px solid #dedbd4;border-radius:16px;padding:20px;margin:16px 0}
+.legal-page .legal-note{color:#8b3a2d;font-weight:700}
+.legal-page a{color:#28594c}

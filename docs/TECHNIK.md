@@ -103,3 +103,7 @@ git push origin deploy
 ```
 
 Anschließend Plesk per Webhook oder „Pull Updates“ aktualisieren.
+
+## Rechtliche Informationen
+
+Die Seite `src/app/impressum/page.tsx` wird beim statischen Build unter `/impressum/` ausgegeben und ist über das (i)-Symbol in der Kopfzeile erreichbar. Das Impressum nennt den Entwickler, enthält aber bis zur Klärung noch Pflichtdaten-Platzhalter für ladungsfähige Anschrift und E-Mail-Adresse. Auch die Datenschutzhinweise müssen um die konkrete Hosting-Datenverarbeitung (z. B. Zugriffslogs, Verantwortlicher, Speicherdauer) ergänzt werden. Der Quellcode oder die Anzeige einer Seite allein belegen keine Rechtskonformität.

@@ -61,3 +61,7 @@ Nach einem Update gegebenenfalls die PWA neu laden; den Offlinebetrieb und das U
 ### Hinweis zu Plesk/Apache
 
 Die Bilder liegen unter `app-icons/` statt `icons/`, weil Hosting-Umgebungen den URL-Pfad `/icons/` für eigene Apache-Verzeichnisse reservieren können.
+
+## Informationen und Anbieterkennzeichnung
+
+Über das Info-Symbol in der Kopfzeile öffnet sich die statisch exportierte Seite `/impressum/` mit Projektangaben, Impressum und Datenschutzhinweisen. **Vor dem öffentlichen Betrieb müssen die sichtbar markierten Platzhalter sowie die Hosting-Datenschutzangaben vervollständigt und rechtlich geprüft werden.** Die Seite enthält derzeit bewusst keine erfundenen Kontaktangaben.
