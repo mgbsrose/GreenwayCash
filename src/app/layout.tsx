@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from 'next';
 import './styles.css';
 
 export const metadata: Metadata = {
-  title: 'ROSI Cash',
+  title: 'GreenwayCash',
   description: 'Offlinefähige Weihnachtsmarkt-Rechenhilfe',
   appleWebApp: {
     capable: true,
-    title: 'ROSI Cash',
+    title: 'GreenwayCash',
     statusBarStyle: 'default',
   },
 };

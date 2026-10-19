@@ -1,6 +1,6 @@
-# ROSI Cash – Version 1.0
+# GreenwayCash – Version 1.0
 
-**ROSI Cash** ist eine installierbare, offlinefähige Rechenhilfe für den Getränkeverkauf auf dem Weihnachtsmarkt. **Keine elektronische Registrierkasse**, keine Umsatzaufzeichnung, keine Datenbank und kein Backend.
+**GreenwayCash** ist eine installierbare, offlinefähige Rechenhilfe für den Getränkeverkauf auf dem Weihnachtsmarkt. **Keine elektronische Registrierkasse**, keine Umsatzaufzeichnung, keine Datenbank und kein Backend.
 
 ## Funktionen
 
@@ -13,6 +13,12 @@
 - Responsive Oberfläche für Smartphone und Tablet; Smartphone-Bon als Overlay mit unscharfem Hintergrund
 - Aktuelle Rechnung im lokalen Browser-Speicher; Offlinebetrieb über Service Worker
 - Konfigurierbare Preise, Produkte und Raster in `src/config/register.json`
+
+## Repository und Entwicklung
+
+Quellcode: [github.com/mgbsrose/GreenwayCash](https://github.com/mgbsrose/GreenwayCash).
+
+Falls das Repository lokal noch unter dem alten Namen geklont ist, mit `git remote set-url origin https://github.com/mgbsrose/GreenwayCash.git` den Remote aktualisieren. Der lokale Ordner kann unabhängig davon umbenannt werden.
 
 ## Entwicklung
 
@@ -45,7 +51,7 @@ Nach einem Update gegebenenfalls die PWA neu laden; den Offlinebetrieb und das U
 
 ## Status
 
-**Version 1.0 – Funktionsumfang festgelegt.** Der produktive Einsatz setzt einen erfolgreichen Build und die Prüfung auf den tatsächlich verwendeten Geräten voraus. ROSI Cash ersetzt keine gesetzlich vorgeschriebenen Kassen- oder Aufzeichnungspflichten.
+**Version 1.0 – Funktionsumfang festgelegt.** Der produktive Einsatz setzt einen erfolgreichen Build und die Prüfung auf den tatsächlich verwendeten Geräten voraus. GreenwayCash ersetzt keine gesetzlich vorgeschriebenen Kassen- oder Aufzeichnungspflichten.
 
 ## Lizenz
 

@@ -4,8 +4,8 @@ export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'ROSI Cash',
-    short_name: 'ROSI Cash',
+    name: 'GreenwayCash',
+    short_name: 'GreenwayCash',
     description: 'Die Weihnachtsmarkt-Rechenhilfe',
     start_url: '/',
     display: 'standalone',

@@ -1,10 +1,10 @@
-# ROSI Cash – Technik und Deployment (v1.0)
+# GreenwayCash – Technik und Deployment (v1.0)
 
 ## Architektur
 
 - Next.js 16 / React 19 / TypeScript mit `output: 'export'`
 - Vollständig clientseitige Berechnung in **Integer-Cent** (keine Fließkomma-Euroberechnung)
-- `localStorage` (`rosi-v1`) enthält ausschließlich die aktuelle Rechnung und die erfassten Geldbeträge; keine Transaktionshistorie
+- `localStorage` (`rosi-v1`, aus Kompatibilitätsgründen weiterhin unverändert) enthält ausschließlich die aktuelle Rechnung und die erfassten Geldbeträge; keine Transaktionshistorie
 - Statische PWA: Manifest und Service Worker; kein Backend, keine Datenbank, kein Login
 - Bereitstellung unter dem **Domain-Root `/`** über HTTPS
 
@@ -72,4 +72,4 @@ Der Service Worker speichert App-Dateien für den Offlinebetrieb. Bei Änderunge
 - Tablet und Smartphone in Hoch- und Querformat
 - Installation, Offline-Neustart und PWA-Update nach Deployment
 
-ROSI Cash führt keine steuerliche Kassenaufzeichnung und keine Transaktionshistorie.
+GreenwayCash führt keine steuerliche Kassenaufzeichnung und keine Transaktionshistorie.

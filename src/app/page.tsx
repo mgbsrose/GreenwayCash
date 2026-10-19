@@ -147,7 +147,7 @@ export default function Home() {
         <div className="brand">
           <img className="brand-icon" src="/icons/market-stall.svg" alt="" />
           <div>
-            <strong>ROSI Cash</strong>
+            <strong>GreenwayCash</strong>
           </div>
         </div>
         <div className="header-actions">
@@ -344,7 +344,7 @@ export default function Home() {
         <div className="overlay" onClick={() => setHelp(false)}>
           <section className="dialog" onClick={(event) => event.stopPropagation()}>
             <div className="dialog-head">
-              <h2>So funktioniert ROSI Cash</h2>
+              <h2>So funktioniert GreenwayCash</h2>
               <button className="icon-btn" onClick={() => setHelp(false)}>
                 <X />
               </button>

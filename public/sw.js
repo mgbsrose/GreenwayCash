@@ -1,7 +1,7 @@
-// Offline cache for ROSI Cash v1.0.
+// Offline cache for GreenwayCash v1.0.
 // Network-first navigation lets online clients receive new deployments;
 // cached assets and the app shell remain available without connectivity.
-const CACHE = 'rosi-cash-v1.0';
+const CACHE = 'greenwaycash-v1.0';
 const SHELL = ['/', '/manifest.webmanifest', '/icons/icon.svg'];
 
 self.addEventListener('install', (event) => {

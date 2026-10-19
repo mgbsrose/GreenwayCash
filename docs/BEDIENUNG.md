@@ -1,4 +1,4 @@
-# ROSI Cash – Bedienung (v1.0)
+# GreenwayCash – Bedienung (v1.0)
 
 1. **Artikel erfassen:** Kachel kurz antippen = +1; ca. 600 ms halten = −1. Mengen bleiben mindestens null.
 2. **Pfand:** Bei Kaffee, Kakao, Superbecher, Glühwein und Apfelpunsch werden je 2,00 € automatisch addiert.
@@ -11,4 +11,4 @@
 
 **Offline:** Die Anwendung zunächst vollständig über HTTPS laden und anschließend den Offline-Neustart auf dem Gerät testen. Die aktuelle Rechnung wird nur im lokalen Browser gespeichert; es gibt keine geräteübergreifende Synchronisierung.
 
-ROSI Cash ist eine Rechenhilfe, kein Kassensystem.
+GreenwayCash ist eine Rechenhilfe, kein Kassensystem.
