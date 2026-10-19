@@ -1,67 +1,55 @@
-# GreenwayCash – Version 1.0
+# GreenwayCash
 
-**GreenwayCash** ist eine installierbare, offlinefähige Rechenhilfe für den Getränkeverkauf auf dem Weihnachtsmarkt. **Keine elektronische Registrierkasse**, keine Umsatzaufzeichnung, keine Datenbank und kein Backend.
+**Version 1.0.0 · Betatest · Stand 19.10.2026.** Der initiale Entwicklungsumfang ist abgeschlossen; Anwender testen die App derzeit. Eine formelle Abnahme ist noch nicht dokumentiert.
+
+**App:** https://cash.introsinet.de/ · **Quellcode:** https://github.com/mgbsrose/GreenwayCash · **Lizenz:** MIT (Copyright © 2026 Stefan Rosenkranz).
+
+GreenwayCash ist eine responsive und offlinefähige **Rechenhilfe für Getränkeverkäufe, Becherpfand und Rückgeld** am Weihnachtsmarkt. Sie ist **keine fiskalische Registrierkasse**: keine TSE, keine Umsatz- oder Transaktionshistorie, keine Datenbank, keine Benutzerkonten und keine Synchronisierung. Etwaige gesetzliche Aufzeichnungspflichten müssen anderweitig erfüllt werden.
 
 ## Funktionen
+- Getränk antippen **+1**, etwa **600 ms halten −1**, Mengen nie unter null.
+- Automatisch **2 € Pfand** für Glühwein, Apfelpunsch, Kakao, Superbecher und Kaffee.
+- Pfandrückgaben auch ohne Neukauf; reine Auszahlungen möglich.
+- **Bon beim Start eingeklappt**, Gesamtsumme sichtbar; **Gegeben & Rückgeld beim Start ausgeklappt**.
+- Bargeldtasten, „Passend“, „Zurücksetzen“, Rückgeld und offener Betrag.
+- **Clear** als rote Kachel, **1,2 Sekunden halten**, löscht aktuelle Rechnung und erfasste Geldbeträge **ohne Undo**.
+- Responsive Produktkacheln und mobiler Summen-Footer mit Bon-Overlay.
+- **(?)** Hilfe; **(i)** App-Informationen, Impressum und Datenschutz.
+- Browserabhängiger PWA-Installationshinweis, Offline-Unterstützung und lokale Speicherung der laufenden Rechnung.
 
-- Getränk antippen: Menge +1; lange halten (600 ms): Menge −1, nicht unter null
-- Automatische Pfandberechnung für Kaffee, Kakao, Superbecher, Glühwein und Apfelpunsch (je 2,00 €)
-- Pfandrückgabe unabhängig von einem Verkauf; auch reine Auszahlungen möglich
-- Einklappbarer Bon mit Warenwert, Pfand, Pfandrückgabe und Gesamtsumme
-- Separat einklappbare Geldtasten, „Passend“, „Zurücksetzen“, Rückgeld und Fehlbetrag
-- Rote **Clear**-Kachel: 1,2 Sekunden halten; **kein Rückgängig**
-- Responsive Oberfläche für Smartphone und Tablet; Smartphone-Bon als Overlay mit unscharfem Hintergrund
-- Aktuelle Rechnung im lokalen Browser-Speicher; Offlinebetrieb über Service Worker
-- Installationshinweis: native PWA-Installation in unterstützten Chromium-Browsern oder Safari-Anleitung auf iPhone/iPad; wegklickbar
-- Konfigurierbare Preise, Produkte und Raster in `src/config/register.json`
+## Dokumentation
 
-## Repository und Entwicklung
+| Datei | Inhalt |
+| --- | --- |
+| [docs/BEDIENUNG.md](docs/BEDIENUNG.md) | Kurzanleitung für Testnutzer, Installation und Testfälle |
+| [docs/KONFIGURATION.md](docs/KONFIGURATION.md) | Produkte, Preise, Pfand und Kachel-Layout |
+| [docs/TECHNIK.md](docs/TECHNIK.md) | Architektur, Speicherlogik, PWA, Einschränkungen, Abnahme |
+| **[eidolon-help.md](eidolon-help.md)** | **Git pull, Entwicklung, Build und Deployment ohne rsync/root** |
+| **[agents.md](agents.md)** | **Dauerhafte Übergabe für spätere KI-unterstützte Entwicklung ohne diesen Chat** |
+| [AGENTS.md](AGENTS.md) | Einstieg für Coding Agents |
 
-Quellcode: [github.com/mgbsrose/GreenwayCash](https://github.com/mgbsrose/GreenwayCash).
+## Architektur und Veröffentlichung
 
-Falls das Repository lokal noch unter dem alten Namen geklont ist, mit `git remote set-url origin https://github.com/mgbsrose/GreenwayCash.git` den Remote aktualisieren. Der lokale Ordner kann unabhängig davon umbenannt werden.
+Next.js 16, React 19, TypeScript und Lucide. Next.js wird mittels `output: 'export'` und `trailingSlash: true` **statisch** gebaut: Ergebnis in `out/`. Auf dogado/Plesk ist kein Node.js-Prozess nötig; die App wird am HTTPS-Domain-Root `/` betrieben.
 
-## Entwicklung
-
-Voraussetzung: Node.js in einer mit Next.js 16 kompatiblen Version.
+**Git-Branches:** `main` enthält den Quellcode samt Dokumentation; `deploy` ausschließlich die fertigen statischen Dateien. Plesk zieht den Branch `deploy` für `cash.introsinet.de`. Ein Git-Push auf `main` allein ist **kein Deployment**.
 
 ```bash
+cd /workspaces/local/GreenwayCash
 git pull --ff-only origin main
-npm install
-npm run dev
-```
-
-## Produktionsbuild und Veröffentlichung
-
-```bash
 npm run typecheck
 npm run build
 ```
 
-Der statische Export liegt anschließend in **`out/`**. Den **gesamten Inhalt** von `out/` in das Document Root des Webservers kopieren. Dazu gehören `index.html`, `_next/`, `manifest.webmanifest`, `sw.js` und `app-icons/`. Auf dem Webserver ist **kein Node.js-Prozess** erforderlich.
+Der Container `eidolon` hat **keine Root-Rechte und kein rsync**. Der nachweislich funktionierende Deployment-Weg verwendet einen separaten Worktree sowie `find`/`cp -a`. **Vollständige, sicherheitskommentierte Befehle:** [eidolon-help.md](eidolon-help.md).
 
-**HTTPS ist für die installierbare PWA und den Service Worker erforderlich** (Ausnahme: lokales `localhost`). Die Anwendung erwartet die Bereitstellung am Domain-Root `/`. Ein Unterverzeichnis erfordert weitere Konfiguration.
+Das GitHub-Repo ist öffentlich: Forks und Pull Requests sind möglich, Außenstehende können den Originalbranch aber nicht ohne Berechtigungen direkt überschreiben. **Keine Zugangsdaten ins Repo einchecken.**
 
-Nach einem Update gegebenenfalls die PWA neu laden; den Offlinebetrieb und das Update-Verhalten auf dem Zielgerät prüfen. Details: [Technik und Deployment](docs/TECHNIK.md).
+## Bekannte Prüfpunkte vor Freigabe
+- Ergebnisse des laufenden Nutzer-Betatests auswerten und Zielgeräte/Offline-Verhalten abnehmen.
+- Native Installationsaufforderung ist **browserabhängig**; das PWA-Manifest enthält gegenwärtig SVG-Icons, ggf. PNG 192×192/512×512 ergänzen.
+- Service-Worker-Offline-Caching nach Aufruf der Impressumsroute und nach App-Updates auf echten Geräten testen.
+- Icons liegen absichtlich unter **`/app-icons/`**, nicht `/icons/` (Hosting-Konflikt).
+- [Impressum und Datenschutz](https://cash.introsinet.de/impressum/) sind hinterlegt; abschließende Rechtsprüfung und tatsächliche Tarif-/AWStats-Speicherfristen sind nicht vollständig bestätigt.
 
-## Dokumentation
-
-- [Bedienung](docs/BEDIENUNG.md)
-- [Konfiguration und Preise](docs/KONFIGURATION.md)
-- [Technik, Deployment und Testcheckliste](docs/TECHNIK.md)
-
-## Status
-
-**Version 1.0 – Funktionsumfang festgelegt.** Der produktive Einsatz setzt einen erfolgreichen Build und die Prüfung auf den tatsächlich verwendeten Geräten voraus. GreenwayCash ersetzt keine gesetzlich vorgeschriebenen Kassen- oder Aufzeichnungspflichten.
-
-## Lizenz
-
-[MIT](LICENSE) · Copyright © 2026 Stefan Rosenkranz.
-
-### Hinweis zu Plesk/Apache
-
-Die Bilder liegen unter `app-icons/` statt `icons/`, weil Hosting-Umgebungen den URL-Pfad `/icons/` für eigene Apache-Verzeichnisse reservieren können.
-
-## Informationen und Anbieterkennzeichnung
-
-Über das Info-Symbol in der Kopfzeile öffnet sich die statisch exportierte Seite `/impressum/` mit Projektangaben, Impressum und Datenschutzhinweisen. Anbieteranschrift und Kontakt-E-Mail sind hinterlegt. Die Datenschutzhinweise erläutern Hosting-Logs, lokale Datenspeicherung und Betroffenenrechte. Für die dogado-Fristen gelten die Angaben des Anbieters für Webhosting-Tarife; die Aufbewahrungsfrist von AWStats-Auswertungen ist nicht geklärt. Eine abschließende rechtliche Prüfung steht aus.
+**Wiederaufnahme:** Zuerst [agents.md](agents.md) und [eidolon-help.md](eidolon-help.md) lesen. Keine Funktionsänderungen allein aufgrund des Dokumentationsabschlusses.
