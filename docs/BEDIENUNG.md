@@ -1,20 +1,31 @@
-# GreenwayCash – Bedienung (v1.0)
+# GreenwayCash – Anleitung für Betatester (v1.0.0)
 
-1. **Artikel erfassen:** Kachel kurz antippen = +1; ca. 600 ms halten = −1. Mengen bleiben mindestens null.
-2. **Pfand:** Bei Kaffee, Kakao, Superbecher, Glühwein und Apfelpunsch werden je 2,00 € automatisch addiert.
-3. **Pfand zurück:** Kachel antippen, um je 2,00 € abzuziehen. Auch ohne Getränkekauf möglich.
-4. **Bon:** Auf Tablets rechts, auf Smartphones über „Bon anzeigen“. Der Bon ist zusätzlich über den Pfeil neben „Bon“ einklappbar; die Gesamtsumme bleibt sichtbar.
-5. **Gegeben & Rückgeld:** Über den Pfeil die Geldtasten ein- oder ausklappen. Münzen/Scheine kurz antippen = addieren; halten = eine Einheit abziehen. „Passend“ übernimmt den exakten Rechnungsbetrag. „Zurücksetzen“ löscht nur die Geldbeträge.
-6. **Rückgeld:** Zeigt Rückgeld oder „Noch offen“. Bei einer negativen Gesamtsumme wird „Auszuzahlen“ angezeigt.
-7. **Clear:** Die rote Kachel **1,2 Sekunden gedrückt halten**. Artikel und Geldbeträge werden gelöscht. **Nicht rückgängig zu machen.**
-8. **Hilfe:** Über das Fragezeichen in der Kopfzeile; dort optional das Display-Wachhalten aktivieren.
+**App:** https://cash.introsinet.de/ · **Stand:** Oktober 2026. GreenwayCash ist eine Rechenhilfe, keine steuerliche Registrierkasse.
 
-**Offline:** Die Anwendung zunächst vollständig über HTTPS laden und anschließend den Offline-Neustart auf dem Gerät testen. Die aktuelle Rechnung wird nur im lokalen Browser gespeichert; es gibt keine geräteübergreifende Synchronisierung.
+## Bedienung
+1. **Artikel:** kurz antippen = Menge +1; etwa 600 ms halten = Menge −1. Nie unter null.
+2. **Pfand:** Glühwein, Apfelpunsch, Kakao, Superbecher und Kaffee: automatisch je 2,00 € pro Getränk.
+3. **Pfand zurück:** pro Becher −2,00 €; funktioniert auch ohne Neukauf („Auszuzahlen“).
+4. **Bon:** auf Tablets rechts, auf Smartphones über „Bon anzeigen“. **Anfangs eingeklappt**, Summe bleibt sichtbar; über Pfeil aufklappbar.
+5. **Gegeben & Rückgeld:** **anfangs ausgeklappt**. Geldtasten antippen = hinzufügen, halten = abziehen. „Passend“ setzt den exakten Betrag; „Zurücksetzen“ leert nur die Geldbeträge. Rückgeld bzw. „Noch offen“ wird berechnet.
+6. **Clear:** rote Kachel **1,2 Sekunden gedrückt halten**. Menge und Geld werden **unwiderruflich** gelöscht. Kein Rückgängig.
+7. **(i):** Projektinformationen, Impressum, Datenschutz. **(?):** Hilfe und optionales Display-Wachhalten (falls Browser unterstützt).
 
-GreenwayCash ist eine Rechenhilfe, kein Kassensystem.
+Die laufende Rechnung wird nur lokal im jeweiligen Browser gespeichert. Kein geräteübergreifender Abgleich; Browserdaten löschen kann den Zustand entfernen.
 
-## App auf dem Startbildschirm installieren
+## Installation und Offline
+- Chrome/Edge: Wenn der Browser die Installation unterstützt, kann „App installieren“ eingeblendet werden.
+- iPhone/iPad: In Safari „Teilen“ → „Zum Home-Bildschirm“. Die Benennung kann je nach iOS-Version abweichen.
+- Die Installationsaufforderung lässt sich schließen und erscheint danach im selben Browser nicht mehr.
+- Für Offlinebetrieb **zuerst online vollständig laden**, danach im Flugmodus Start, Auswahl, Pfand, Rückgeld und die installierte App testen. Die bloße Installation garantiert den Offlinebetrieb nicht.
 
-Wenn der Browser eine Installation unterstützt, zeigt GreenwayCash einen wegklickbaren Hinweis an. In Chrome/Edge auf „App installieren“ tippen und den Browserdialog bestätigen. Auf iPhone und iPad die Website in **Safari** öffnen und über **Teilen → Zum Home-Bildschirm** hinzufügen. Je nach iOS-Version kann die Option unter „Mehr“ liegen. Der Hinweis wird nach dem Schließen auf diesem Gerät nicht erneut gezeigt. Eine Installation ist für die normale Nutzung im Browser nicht erforderlich.
+## Empfohlene Betatests
+- [ ] Jede Artikelkachel antippen und halten; keine versehentlichen Doppeleingaben
+- [ ] Alle fünf Pfandartikel und Rückgabe ohne Einkauf prüfen
+- [ ] Geldbeträge, Passend, Zurücksetzen, Rückgeld und Fehlbetrag prüfen
+- [ ] Clear 1,2 Sekunden, ohne Undo
+- [ ] Bon beim Start zu, Zahlbereich beim Start offen; beide unabhängig einklappbar
+- [ ] Smartphones und Tablets, Hoch-/Querformat, (i)/(?) gleich ausgerichtet
+- [ ] Installation, Offline-Neustart, App-Update, Impressum
 
-Für den Offlinebetrieb die Website nach der Bereitstellung zunächst bei bestehender Verbindung vollständig laden und dann im Flugmodus testen.
+Fehler bitte mit Gerät/Browser, reproduzierbaren Schritten, erwartetem und tatsächlichem Ergebnis melden. Keine personenbezogenen Zahlungsinformationen sammeln.
