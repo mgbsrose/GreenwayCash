@@ -43,7 +43,7 @@ export default function Home() {
   const [size, setSize] = useState({ w: 1024, h: 768 });
   const [online, setOnline] = useState(true);
   const [cashOpen, setCashOpen] = useState(true);
-  const [receiptExpanded, setReceiptExpanded] = useState(true);
+  const [receiptExpanded, setReceiptExpanded] = useState(false);
   const [awake, setAwake] = useState(false);
   const wake = useRef<{ release: () => Promise<void> } | null>(null);
 
