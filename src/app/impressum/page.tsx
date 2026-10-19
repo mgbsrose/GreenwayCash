@@ -42,15 +42,11 @@ export default function ImprintPage() {
         <p>
           <strong>Stefan Rosenkranz</strong>
           <br />
-          <span className="legal-note">[Straße und Hausnummer ergänzen]</span>
+          <span className="legal-note">Grüner Weg 31</span>
           <br />
-          <span className="legal-note">[Postleitzahl und Ort ergänzen]</span>
+          <span className="legal-note">34431 Marsberg</span>
           <br />
-          <span className="legal-note">[Kontakt-E-Mail ergänzen]</span>
-        </p>
-        <p className="legal-note">
-          Diese Anbieterkennzeichnung ist noch unvollständig und muss vor der
-          öffentlichen rechtlichen Abnahme ergänzt und geprüft werden.
+          <span className="legal-note">stefan.rosenkranz@gmx.de</span>
         </p>
       </div>
 
