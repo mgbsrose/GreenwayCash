@@ -228,7 +228,7 @@
     },
     {
       "id": "bier",
-      "title": "Bier",
+      "title": "Bier / Radler",
       "icon": "beer",
       "priceCents": 200,
       "deposit": false,
