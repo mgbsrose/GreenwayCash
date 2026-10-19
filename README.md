@@ -64,4 +64,4 @@ Die Bilder liegen unter `app-icons/` statt `icons/`, weil Hosting-Umgebungen den
 
 ## Informationen und Anbieterkennzeichnung
 
-Über das Info-Symbol in der Kopfzeile öffnet sich die statisch exportierte Seite `/impressum/` mit Projektangaben, Impressum und Datenschutzhinweisen. **Vor dem öffentlichen Betrieb müssen die sichtbar markierten Platzhalter sowie die Hosting-Datenschutzangaben vervollständigt und rechtlich geprüft werden.** Die Seite enthält derzeit bewusst keine erfundenen Kontaktangaben.
+Über das Info-Symbol in der Kopfzeile öffnet sich die statisch exportierte Seite `/impressum/` mit Projektangaben, Impressum und Datenschutzhinweisen. Anbieteranschrift und Kontakt-E-Mail sind hinterlegt. Die Datenschutzhinweise erläutern Hosting-Logs, lokale Datenspeicherung und Betroffenenrechte. Für die dogado-Fristen gelten die Angaben des Anbieters für Webhosting-Tarife; die Aufbewahrungsfrist von AWStats-Auswertungen ist nicht geklärt. Eine abschließende rechtliche Prüfung steht aus.
