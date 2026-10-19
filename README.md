@@ -37,7 +37,7 @@ npm run typecheck
 npm run build
 ```
 
-Der statische Export liegt anschließend in **`out/`**. Den **gesamten Inhalt** von `out/` in das Document Root des Webservers kopieren. Dazu gehören `index.html`, `_next/`, `manifest.webmanifest`, `sw.js` und `icons/`. Auf dem Webserver ist **kein Node.js-Prozess** erforderlich.
+Der statische Export liegt anschließend in **`out/`**. Den **gesamten Inhalt** von `out/` in das Document Root des Webservers kopieren. Dazu gehören `index.html`, `_next/`, `manifest.webmanifest`, `sw.js` und `app-icons/`. Auf dem Webserver ist **kein Node.js-Prozess** erforderlich.
 
 **HTTPS ist für die installierbare PWA und den Service Worker erforderlich** (Ausnahme: lokales `localhost`). Die Anwendung erwartet die Bereitstellung am Domain-Root `/`. Ein Unterverzeichnis erfordert weitere Konfiguration.
 
@@ -56,3 +56,7 @@ Nach einem Update gegebenenfalls die PWA neu laden; den Offlinebetrieb und das U
 ## Lizenz
 
 [MIT](LICENSE) · Copyright © 2026 Stefan Rosenkranz.
+
+### Hinweis zu Plesk/Apache
+
+Die Bilder liegen unter `app-icons/` statt `icons/`, weil Hosting-Umgebungen den URL-Pfad `/icons/` für eigene Apache-Verzeichnisse reservieren können.

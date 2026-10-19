@@ -145,7 +145,7 @@ export default function Home() {
     <main className="app">
       <header>
         <div className="brand">
-          <img className="brand-icon" src="/icons/market-stall.svg" alt="" />
+          <img className="brand-icon" src="/app-icons/market-stall.svg" alt="" />
           <div>
             <strong>GreenwayCash</strong>
           </div>

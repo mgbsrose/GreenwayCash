@@ -73,3 +73,7 @@ Der Service Worker speichert App-Dateien für den Offlinebetrieb. Bei Änderunge
 - Installation, Offline-Neustart und PWA-Update nach Deployment
 
 GreenwayCash führt keine steuerliche Kassenaufzeichnung und keine Transaktionshistorie.
+
+## Hosting-Hinweis: reservierter `/icons/`-Pfad
+
+Auf einigen Apache-/Plesk-Servern ist `/icons/` ein Webserver-Alias. GreenwayCash verwendet daher für das App-Symbol und die PWA ausschließlich `/app-icons/`. Der Export muss diese Dateien mit enthalten. Bei Aktualisierung des `deploy`-Branches nach dem erneuten Build sollten alte Dateien durch den Deploy-Sync entfernt werden.
