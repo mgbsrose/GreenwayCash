@@ -51,21 +51,57 @@ export default function ImprintPage() {
       </div>
 
       <div className="legal-card">
-        <h2>Hinweise zum Datenschutz</h2>
+        <h2>Datenschutzhinweise</h2>
+        <p>Verantwortlich für die Datenverarbeitung ist der im Impressum genannte Anbieter.</p>
+        <h2>Hosting und Serverprotokolle</h2>
         <p>
-          Die Berechnung erfolgt auf deinem Gerät. Artikelmengen und erfasste
-          Bargeldbeträge werden für die aktuelle Rechnung im lokalen
-          Browserspeicher (localStorage) gespeichert. Zusätzlich kann ein
-          geschlossener Installationshinweis lokal vermerkt werden.
-          GreenwayCash verwendet keinen eigenen Login, keine eigene
-          Transaktionsdatenbank und keine eingebundene Webanalyse.
+          Die Website wird bei der dogado GmbH gehostet. Beim Aufruf werden
+          technische Zugriffsdaten wie die aufgerufene URL, Datum und Uhrzeit,
+          IP-Adresse, Datenmenge, Referrer, Browser und Betriebssystem verarbeitet.
+          Dies dient der Sicherheit, Verfügbarkeit und Fehlerbehebung des Webangebots
+          sowie technischen Zugriffsauswertungen.
         </p>
         <p>
-          Beim Abruf der Website können beim Hosting-Anbieter technische
-          Verbindungsdaten einschließlich IP-Adressen in Server-Logs verarbeitet
-          werden. Verantwortlichkeit, Speicherdauer und weitere Angaben zum
-          Hosting müssen vor Veröffentlichung in einer vollständigen
-          Datenschutzerklärung geklärt werden.
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO: unser berechtigtes
+          Interesse an einem sicheren und zuverlässigen Betrieb.
+        </p>
+        <p>
+          Laut dogado werden bei den beschriebenen Webhosting-Tarifen IP-Adressen
+          in Serverlogs nach 24 Stunden durch Nullsetzen des letzten Oktetts
+          anonymisiert und die Logdateien spätestens nach sieben Tagen gelöscht.
+          Die Aufbewahrungsfrist aggregierter AWStats-Auswertungen ist nicht bekannt.
+          Weitere Informationen:
+          {' '}<a href="https://help.dogado.de/hc/de/articles/18708256799249-DSGVO-und-Ihre-Webseite-Homepage-Was-Sie-beachten-sollten">
+            dogado: Webhosting und Datenschutz
+          </a>.
+        </p>
+        <h2>Lokale Datenverarbeitung</h2>
+        <p>
+          GreenwayCash berechnet Artikel, Pfand und Rückgeld lokal im Browser.
+          Die aktuelle Rechnung und die erfassten Geldbeträge werden im
+          Browserspeicher (localStorage) abgelegt. Zusätzlich kann gespeichert
+          werden, dass der Installationshinweis bereits geschlossen wurde.
+          Diese Daten werden nicht an einen Anwendungsserver übertragen.
+          Es gibt keine eigene Transaktionsdatenbank, keine eingebundene
+          Webanalyse und keine Werbe-Cookies.
+        </p>
+        <p>
+          Die lokalen Daten lassen sich über die Browser-Einstellungen löschen.
+        </p>
+        <h2>Betroffenenrechte</h2>
+        <p>
+          Nach Maßgabe der DSGVO bestehen insbesondere Rechte auf Auskunft,
+          Berichtigung, Löschung, Einschränkung der Verarbeitung,
+          Datenübertragbarkeit und Widerspruch gegen Verarbeitungen auf Grundlage
+          berechtigter Interessen. Außerdem besteht ein Beschwerderecht bei
+          einer Datenschutzaufsichtsbehörde. Anfragen können an die
+          Kontaktadresse im Impressum gerichtet werden.
+        </p>
+        <p>
+          Ergänzende Informationen finden sich in der
+          {' '}<a href="https://www.dogado.de/legal/datenschutz">
+            Datenschutzerklärung von dogado
+          </a>.
         </p>
       </div>
     </main>
