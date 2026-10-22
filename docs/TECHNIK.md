@@ -63,3 +63,11 @@ Die laufende Rechnung wird ausschließlich lokal in `localStorage['rosi-v1']` al
 - [ ] Betatestergebnisse und rechtliche Restpunkte abschließend bewertet
 
 **Verifizierungsstatus:** Nutzer meldete frühere erfolgreiche Next.js-Produktionsbuilds auf eidolon. Bei diesem reinen Dokumentationsabschluss wurde **kein neuer lokaler Build oder Endgeräte-Test** ausgeführt.
+
+## Version 1.1 – Mandantenrouten ohne Next.js-Server
+
+Da `output: 'export'` aktiv ist, kann eine Next.js-Route `app/[config]/page.tsx` **nicht beliebige, beim Build unbekannte Pfade serverseitig auflösen**. Stattdessen enthält die statische Startseite eine Client-Konfigurationsauswahl: `window.location.pathname` wird auf ein einzelnes sicheres Segment reduziert; der Browser lädt `/config/<segment>.json`. Falls es keine passende Datei gibt, die Datei ungültig ist oder das Netzwerk nicht erreichbar ist, greift `default.json`. `/` verwendet direkt die im Bundle enthaltene Default-Konfiguration.
+
+`scripts/sync-config.mjs` kopiert vor jedem `npm run dev`/`npm run build` alle aktiven JSON-Konfigurationen aus `src/config/` in den generierten Ordner `public/config/`, wodurch sie im `out/config/` landen. **Neue Konfiguration = nur zusätzliche JSON + Build/Deployment**, keine Routenliste, kein Settings-Dialog. Apache/Plesk liefert für unbekannte einfache URLs über `public/.htaccess` `/index.html` aus; existierende Dateien und Verzeichnisse gehen vor. Bitte prüfen, dass der statische Export tatsächlich **`out/.htaccess`** enthält und Plesk `mod_rewrite` mit erlaubter `.htaccess`-Verarbeitung unterstützt.
+
+Die Warenkorbdaten bleiben lokal und werden pro tatsächlich geladener Konfiguration getrennt: `rosi-v1` für `default`, `rosi-v1:<name>` für andere. Eine fehlende URL-Konfiguration verwendet den Default-Warenkorb, ohne fremde Beträge zu übernehmen. Service-Worker-Navigationen werden jetzt URL-spezifisch zwischengespeichert; Konfigurationsdateien verwenden Netzwerk-zuerst mit Cache-Fallback. **Offline-Tenantwechsel und unbekannte URL-Fallbacks müssen auf echten Geräten geprüft werden.** Die vier Beispieldateien sind zunächst Kopien des aktuellen Getränkesortiments, keine vollständigen Schützenvereinskonfigurationen. Einstellungen/Mandantenauswahl per Dialog bleiben Teil von Issue #1.
