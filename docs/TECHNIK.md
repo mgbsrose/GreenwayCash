@@ -79,3 +79,6 @@ Die Warenkorbdaten bleiben lokal und werden pro tatsächlich geladener Konfigura
 Die aktiven Mandanten heißen jetzt `spmz_wm_2026`, `stmagnus_wm_getraenke_2026`, `stmagnus_wm_speisen_2026`; die bisherigen drei JSON-Dateien wurden entfernt. Das dynamische Build-Script `scripts/sync-config.mjs` und `generateStaticParams()` finden die neuen Namen automatisch. St. Magnus erhält ausschließlich die festgelegten fünf Getränke bzw. vier Speisen, jeweils **ohne Pfand und ohne Rückgabe-Kachel**. `default.json` ist unverändert. Die Produktnamen unterstützen gezielte Zeilenumbrüche über Text und `white-space: pre-line`, ohne HTML-Ausführung. Die Artikellayouts von St. Magnus belegen die Rasterzeilen 1–12, Clear bleibt in 13–14.
 
 **Hinweis zur Zustandskompatibilität:** Die lokalen Rechnungen sind anhand des Mandantenschlüssels isoliert. Durch die Umbenennung werden bisherige `rosi-v1:<alter-name>`-Datensätze nicht in die neuen Mandanten übernommen. Dieser Verzicht auf Migration ist bei Wechsel von initialen Beispielkonfigurationen beabsichtigt.
+
+
+**Bereinigung (22.10.2026):** Die Legacy-Datei `src/config/register.json` wurde gelöscht, `src/config/default.json` aus `spmz_wm_2026.json` neu kopiert. Konfigurationen werden weiterhin automatisch über `scripts/sync-config.mjs` in `out/config/` veröffentlicht.

@@ -263,7 +263,7 @@
     },
     {
       "id": "bier-alkoholfrei",
-      "title": "Bier (Alkoholfrei)",
+      "title": "Bier / Radler\nAlkoholfrei",
       "icon": "beer",
       "priceCents": 200,
       "deposit": false,
@@ -472,5 +472,5 @@
       }
     }
   ],
-  "customer": "Standard"
+  "customer": "Spielmannszug Weihnachtsmarkt 2026"
 }

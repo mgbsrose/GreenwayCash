@@ -62,3 +62,8 @@ Die drei bisherigen Dateinamen wurden ersetzt: `spmz_wm_2026.json`, `stmagnus_wm
 **St. Magnus Speisen:** vier Produkte, alle ohne Pfand (`depositCents: 0`): Bratwurst mit Brot (2,50 €), Currywurst mit Brot (2,70 €), Pommes Frites (3,00 €), Mantaplatte (6,00 €). Für die Speisen wurden zusätzliche Lucide-Symbole in `ProductTile.tsx` ergänzt. Das Raster füllt die verfügbaren Zeilen 1–12; die separate Clear-Kachel bleibt in Zeile 13–14.
 
 **Achtung:** Die bisherigen Beschreibungen des zwölfteiligen Getränkesortiments gelten nur noch für `default.json` und den Spielmannszug. St. Magnus hat andere Kachelzahlen und kein Pfand.
+
+
+### Vereinheitlichung der Default-Konfiguration (22.10.2026)
+
+`src/config/register.json` wurde entfernt. `default.json` ist ab sofort eine **vollständige Kopie** von `spmz_wm_2026.json` einschließlich des mehrzeiligen Artikeltitels `Bier / Radler\\nAlkoholfrei`, aller Farben, Preise und Layouts sowie `customer`. `src/config/spmz_wm_2026.json` bleibt die maßgebliche Spielmannszug-Datei; falls deren Sortiment künftig geändert wird, wird `default.json` nicht automatisch synchronisiert.

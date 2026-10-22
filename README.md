@@ -70,3 +70,6 @@ Rechnungen sind pro Mandantenroute lokal getrennt; `/` behält den bisherigen Sp
 - `/stmagnus_wm_speisen_2026/` – St. Magnus Speisen: Bratwurst mit Brot 2,50 €, Currywurst mit Brot 2,70 €, Pommes Frites 3,00 €, Mantaplatte 6,00 €, ohne Pfand.
 
 Die vorherigen Routen `/spmz2026/`, `/stmagnus_getraenke2026/`, `/stmagnus_speisen2026/` entfallen und nutzen auf Apache/Plesk künftig den Default-Fallback. Im Next.js-Entwicklungsserver liefern unbekannte Routen weiterhin 404. Die Default-Konfiguration unter `/` wurde nicht geändert.
+
+
+**Aktueller Stand (22.10.2026):** Die ehemalige `register.json` ist gelöscht. `default.json` wurde 1:1 aus `spmz_wm_2026.json` übernommen, einschließlich des Zeilenumbruchs in „Bier / Radler / Alkoholfrei“ und sämtlicher Farbänderungen.
