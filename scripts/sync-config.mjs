@@ -24,5 +24,5 @@ for (const name of names) {
   entries.push({ id: name.slice(0, -5), customer: config.customer });
 }
 entries.sort((a, b) => a.id === 'default' ? -1 : b.id === 'default' ? 1 : a.customer.localeCompare(b.customer, 'de'));
-await writeFile(join(target, 'index.json'), JSON.stringify(entries, null, 2) + '\\n');
+await writeFile(join(target, 'index.json'), JSON.stringify(entries, null, 2) + '\n');
 console.log(`Konfigurationen veröffentlicht: ${names.join(', ')}`);
