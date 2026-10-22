@@ -1,0 +1,161 @@
+{
+  "name": "GreenwayCash",
+  "depositCents": 0,
+  "longPressMs": 600,
+  "clearPressMs": 1200,
+  "denominationsCents": [
+    10,
+    20,
+    50,
+    100,
+    200,
+    500,
+    1000,
+    2000,
+    5000,
+    10000
+  ],
+  "buttons": [
+    {
+      "id": "bratwurst-brot",
+      "title": "Bratwurst mit Brot",
+      "icon": "sandwich",
+      "priceCents": 250,
+      "deposit": false,
+      "type": "product",
+      "color": "orange",
+      "layout": {
+        "tabletLandscape": [
+          1,
+          1,
+          6,
+          6
+        ],
+        "tabletPortrait": [
+          1,
+          1,
+          6,
+          6
+        ],
+        "mobileLandscape": [
+          1,
+          1,
+          6,
+          6
+        ],
+        "mobilePortrait": [
+          1,
+          1,
+          6,
+          6
+        ]
+      }
+    },
+    {
+      "id": "currywurst-brot",
+      "title": "Currywurst mit Brot",
+      "icon": "cooking-pot",
+      "priceCents": 270,
+      "deposit": false,
+      "type": "product",
+      "color": "red",
+      "layout": {
+        "tabletLandscape": [
+          7,
+          1,
+          6,
+          6
+        ],
+        "tabletPortrait": [
+          7,
+          1,
+          6,
+          6
+        ],
+        "mobileLandscape": [
+          7,
+          1,
+          6,
+          6
+        ],
+        "mobilePortrait": [
+          7,
+          1,
+          6,
+          6
+        ]
+      }
+    },
+    {
+      "id": "pommes-frites",
+      "title": "Pommes Frites",
+      "icon": "utensils-crossed",
+      "priceCents": 300,
+      "deposit": false,
+      "type": "product",
+      "color": "gold",
+      "layout": {
+        "tabletLandscape": [
+          1,
+          7,
+          6,
+          6
+        ],
+        "tabletPortrait": [
+          1,
+          7,
+          6,
+          6
+        ],
+        "mobileLandscape": [
+          1,
+          7,
+          6,
+          6
+        ],
+        "mobilePortrait": [
+          1,
+          7,
+          6,
+          6
+        ]
+      }
+    },
+    {
+      "id": "mantaplatte",
+      "title": "Mantaplatte",
+      "icon": "utensils-crossed",
+      "priceCents": 600,
+      "deposit": false,
+      "type": "product",
+      "color": "cream",
+      "layout": {
+        "tabletLandscape": [
+          7,
+          7,
+          6,
+          6
+        ],
+        "tabletPortrait": [
+          7,
+          7,
+          6,
+          6
+        ],
+        "mobileLandscape": [
+          7,
+          7,
+          6,
+          6
+        ],
+        "mobilePortrait": [
+          7,
+          7,
+          6,
+          6
+        ]
+      }
+    }
+  ],
+  "customer": "St. Magnus – Weihnachtsmarkt Speisen 2026"
+}

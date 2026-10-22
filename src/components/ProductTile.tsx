@@ -10,6 +10,9 @@ import {
   GlassWater,
   IceCreamBowl,
   Plus,
+  Sandwich,
+  CookingPot,
+  UtensilsCrossed,
   Undo2,
   Wine,
 } from 'lucide-react';
@@ -39,6 +42,9 @@ const icons: Record<string, ComponentType<{ size?: number }>> = {
   'glass-water': GlassWater,
   'ice-cream-bowl': IceCreamBowl,
   plus: Plus,
+  sandwich: Sandwich,
+  'cooking-pot': CookingPot,
+  'utensils-crossed': UtensilsCrossed,
   'undo-2': Undo2,
   wine: Wine,
 };

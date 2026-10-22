@@ -1,0 +1,196 @@
+{
+  "name": "GreenwayCash",
+  "depositCents": 0,
+  "longPressMs": 600,
+  "clearPressMs": 1200,
+  "denominationsCents": [
+    10,
+    20,
+    50,
+    100,
+    200,
+    500,
+    1000,
+    2000,
+    5000,
+    10000
+  ],
+  "buttons": [
+    {
+      "id": "westheimer-pilsener",
+      "title": "Westheimer Pilsener\n0,2 l Glas",
+      "icon": "beer",
+      "priceCents": 200,
+      "deposit": false,
+      "type": "product",
+      "color": "gold",
+      "layout": {
+        "tabletLandscape": [
+          1,
+          1,
+          4,
+          6
+        ],
+        "tabletPortrait": [
+          1,
+          1,
+          4,
+          6
+        ],
+        "mobileLandscape": [
+          1,
+          1,
+          4,
+          6
+        ],
+        "mobilePortrait": [
+          1,
+          1,
+          6,
+          4
+        ]
+      }
+    },
+    {
+      "id": "westheimer-alkoholfrei",
+      "title": "Westheimer Alkoholfrei\n0,33 l Flasche",
+      "icon": "beer",
+      "priceCents": 200,
+      "deposit": false,
+      "type": "product",
+      "color": "gold",
+      "layout": {
+        "tabletLandscape": [
+          5,
+          1,
+          4,
+          6
+        ],
+        "tabletPortrait": [
+          5,
+          1,
+          4,
+          6
+        ],
+        "mobileLandscape": [
+          5,
+          1,
+          4,
+          6
+        ],
+        "mobilePortrait": [
+          7,
+          1,
+          6,
+          4
+        ]
+      }
+    },
+    {
+      "id": "westheimer-radler",
+      "title": "Westheimer Radler\n0,33 l Flasche",
+      "icon": "beer",
+      "priceCents": 200,
+      "deposit": false,
+      "type": "product",
+      "color": "gold",
+      "layout": {
+        "tabletLandscape": [
+          9,
+          1,
+          4,
+          6
+        ],
+        "tabletPortrait": [
+          9,
+          1,
+          4,
+          6
+        ],
+        "mobileLandscape": [
+          9,
+          1,
+          4,
+          6
+        ],
+        "mobilePortrait": [
+          1,
+          5,
+          6,
+          4
+        ]
+      }
+    },
+    {
+      "id": "cola-fanta",
+      "title": "Cola / Fanta\n0,33 l Flasche",
+      "icon": "glass-water",
+      "priceCents": 200,
+      "deposit": false,
+      "type": "product",
+      "color": "blue",
+      "layout": {
+        "tabletLandscape": [
+          1,
+          7,
+          6,
+          6
+        ],
+        "tabletPortrait": [
+          1,
+          7,
+          6,
+          6
+        ],
+        "mobileLandscape": [
+          1,
+          7,
+          6,
+          6
+        ],
+        "mobilePortrait": [
+          7,
+          5,
+          6,
+          4
+        ]
+      }
+    },
+    {
+      "id": "wasser",
+      "title": "Wasser\n0,33 l Flasche",
+      "icon": "droplets",
+      "priceCents": 200,
+      "deposit": false,
+      "type": "product",
+      "color": "blue",
+      "layout": {
+        "tabletLandscape": [
+          7,
+          7,
+          6,
+          6
+        ],
+        "tabletPortrait": [
+          7,
+          7,
+          6,
+          6
+        ],
+        "mobileLandscape": [
+          7,
+          7,
+          6,
+          6
+        ],
+        "mobilePortrait": [
+          1,
+          9,
+          12,
+          4
+        ]
+      }
+    }
+  ],
+  "customer": "St. Magnus – Weihnachtsmarkt Getränke 2026"
+}
