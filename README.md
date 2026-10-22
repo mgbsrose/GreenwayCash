@@ -53,3 +53,11 @@ Das GitHub-Repo ist öffentlich: Forks und Pull Requests sind möglich, Außenst
 - [Impressum und Datenschutz](https://cash.introsinet.de/impressum/) sind hinterlegt; abschließende Rechtsprüfung und tatsächliche Tarif-/AWStats-Speicherfristen sind nicht vollständig bestätigt.
 
 **Wiederaufnahme:** Zuerst [agents.md](agents.md) und [eidolon-help.md](eidolon-help.md) lesen. Keine Funktionsänderungen allein aufgrund des Dokumentationsabschlusses.
+
+## Version 1.1 – URL-basierte Konfiguration (erster Schritt)
+
+Ohne Settings-Dialog wählt jetzt das **erste URL-Pfadsegment** die JSON-Konfiguration: `/` lädt `src/config/default.json`, `/spmz2026` lädt `src/config/spmz2026.json`, `/stmagnus_getraenke2026` bzw. `/stmagnus_speisen2026` die gleichnamigen Dateien. Für unbekannte Namen wird `default.json` verwendet. Der Inhalt von `customer` steht in der Kopfzeile.
+
+**Neue Konfigurationen:** `src/config/<name>.json` ablegen, `customer` setzen, `npm run build` ausführen. Das Build-Script `scripts/sync-config.mjs` veröffentlicht automatisch alle Konfigurationen unter `out/config/`. **Keine Route im Quellcode registrieren.** `public/.htaccess` sorgt bei Apache/Plesk für die Startseiten-Auslieferung bei unbekannten URL-Pfaden. Für jede bekannte Konfiguration gilt derzeit dieselbe Anfangs-Preisliste als Platzhalter; insbesondere die Schützenvereins-Speisenpreise sind noch nicht fachlich gepflegt. Die aktuellen Getränkefarben wurden übernommen.
+
+Rechnungen sind pro Mandantenroute lokal getrennt; `/` behält den bisherigen Speicher `rosi-v1`. Der Settings-Dialog gehört zu einer späteren Umsetzung von [Issue #1](https://github.com/mgbsrose/GreenwayCash/issues/1).
