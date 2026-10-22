@@ -51,3 +51,9 @@ Stand: 19.10.2026. Diese Datei bewahrt den notwendigen Entwicklungsstand **ohne 
 4. `npm run typecheck`, `npm run build`, reale Geräte und Offline testen.
 5. Nur bei tatsächlich geänderten Webdateien den Build auf `deploy` veröffentlichen; Plesk aktualisieren und Live-URL prüfen.
 6. Diese Übergabe bei Architektur-, Fach- oder Deploymentänderungen fortschreiben.
+
+## Stand der Mandantenfähigkeit (22.10.2026; Issue #1)
+
+Erster Umsetzungsschritt: **ohne Settings-Dialog**, URL-basiert. `/` lädt `src/config/default.json`; `/<name>` lädt zur Laufzeit `/config/<name>.json`, wenn vorhanden, ansonsten die Default-Konfiguration. `customer` wird in der Kopfzeile angezeigt. Es gibt **keine feste Mandanten-Routenliste**. Das Script `scripts/sync-config.mjs` publiziert die Dateien bei `npm run dev/build` automatisch unter `public/config` (im Export `out/config`); `public/.htaccess` regelt den Apache-Fallback für unbekannte Single-Segment-URLs. Die frühere `src/config/register.json` bleibt als historische Kopie bestehen, ist aber nicht mehr die aktive Quelle. Die aktuellen Farbwerte wurden bei der Aufteilung beibehalten.
+
+Aktive JSON-Namen: `default`, `spmz2026`, `stmagnus_getraenke2026`, `stmagnus_speisen2026`. Die beiden St.-Magnus-Konfigurationen sind **nur initiale Kopien**, nicht fachlich gepflegte Speisen-/Getränkeangebote. Der lokale Warenkorb ist nach der **aufgelösten** Konfiguration isoliert; `default` nutzt weiterhin `rosi-v1`. Es ist noch **kein Settings-Dialog** umgesetzt. Vor Deployment unbedingt `out/.htaccess`, dynamischen Fallback, PWA/Offline und aktuelle Betatestergebnisse testen. Weitere Arbeit an Issue #1.
