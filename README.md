@@ -62,3 +62,11 @@ Ohne Settings-Dialog wählt jetzt das **erste URL-Pfadsegment** die JSON-Konfigu
 
 Rechnungen sind pro Mandantenroute lokal getrennt; `/` behält den bisherigen Speicher `rosi-v1`. Der Settings-Dialog gehört zu einer späteren Umsetzung von [Issue #1](https://github.com/mgbsrose/GreenwayCash/issues/1).
 **Entwicklungsserver (Next.js):** Für alle beim Start vorhandenen JSON-Konfigurationen erzeugt `src/app/[config]/page.tsx` mit `generateStaticParams()` eine echte Seite, z. B. `/spmz2026/`. Die Namen kommen automatisch aus dem Verzeichnis – keine manuell gepflegte Liste. Bei einer neu hinzugefügten JSON-Datei den Dev-Server neu starten. Bei Apache/Plesk fängt `.htaccess` zusätzlich unbekannte URLs ab und liefert die Default-App aus. Die Startseite rendert die Default-Konfiguration sofort und wartet nicht mehr mit einem Vollbild-Ladehinweis auf die Browserinitialisierung.
+
+### Aktualisierte Weihnachtsmarkt-Routen (22.10.2026)
+
+- `/spmz_wm_2026/` – Spielmannszug Weihnachtsmarkt 2026, bisheriges Sortiment mit den aktuellen Farben; „Bier / Radler“ (alkoholfrei) zweizeilig.
+- `/stmagnus_wm_getraenke_2026/` – St. Magnus Getränke: fünf Artikel zu je 2,00 €, ohne Pfand.
+- `/stmagnus_wm_speisen_2026/` – St. Magnus Speisen: Bratwurst mit Brot 2,50 €, Currywurst mit Brot 2,70 €, Pommes Frites 3,00 €, Mantaplatte 6,00 €, ohne Pfand.
+
+Die vorherigen Routen `/spmz2026/`, `/stmagnus_getraenke2026/`, `/stmagnus_speisen2026/` entfallen und nutzen auf Apache/Plesk künftig den Default-Fallback. Im Next.js-Entwicklungsserver liefern unbekannte Routen weiterhin 404. Die Default-Konfiguration unter `/` wurde nicht geändert.
