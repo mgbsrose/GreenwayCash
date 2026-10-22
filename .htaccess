@@ -1,0 +1,10 @@
+# Next.js static export: deliver index.html for unknown single-segment routes.
+# The client then loads /config/<route>.json or falls back to default.json.
+# Real files and directories (including /impressum/ and /config/) take priority.
+DirectoryIndex index.html
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^[A-Za-z0-9_-]+/?$ /index.html [L]
+</IfModule>
