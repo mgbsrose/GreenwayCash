@@ -42,3 +42,11 @@ Bier und alkoholfreies Bier **gelb**, Kaffee **dunkleres Braun**, Kakao/Superbec
 
 ## Preisänderungen während des Betatests
 Eine noch offene Rechnung im Browser liegt unter `localStorage['rosi-v1']` und kann nach Preisupdates mit den **neuen** Preisen berechnet werden. Preis-/Pfandänderungen nicht mitten im Verkauf ausrollen. Nach jeder Änderung `npm run typecheck`, `npm run build`, Geräteprüfung und Deployment gemäß [eidolon-help.md](../eidolon-help.md).
+
+## Mandantenkonfiguration anhand der URL (v1.1, erster Schritt)
+
+Die Dateien `src/config/default.json`, `src/config/spmz2026.json`, `src/config/stmagnus_getraenke2026.json`, `src/config/stmagnus_speisen2026.json` sind die aktiven Mandantenkonfigurationen. `src/config/register.json` bleibt vorläufig nur als Legacy-Kopie erhalten und wird **nicht** mehr von der App geladen. Die vier neuen Dateien wurden als Kopien der vorhandenen Getränkekonfiguration angelegt, inklusive der zuletzt geänderten Farben. Die beiden St.-Magnus-Dateien enthalten **noch keine individuell abgestimmten Produkte oder Preise**.
+
+Die Eigenschaft `customer` wird in der Titelzeile angezeigt. Aufruf `/` verwendet `default.json`; `/<name>` verwendet `<name>.json`, falls vorhanden und gültig, sonst `default.json`. Groß-/Kleinschreibung und Dateiname müssen übereinstimmen; zulässig sind Kleinbuchstaben, Zahlen, Bindestrich und Unterstrich. Es gibt **keine feste Routenliste**.
+
+Beim `npm run dev` und `npm run build` kopiert `scripts/sync-config.mjs` automatisch die neuen Dateien aus `src/config/` nach `public/config/` (im Export `out/config/`). Der Ordner `public/config/` ist generiert und in Git ignoriert. Bei Apache/Plesk muss die `out/.htaccess` für den URL-Fallback ausgeliefert werden. Der Settings-Dialog ist **noch nicht** implementiert. Der Warenkorb wird pro Konfigurationsname unter einem getrennten `localStorage`-Schlüssel abgelegt; nur `/` behält `rosi-v1`.
