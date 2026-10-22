@@ -66,3 +66,6 @@ Die gültigen URL-Segmente lauten nun `spmz_wm_2026`, `stmagnus_wm_getraenke_202
 
 
 **Update (22.10.2026):** `src/config/register.json` wurde endgültig entfernt. `src/config/default.json` wurde als 1:1-Kopie von `src/config/spmz_wm_2026.json` angelegt (einschließlich `customer`, Farben und Textumbrüchen). Der automatische Konfigurations-Sync lässt `register.json` vorsorglich weiterhin aus, falls eine Datei mit diesem Namen wieder auftaucht; es gibt keine aktive Abhängigkeit davon.
+
+
+**Auswahlmodal ergänzt (22.10.2026):** Kein Settings-Dialog und keine In-App-Bearbeitung. Das Icon `ListFilter` rechts oben öffnet `ConfigPicker` mit der automatisch von `scripts/sync-config.mjs` aus allen `src/config/*.json` erzeugten `/config/index.json`. Jeder Eintrag nutzt den `customer`-Namen, navigiert direkt auf `/<id>/` bzw. `/` für Default und markiert den aktiven Stand. Neue Stände erfordern nur JSON + Build/Deployment. Bitte Test von Mobil-Header, Modal, Konfigurationswechsel und PWA-Cache durchführen.

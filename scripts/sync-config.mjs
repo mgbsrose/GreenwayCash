@@ -17,4 +17,12 @@ for (const name of names) {
   }
   await writeFile(join(target, name), body);
 }
+// Manifest for the modal. No route list needs to be maintained in application code.
+const entries = [];
+for (const name of names) {
+  const config = JSON.parse(await readFile(join(source, name), 'utf8'));
+  entries.push({ id: name.slice(0, -5), customer: config.customer });
+}
+entries.sort((a, b) => a.id === 'default' ? -1 : b.id === 'default' ? 1 : a.customer.localeCompare(b.customer, 'de'));
+await writeFile(join(target, 'index.json'), JSON.stringify(entries, null, 2) + '\\n');
 console.log(`Konfigurationen veröffentlicht: ${names.join(', ')}`);

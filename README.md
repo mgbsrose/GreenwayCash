@@ -73,3 +73,8 @@ Die vorherigen Routen `/spmz2026/`, `/stmagnus_getraenke2026/`, `/stmagnus_speis
 
 
 **Aktueller Stand (22.10.2026):** Die ehemalige `register.json` ist gelöscht. `default.json` wurde 1:1 aus `spmz_wm_2026.json` übernommen, einschließlich des Zeilenumbruchs in „Bier / Radler / Alkoholfrei“ und sämtlicher Farbänderungen.
+
+
+### Modal zur Stand-Auswahl (Version 1.1)
+
+Oben rechts steht jetzt ein Auswahl-Symbol. Es öffnet **„Stand auswählen“** als Modal mit allen beim Build vorhandenen Mandanten. Ein Eintrag führt direkt zur jeweiligen URL (`/` für Default, sonst `/<id>/`). Die Liste wird beim `npm run dev` und `npm run build` automatisch als `/config/index.json` aus den JSON-Dateien unter `src/config/` erzeugt. **Kein separater Settings-Dialog, keine Konfiguration im Modal bearbeiten.** Die aktuell aktive Auswahl wird markiert. Bei neuen Konfigurationen ist weiterhin ein Build und Deployment erforderlich.

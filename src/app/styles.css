@@ -179,3 +179,12 @@ header{padding:7px 18px}
 
 /* Newlines in product titles are intentional; never parse HTML from JSON. */
 .product-name{white-space:pre-line}
+
+/* Simple route switcher modal; the links navigate to each tenant's URL. */
+.config-dialog{width:min(440px,100%)}
+.config-dialog h2{margin:0;font-size:21px}
+.config-options{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.config-option{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:#19362e;background:#f5f4ed;border:1px solid #d5ddd6;border-radius:11px;padding:13px 15px;font-weight:600;min-height:48px}
+.config-option:hover,.config-option:focus-visible{background:#e5f0e8;outline-color:#bb8b33}
+.config-option.is-active{border-color:#28594c;background:#e3ede5}
+.config-option svg{flex-shrink:0;color:#28594c}

@@ -29,3 +29,8 @@ Die laufende Rechnung wird nur lokal im jeweiligen Browser gespeichert. Kein ger
 - [ ] Installation, Offline-Neustart, App-Update, Impressum
 
 Fehler bitte mit Gerät/Browser, reproduzierbaren Schritten, erwartetem und tatsächlichem Ergebnis melden. Keine personenbezogenen Zahlungsinformationen sammeln.
+
+
+## Zwischen Ständen wechseln (v1.1)
+
+Rechts oben das **Stand-Auswahl-Symbol** öffnen; im Modal **„Stand auswählen“** einen Eintrag antippen. Die App navigiert unmittelbar zur URL des gewählten Standes. Die Auswahl ist keine Einstellung: Produkte und Preise werden ausschließlich aus der jeweiligen JSON-Datei geladen. Die aktuelle Rechnung ist je Stand getrennt gespeichert. Das Modal über X, Escape oder Tippen außerhalb schließen.

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import defaultConfig from '@/config/default.json';
 import { ProductTile } from '@/components/ProductTile';
+import { ConfigPicker } from '@/components/ConfigPicker';
 import { InstallPrompt } from '@/components/InstallPrompt';
 import { LongPress } from '@/components/LongPress';
 import { calculate, euro, type Counts, type Item } from '@/lib/calculator';
@@ -211,6 +212,7 @@ export default function Home() {
         </div>
         <div className="header-actions">
           <span className="connection">{online ? '● Online' : '○ Offline'}</span>
+          <ConfigPicker activeTenant={tenant} />
           <a className="icon-btn header-icon-btn" href="/impressum/" aria-label="Informationen und Impressum" title="Informationen und Impressum">
             <Info />
           </a>

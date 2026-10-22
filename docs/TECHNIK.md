@@ -82,3 +82,8 @@ Die aktiven Mandanten heißen jetzt `spmz_wm_2026`, `stmagnus_wm_getraenke_2026`
 
 
 **Bereinigung (22.10.2026):** Die Legacy-Datei `src/config/register.json` wurde gelöscht, `src/config/default.json` aus `spmz_wm_2026.json` neu kopiert. Konfigurationen werden weiterhin automatisch über `scripts/sync-config.mjs` in `out/config/` veröffentlicht.
+
+
+## Einfaches Modal zur Konfigurationsauswahl (v1.1)
+
+`src/components/ConfigPicker.tsx` öffnet im Header ein reines Navigationsmodal mit den automatisch bei Build/Dev erzeugten Einträgen aus `/config/index.json`. Einträge werden als Links `/<id>/` (`default` → `/`) dargestellt; der aktuelle Stand ist markiert. Das Manifest entsteht in `scripts/sync-config.mjs` aus Dateiname und `customer`, ohne feste Routenliste und ohne Konfigurationsbearbeitung. Die Datei ist ein öffentliches statisches Asset. Der Service Worker cached `/config/index.json` für einen späteren Offline-Aufruf und verwendet für Config-Dateien Netzwerk-zuerst. Bei neuen Mandanten muss neu gebaut werden; die Wechselnavigation und Offline-Verfügbarkeit sind auf Testgeräten zu prüfen.

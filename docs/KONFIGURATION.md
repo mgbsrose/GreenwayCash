@@ -67,3 +67,8 @@ Die drei bisherigen Dateinamen wurden ersetzt: `spmz_wm_2026.json`, `stmagnus_wm
 ### Vereinheitlichung der Default-Konfiguration (22.10.2026)
 
 `src/config/register.json` wurde entfernt. `default.json` ist ab sofort eine **vollständige Kopie** von `spmz_wm_2026.json` einschließlich des mehrzeiligen Artikeltitels `Bier / Radler\\nAlkoholfrei`, aller Farben, Preise und Layouts sowie `customer`. `src/config/spmz_wm_2026.json` bleibt die maßgebliche Spielmannszug-Datei; falls deren Sortiment künftig geändert wird, wird `default.json` nicht automatisch synchronisiert.
+
+
+## Automatische Auswahlliste (v1.1)
+
+Das Build-Script `scripts/sync-config.mjs` erzeugt aus allen `src/config/*.json` (außer der historischen, inzwischen entfernten `register.json`) eine Liste mit `id` (Dateiname ohne `.json`) und `customer`. Diese wird als `public/config/index.json` bzw. `out/config/index.json` ausgeliefert. Das Modal im Header liest diese Datei und verlinkt auf `/<id>/`; `default` führt auf `/`. Neue Stände benötigen **keine Programmänderung**. Es wird kein Settings-Dialog implementiert.
