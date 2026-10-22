@@ -1,0 +1,18 @@
+[
+  {
+    "id": "default",
+    "customer": "Spielmannszug Weihnachtsmarkt 2026 (Default)"
+  },
+  {
+    "id": "spmz_wm_2026",
+    "customer": "Spielmannszug Weihnachtsmarkt 2026"
+  },
+  {
+    "id": "stmagnus_wm_getraenke_2026",
+    "customer": "St. Magnus – Weihnachtsmarkt Getränke 2026"
+  },
+  {
+    "id": "stmagnus_wm_speisen_2026",
+    "customer": "St. Magnus – Weihnachtsmarkt Speisen 2026"
+  }
+]

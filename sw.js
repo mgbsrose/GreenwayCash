@@ -1,8 +1,8 @@
-// Offline cache for GreenwayCash v1.0.
+// Offline cache for GreenwayCash v1.1.
 // Network-first navigation lets online clients receive new deployments;
 // cached assets and the app shell remain available without connectivity.
-const CACHE = 'greenwaycash-v1.1-menus-2';
-const SHELL = ['/', '/config/default.json', '/manifest.webmanifest', '/app-icons/icon.svg'];
+const CACHE = 'greenwaycash-v1.1.0';
+const SHELL = ['/', '/config/index.json', '/config/default.json', '/manifest.webmanifest', '/app-icons/icon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
