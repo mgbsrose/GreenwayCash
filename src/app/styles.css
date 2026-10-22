@@ -171,3 +171,8 @@ header{padding:7px 18px}
 .legal-page .legal-card{background:#fff;border:1px solid #dedbd4;border-radius:16px;padding:20px;margin:16px 0}
 .legal-page .legal-note{color:#8b3a2d;font-weight:700}
 .legal-page a{color:#28594c}
+
+/* Selected customer name in the title bar. */
+.brand .customer-name{display:block;font-size:12px;color:#fff4df;font-weight:400;letter-spacing:0;line-height:1.35}
+.config-loading{margin:32px;text-align:center;color:#19362e}
+@media(max-width:699px){.brand .customer-name{font-size:10px}}
