@@ -196,7 +196,8 @@ export default function Home() {
     }
   };
 
-  if (!loaded) return <main className="app" aria-busy="true"><p className="config-loading">Konfiguration wird geladen …</p></main>;
+  // Render default data immediately; never block the entire UI on hydration or fetch.
+  // Persistence stays disabled until the selected tenant has been restored.
 
   return (
     <main className="app">
