@@ -1,8 +1,8 @@
 // Offline cache for GreenwayCash v1.0.
 // Network-first navigation lets online clients receive new deployments;
 // cached assets and the app shell remain available without connectivity.
-const CACHE = 'greenwaycash-v1.0.4';
-const SHELL = ['/', '/impressum/', '/manifest.webmanifest', '/app-icons/icon.svg'];
+const CACHE = 'greenwaycash-v1.1-route-1';
+const SHELL = ['/', '/config/default.json', '/manifest.webmanifest', '/app-icons/icon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -32,11 +32,22 @@ self.addEventListener('fetch', (event) => {
       fetch(request).then((response) => {
         if (response.ok) {
           const copy = response.clone();
-          event.waitUntil(caches.open(CACHE).then((cache) => cache.put('/', copy)));
+          event.waitUntil(caches.open(CACHE).then((cache) => cache.put(request, copy)));
         }
         return response;
-      }).catch(() => caches.match('/')),
+      }).catch(async () => (await caches.match(request)) || caches.match('/')),
     );
+    return;
+  }
+
+  if (new URL(request.url).pathname.startsWith('/config/')) {
+    event.respondWith(fetch(request).then((response) => {
+      if (response.ok) {
+        const copy = response.clone();
+        event.waitUntil(caches.open(CACHE).then((cache) => cache.put(request, copy)));
+      }
+      return response;
+    }).catch(() => caches.match(request)));
     return;
   }
 
