@@ -11,15 +11,35 @@ import {
   Trash2,
   X,
 } from 'lucide-react';
-import config from '@/config/register.json';
+import defaultConfig from '@/config/default.json';
 import { ProductTile } from '@/components/ProductTile';
 import { InstallPrompt } from '@/components/InstallPrompt';
 import { LongPress } from '@/components/LongPress';
 import { calculate, euro, type Counts, type Item } from '@/lib/calculator';
 
-const items = config.buttons as Item[];
-// Keep the existing key so an upgrade does not discard an active transaction.
-const storageKey = 'rosi-v1';
+type RegisterConfig = typeof defaultConfig;
+const defaultTenant = 'default';
+const resolveTenant = () => {
+  const segment = window.location.pathname.split('/').filter(Boolean)[0] || defaultTenant;
+  return /^[a-z0-9_-]+$/.test(segment) ? segment : defaultTenant;
+};
+const storageFor = (tenant: string) => tenant === defaultTenant ? 'rosi-v1' : `rosi-v1:${tenant}`;
+
+
+/** Minimal runtime validation for configurations provided as static JSON. */
+function isRegisterConfig(value: unknown): value is RegisterConfig {
+  if (!value || typeof value !== 'object') return false;
+  const data = value as Partial<RegisterConfig>;
+  return typeof data.customer === 'string' && data.customer.length > 0 &&
+    typeof data.depositCents === 'number' && Number.isInteger(data.depositCents) &&
+    typeof data.longPressMs === 'number' && typeof data.clearPressMs === 'number' &&
+    Array.isArray(data.denominationsCents) && Array.isArray(data.buttons) &&
+    data.buttons.every((b) => b && typeof b.id === 'string' &&
+      typeof b.title === 'string' && typeof b.priceCents === 'number' &&
+      Number.isInteger(b.priceCents) && typeof b.deposit === 'boolean' &&
+      typeof b.color === 'string' && typeof b.icon === 'string' &&
+      b.layout && typeof b.layout === 'object');
+}
 
 type LayoutName =
   | 'tabletLandscape'
@@ -36,6 +56,11 @@ function deviceLayout(width: number, height: number): LayoutName {
 }
 
 export default function Home() {
+  // Each URL selects its own configuration and isolated current transaction.
+  const [config, setConfig] = useState<RegisterConfig>(defaultConfig);
+  const [tenant, setTenant] = useState(defaultTenant);
+  const items = config.buttons as Item[];
+  const storageKey = storageFor(tenant);
   // Only the current transaction is persisted; there is no sales history.
   const [counts, setCounts] = useState<Counts>({});
   const [money, setMoney] = useState<Counts>({});
@@ -50,14 +75,41 @@ export default function Home() {
   const wake = useRef<{ release: () => Promise<void> } | null>(null);
 
   useEffect(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
-      setCounts(saved.counts || {});
-      setMoney(saved.money || {});
-    } catch {
-      // Ignore invalid local state and start with an empty transaction.
-    }
-    setLoaded(true);
+    // The browser picks a JSON file by path. Missing/invalid configs fall back
+    // to default.json; the path itself is never used as an arbitrary fetch URL.
+    let active = true;
+    const loadConfig = async () => {
+      const requested = resolveTenant();
+      let selected = defaultConfig;
+      let selectedTenant = defaultTenant;
+      if (requested !== defaultTenant) {
+        try {
+          const response = await fetch(`/config/${requested}.json`);
+          if (response.ok) {
+            const parsed: unknown = await response.json();
+            if (isRegisterConfig(parsed)) {
+              selected = parsed;
+              selectedTenant = requested;
+            }
+          }
+        } catch {
+          // Missing offline cache or network error: use default.
+        }
+      }
+      if (!active) return;
+      setConfig(selected);
+      setTenant(selectedTenant);
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageFor(selectedTenant)) || '{}');
+        setCounts(saved.counts || {});
+        setMoney(saved.money || {});
+      } catch {
+        setCounts({});
+        setMoney({});
+      }
+      setLoaded(true);
+    };
+    void loadConfig();
 
     const resize = () => setSize({ w: innerWidth, h: innerHeight });
     const updateOnline = () => setOnline(navigator.onLine);
@@ -73,6 +125,7 @@ export default function Home() {
     }
 
     return () => {
+      active = false;
       removeEventListener('resize', resize);
       removeEventListener('online', updateOnline);
       removeEventListener('offline', updateOnline);
@@ -143,6 +196,8 @@ export default function Home() {
     }
   };
 
+  if (!loaded) return <main className="app" aria-busy="true"><p className="config-loading">Konfiguration wird geladen …</p></main>;
+
   return (
     <main className="app">
       <header>
@@ -150,6 +205,7 @@ export default function Home() {
           <img className="brand-icon" src="/app-icons/market-stall.svg" alt="" />
           <div>
             <strong>GreenwayCash</strong>
+            <small className="customer-name">{config.customer}</small>
           </div>
         </div>
         <div className="header-actions">
