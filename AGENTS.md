@@ -15,3 +15,6 @@ Weitere Referenzen: [README.md](README.md), [docs/TECHNIK.md](docs/TECHNIK.md), 
 - Entwicklungscontainer eidolon **ohne sudo/Root und ohne rsync**; bewährte Befehle in `eidolon-help.md`.
 - Public Repo: keine Credentials/Tokens einchecken; Impressum/Datenschutz nicht ohne Rechtsprüfung als abschließend rechtskonform bezeichnen.
 - Neue Änderungen: Typecheck und Build prüfen, reale Geräte/Offline/PWA bei Bedarf testen; nur tatsächlich durchgeführte Tests behaupten. Dokumentationsübergabe aktuell halten.
+
+
+**Aktueller Entwicklungsstand:** Version 1.1.0, URL-basierte Konfigurationen und einfaches „Preisliste“-Modal. Details und aktueller Stand stehen in `agents.md`.

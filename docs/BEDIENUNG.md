@@ -33,4 +33,7 @@ Fehler bitte mit Gerät/Browser, reproduzierbaren Schritten, erwartetem und tats
 
 ## Zwischen Ständen wechseln (v1.1)
 
-Rechts oben das **Stand-Auswahl-Symbol** öffnen; im Modal **„Stand auswählen“** einen Eintrag antippen. Die App navigiert unmittelbar zur URL des gewählten Standes. Die Auswahl ist keine Einstellung: Produkte und Preise werden ausschließlich aus der jeweiligen JSON-Datei geladen. Die aktuelle Rechnung ist je Stand getrennt gespeichert. Das Modal über X, Escape oder Tippen außerhalb schließen.
+Rechts oben das **Preislisten-Symbol** öffnen; im Modal **„Stand auswählen“** einen Eintrag antippen. Die App navigiert unmittelbar zur URL des gewählten Standes. Die Auswahl ist keine Einstellung: Produkte und Preise werden ausschließlich aus der jeweiligen JSON-Datei geladen. Die aktuelle Rechnung ist je Stand getrennt gespeichert. Das Modal über X, Escape oder Tippen außerhalb schließen.
+
+
+**Ab Version 1.1:** Der Dialogtitel lautet „Preisliste“. Die Standard-Preisliste ist mit „(Default)“ gekennzeichnet, damit sie vom gleich aufgebauten Spielmannszug-Sortiment unterschieden werden kann.

@@ -69,3 +69,6 @@ Die gültigen URL-Segmente lauten nun `spmz_wm_2026`, `stmagnus_wm_getraenke_202
 
 
 **Auswahlmodal ergänzt (22.10.2026):** Kein Settings-Dialog und keine In-App-Bearbeitung. Das Icon `ListFilter` rechts oben öffnet `ConfigPicker` mit der automatisch von `scripts/sync-config.mjs` aus allen `src/config/*.json` erzeugten `/config/index.json`. Jeder Eintrag nutzt den `customer`-Namen, navigiert direkt auf `/<id>/` bzw. `/` für Default und markiert den aktiven Stand. Neue Stände erfordern nur JSON + Build/Deployment. Bitte Test von Mobil-Header, Modal, Konfigurationswechsel und PWA-Cache durchführen.
+
+
+**Version 1.1.0 (22.10.2026):** Modal heißt „Preisliste“ und verwendet eine explizit schwarze Überschrift; Default-`customer` ist `Spielmannszug Weihnachtsmarkt 2026 (Default)`. Der Inhalt von `spmz_wm_2026.json` selbst ist nicht geändert. Paketversion 1.1.0 und Infoseite Version 1.1. Bitte bei Wiederaufnahme den tatsächlichen Git-/Deploymentstand prüfen, nicht frühere Betatest-Stichtagsangaben als aktuelle Version auslegen.

@@ -56,8 +56,8 @@ export function ConfigPicker({ activeTenant }: { activeTenant: string }) {
         type="button"
         className="icon-btn header-icon-btn"
         onClick={() => setOpen(true)}
-        aria-label="Stand auswählen"
-        title="Stand auswählen"
+        aria-label="Preisliste"
+        title="Preisliste"
         aria-haspopup="dialog"
       >
         <ListFilter />
@@ -73,7 +73,7 @@ export function ConfigPicker({ activeTenant }: { activeTenant: string }) {
             onClick={(event) => event.stopPropagation()}
           >
             <div className="dialog-head">
-              <h2 id="config-dialog-title">Stand auswählen</h2>
+              <h2 id="config-dialog-title">Preisliste</h2>
               <button
                 ref={closeRef}
                 type="button"
@@ -87,7 +87,7 @@ export function ConfigPicker({ activeTenant }: { activeTenant: string }) {
             {entries === null && !error && <p>Konfigurationen werden geladen …</p>}
             {error && <p>Die Konfigurationen konnten nicht geladen werden. Bitte die Verbindung prüfen.</p>}
             {entries && (
-              <nav className="config-options" aria-label="Verfügbare Stände">
+              <nav className="config-options" aria-label="Verfügbare Preislisten">
                 {entries.map(({ id, customer }) => (
                   <a
                     className={id === activeTenant ? 'config-option is-active' : 'config-option'}

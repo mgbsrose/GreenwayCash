@@ -17,7 +17,7 @@ export default function ImprintPage() {
       <div className="legal-card">
         <h1>GreenwayCash</h1>
         <p>
-          <strong>Version 1.0</strong> · Entwickelt von Stefan Rosenkranz
+          <strong>Version 1.1</strong> · Entwickelt von Stefan Rosenkranz
         </p>
         <p>
           GreenwayCash ist eine kostenlose, offlinefähige Rechenhilfe für den

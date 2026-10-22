@@ -1,6 +1,6 @@
 # GreenwayCash – Technik, Architektur und Betrieb
 
-**Stand:** 19.10.2026 · **Version:** 1.0.0 · **Phase:** Betatest, Entwicklung zunächst abgeschlossen.
+**Stand:** 19.10.2026 · **Version:** 1.1.0 · **Phase:** Betatest, Entwicklung zunächst abgeschlossen.
 
 Für Git-/Build-/Deployment-Kommandos siehe [eidolon-help.md](../eidolon-help.md). Für künftige KI-gestützte Entwicklung siehe [agents.md](../agents.md).
 
@@ -87,3 +87,8 @@ Die aktiven Mandanten heißen jetzt `spmz_wm_2026`, `stmagnus_wm_getraenke_2026`
 ## Einfaches Modal zur Konfigurationsauswahl (v1.1)
 
 `src/components/ConfigPicker.tsx` öffnet im Header ein reines Navigationsmodal mit den automatisch bei Build/Dev erzeugten Einträgen aus `/config/index.json`. Einträge werden als Links `/<id>/` (`default` → `/`) dargestellt; der aktuelle Stand ist markiert. Das Manifest entsteht in `scripts/sync-config.mjs` aus Dateiname und `customer`, ohne feste Routenliste und ohne Konfigurationsbearbeitung. Die Datei ist ein öffentliches statisches Asset. Der Service Worker cached `/config/index.json` für einen späteren Offline-Aufruf und verwendet für Config-Dateien Netzwerk-zuerst. Bei neuen Mandanten muss neu gebaut werden; die Wechselnavigation und Offline-Verfügbarkeit sind auf Testgeräten zu prüfen.
+
+
+### Versionsstand 1.1.0 (22.10.2026)
+
+Das Header-Modal zur Konfigurationsauswahl trägt jetzt den Titel **„Preisliste“**, mit ausdrücklich dunkler Schrift vor hellem Dialoghintergrund. `src/config/default.json` trägt im `customer`-Feld den Zusatz `(Default)`, damit der Eintrag vom gleich sortierten Spielmannszug-Mandanten unterschieden werden kann. `package.json`/`package-lock.json` enthalten 1.1.0, die Infoseite zeigt Version 1.1. Vor produktiver Freigabe Typecheck, Build, Konfigurationsindex und Modal auf Zielgeräten prüfen.

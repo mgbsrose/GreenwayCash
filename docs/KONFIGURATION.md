@@ -72,3 +72,6 @@ Die drei bisherigen Dateinamen wurden ersetzt: `spmz_wm_2026.json`, `stmagnus_wm
 ## Automatische Auswahlliste (v1.1)
 
 Das Build-Script `scripts/sync-config.mjs` erzeugt aus allen `src/config/*.json` (außer der historischen, inzwischen entfernten `register.json`) eine Liste mit `id` (Dateiname ohne `.json`) und `customer`. Diese wird als `public/config/index.json` bzw. `out/config/index.json` ausgeliefert. Das Modal im Header liest diese Datei und verlinkt auf `/<id>/`; `default` führt auf `/`. Neue Stände benötigen **keine Programmänderung**. Es wird kein Settings-Dialog implementiert.
+
+
+**Version 1.1.0:** Die `customer`-Eigenschaft in `default.json` endet auf `(Default)`, während `spmz_wm_2026.json` unverändert bleibt. So werden die zwei ansonsten identischen Sortimente in der **„Preisliste“**-Auswahl unterscheidbar angezeigt.

@@ -1,6 +1,6 @@
 # GreenwayCash
 
-**Version 1.0.0 · Betatest · Stand 19.10.2026.** Der initiale Entwicklungsumfang ist abgeschlossen; Anwender testen die App derzeit. Eine formelle Abnahme ist noch nicht dokumentiert.
+**Version 1.1.0 · Betatest · Stand 19.10.2026.** Der initiale Entwicklungsumfang ist abgeschlossen; Anwender testen die App derzeit. Eine formelle Abnahme ist noch nicht dokumentiert.
 
 **App:** https://cash.introsinet.de/ · **Quellcode:** https://github.com/mgbsrose/GreenwayCash · **Lizenz:** MIT (Copyright © 2026 Stefan Rosenkranz).
 
@@ -78,3 +78,8 @@ Die vorherigen Routen `/spmz2026/`, `/stmagnus_getraenke2026/`, `/stmagnus_speis
 ### Modal zur Stand-Auswahl (Version 1.1)
 
 Oben rechts steht jetzt ein Auswahl-Symbol. Es öffnet **„Stand auswählen“** als Modal mit allen beim Build vorhandenen Mandanten. Ein Eintrag führt direkt zur jeweiligen URL (`/` für Default, sonst `/<id>/`). Die Liste wird beim `npm run dev` und `npm run build` automatisch als `/config/index.json` aus den JSON-Dateien unter `src/config/` erzeugt. **Kein separater Settings-Dialog, keine Konfiguration im Modal bearbeiten.** Die aktuell aktive Auswahl wird markiert. Bei neuen Konfigurationen ist weiterhin ein Build und Deployment erforderlich.
+
+
+### Freigabestand v1.1.0 (22.10.2026)
+
+Das Auswahlmodal heißt **„Preisliste“** (schwarze Überschrift); der Standard-Eintrag erhält zur Abgrenzung zum Spielmannszug die Kennzeichnung **„(Default)“** im `customer`-Feld. Die Paketversion und die öffentlich angezeigte Version auf der Infoseite stehen nun auf **1.1**. Alle aktiven Konfigurationsdateien und ihre Preise bleiben unverändert, abgesehen von diesem Zusatz in `default.json`. Build-, Endgeräte- und produktive Deploymentprüfung stehen vor der Freigabe noch an.
