@@ -50,3 +50,15 @@ Die Dateien `src/config/default.json`, `src/config/spmz2026.json`, `src/config/s
 Die Eigenschaft `customer` wird in der Titelzeile angezeigt. Aufruf `/` verwendet `default.json`; `/<name>` verwendet `<name>.json`, falls vorhanden und gültig, sonst `default.json`. Groß-/Kleinschreibung und Dateiname müssen übereinstimmen; zulässig sind Kleinbuchstaben, Zahlen, Bindestrich und Unterstrich. Es gibt **keine feste Routenliste**.
 
 Beim `npm run dev` und `npm run build` kopiert `scripts/sync-config.mjs` automatisch die neuen Dateien aus `src/config/` nach `public/config/` (im Export `out/config/`). Der Ordner `public/config/` ist generiert und in Git ignoriert. Bei Apache/Plesk muss die `out/.htaccess` für den URL-Fallback ausgeliefert werden. Der Settings-Dialog ist **noch nicht** implementiert. Der Warenkorb wird pro Konfigurationsname unter einem getrennten `localStorage`-Schlüssel abgelegt; nur `/` behält `rosi-v1`.
+
+## Konkrete Mandanten und Routen (22.10.2026)
+
+Die drei bisherigen Dateinamen wurden ersetzt: `spmz_wm_2026.json`, `stmagnus_wm_getraenke_2026.json` und `stmagnus_wm_speisen_2026.json`. `default.json` bleibt unverändert. Die bisherigen Dateinamen sind entfernt; es werden keine Redirects eingerichtet.
+
+**Spielmannszug:** bestehende Farben, Artikel, Preise und Pfandregeln beibehalten. Der bisherige Titel „Bier (Alkoholfrei)“ wurde zu „Bier / Radler“ und „Alkoholfrei“ auf zwei Zeilen geändert. Die JSON-Datei enthält einen normalen Zeilenumbruch (als `\\n` kodiert), und `ProductTile` verwendet `white-space: pre-line`. **Keine HTML-Tags in Artikeltiteln**.
+
+**St. Magnus Getränke:** fünf Produkte, jeweils 2,00 € und `deposit: false`; `depositCents: 0`: Westheimer Pilsener (0,2 l Glas), Westheimer Alkoholfrei (0,33 l Flasche), Westheimer Radler (0,33 l Flasche), Cola / Fanta (0,33 l Flasche), Wasser (0,33 l Flasche). Keine Pfandrückgabe-Kachel.
+
+**St. Magnus Speisen:** vier Produkte, alle ohne Pfand (`depositCents: 0`): Bratwurst mit Brot (2,50 €), Currywurst mit Brot (2,70 €), Pommes Frites (3,00 €), Mantaplatte (6,00 €). Für die Speisen wurden zusätzliche Lucide-Symbole in `ProductTile.tsx` ergänzt. Das Raster füllt die verfügbaren Zeilen 1–12; die separate Clear-Kachel bleibt in Zeile 13–14.
+
+**Achtung:** Die bisherigen Beschreibungen des zwölfteiligen Getränkesortiments gelten nur noch für `default.json` und den Spielmannszug. St. Magnus hat andere Kachelzahlen und kein Pfand.
