@@ -37,3 +37,8 @@ Rechts oben das **Preislisten-Symbol** öffnen; im Modal **„Stand auswählen�
 
 
 **Ab Version 1.1:** Der Dialogtitel lautet „Preisliste“. Die Standard-Preisliste ist mit „(Default)“ gekennzeichnet, damit sie vom gleich aufgebauten Spielmannszug-Sortiment unterschieden werden kann.
+
+
+## Kopfzeile auf dem Smartphone (Version 1.1)
+
+Auf Bildschirmen unter 700 Pixeln enthält die Kopfzeile nur noch das **Hamburger-Menü (☰)**. Darin stehen **Online-/Offline-Status**, **Preisliste** (mit Regler-Symbol), **Informationen** und **Hilfe**. Das Preislisten-Modal bleibt unverändert; zum Wechsel den Eintrag wählen, dann die gewünschte Konfiguration anklicken. Auf breiteren Geräten stehen die Aktionen weiterhin direkt nebeneinander. Die Standard-Preisliste ist der **Spielmannszug Weihnachtsmarkt 2026** unter `/`; die separate Route `spmz_wm_2026` entfällt.
