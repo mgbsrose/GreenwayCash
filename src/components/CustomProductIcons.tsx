@@ -28,12 +28,18 @@ function FoodIcon({
   );
 }
 
-/** A single grilled sausage with rounded ends and diagonal grill marks. */
+/** Familiar, gently curved grilled bratwurst, with tapered ends. */
 export function BratwurstIcon(props: IconProps) {
   return (
     <FoodIcon {...props}>
-      <path d="M3.5 15.5c-1.8-2-1.5-4.4.3-5.9L12.7 3c1.7-1.3 3.6-1.3 5 .2l3.1 3.5c1.4 1.6 1.1 3.6-.5 5l-8.8 7.2c-2 1.7-4.3 1.7-6.1-.1Z" />
-      <path d="m9.3 7.4 2.4 2.8m2-5.9 2.5 2.9m-12 5.7 2.5 2.7m2.1-5.7 2.5 2.9" />
+      <path
+        d="M3.2 8.9c-.9-1.4-.3-3.2 1.2-3.8 1.2-.5 2.2 0 3.1 1.1 2.2 2.8 5.3 4.3 8.5 3.5 1.5-.4 2.6-1.5 3.3-2.9.7-1.4 2.6-1.8 3.6-.7 1.3 1.4.5 3.3-.3 4.7-2 3.6-5.2 5.6-8.9 5.7-4.7.1-8.9-2.3-11.8-6.1Z"
+        fill="#C96B3B"
+        stroke="#77391E"
+        strokeWidth="1.35"
+      />
+      <path d="m7.1 7.2-1.3 2.1m4.5.7-1.4 2.6m4.8-.6-.9 2.8m5-4.7 1.3 1.7" stroke="#77391E" strokeWidth="1.4" />
+      <path d="M3.3 8.9 2.1 9.6m19.3-1.8 1.2-.7" stroke="#77391E" strokeWidth="1.2" />
     </FoodIcon>
   );
 }

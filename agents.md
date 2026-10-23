@@ -75,3 +75,6 @@ Die gültigen URL-Segmente lauten nun `spmz_wm_2026`, `stmagnus_wm_getraenke_202
 
 
 **Custom-Icons für St. Magnus (v1.1, Oktober 2026):** `src/components/CustomProductIcons.tsx` enthält fünf eigenständige SVG-Komponenten mit Lucide-kompatiblem 24x24-ViewBox (`bratwurst`, `currywurst`, `fries`, `mantaplatte`, `bottle`). Vier Speisen-Kacheln und Westheimer Alkoholfrei/Radler wurden darauf umgestellt; Westheimer Pilsener bleibt `beer`. Die JSON-Icon-IDs werden durch `ProductTile.tsx` auf Komponenten gemappt. SVG-Stil bei zukünftigen Änderungen konsistent halten, keine externen Bilddienste benötigen.
+
+
+**Änderungen 23.10.2026:** `spmz_wm_2026.json` wurde entfernt. Spielmannszug ist ausschließlich die Default-Konfiguration, `customer: Spielmannszug Weihnachtsmarkt 2026`. Das vom Nutzer gelieferte transparente Euro-Symbol wurde als echtes `src/app/favicon.ico` hinterlegt, wodurch `/favicon.ico` nicht mehr von `/[config]` abgefangen werden soll. Bratwurst-SVG ist nun eine eigenständige gebogene, farbige Wurst, inspiriert von klassischer Symbolik, keine Kopie eines fremden Vektors. Schmale Header (<700px) nutzen Hamburger-Dropdown für Netzwerkstatus, Preisliste (`SlidersHorizontal`), Informationen und Hilfe. Desktop zeigt diese weiterhin separat. Build/visuelle Testprüfung weiterhin auf eidolon notwendig.

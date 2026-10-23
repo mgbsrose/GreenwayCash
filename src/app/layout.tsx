@@ -4,6 +4,7 @@ import './styles.css';
 export const metadata: Metadata = {
   title: 'GreenwayCash',
   description: 'Offlinefähige Weihnachtsmarkt-Rechenhilfe',
+  icons: { icon: '/favicon.ico', shortcut: '/favicon.ico' },
   appleWebApp: {
     capable: true,
     title: 'GreenwayCash',

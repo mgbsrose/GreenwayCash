@@ -83,3 +83,10 @@ Oben rechts steht jetzt ein Auswahl-Symbol. Es öffnet **„Stand auswählen“*
 ### Freigabestand v1.1.0 (22.10.2026)
 
 Das Auswahlmodal heißt **„Preisliste“** (schwarze Überschrift); der Standard-Eintrag erhält zur Abgrenzung zum Spielmannszug die Kennzeichnung **„(Default)“** im `customer`-Feld. Die Paketversion und die öffentlich angezeigte Version auf der Infoseite stehen nun auf **1.1**. Alle aktiven Konfigurationsdateien und ihre Preise bleiben unverändert, abgesehen von diesem Zusatz in `default.json`. Build-, Endgeräte- und produktive Deploymentprüfung stehen vor der Freigabe noch an.
+
+
+### Mobile Kopfzeile / Favicon (23.10.2026)
+
+Auf schmalen Displays (unter 700 px) ersetzt ein Hamburger-Menü die vier einzelnen Kopfzeilenaktionen: Netzwerkstatus, „Preisliste“ (Symbol `sliders-horizontal`), Informationen und Hilfe. Der Preislisten-Dialog bleibt erhalten. Desktop zeigt weiterhin Einzelsymbole. Das Favicon ist das vom Betreiber bereitgestellte transparente Euro-Symbol. Die Bratwurst-Illustration wurde als deutlich gebogene, warme Wurstgrafik neu gezeichnet – eigenständig, nicht aus einer externen Vektordatei übernommen.
+
+`spmz_wm_2026.json` wurde entfernt; die einzige Spielmannszug-Konfiguration ist `default.json` mit `customer: "Spielmannszug Weihnachtsmarkt 2026"`. Die Default-App ist unter `/` erreichbar. Der Next.js-Dev-Server erzeugt nach Neustart nur Routen der tatsächlich vorhandenen anderen Konfigurationen. Zum statischen Export gehört ein echtes `favicon.ico`; unter Apache bleibt der unbekannte-Routen-Fallback aktiv.

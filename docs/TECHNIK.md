@@ -97,3 +97,10 @@ Das Header-Modal zur Konfigurationsauswahl trägt jetzt den Titel **„Preislist
 ### Custom-SVG-Icons (v1.1)
 
 Die vier Speisen-Bratwurst/Currywurst/Pommes/Mantaplatte sowie die Westheimer-Flasche verwenden jetzt die eigenen `currentColor`-SVG-React-Komponenten aus `src/components/CustomProductIcons.tsx`; `ProductTile.tsx` löst sie über die JSON-Eigenschaft `icon` auf. Es werden keine externen Icons geladen. Für die Auslieferung wurde die Service-Worker-Cachekennung angehoben. Darstellung auf dem Zielgerät nach Build/Deployment prüfen.
+
+
+### Fehlerkorrekturen und UI (23.10.2026)
+
+Ein echtes `src/app/favicon.ico` vermeidet die dynamische `/[config]`-Behandlung der Browser-Anfrage auf `/favicon.ico`, die zuvor im Next.js-Dev-Modus trotz `generateStaticParams` einen 500-Fehler auslösen konnte. Das Favicon stammt aus der Nutzerdatei `munze.png`. Unbekannte URLs bleiben im Entwicklungsserver bei statischem Export ein 404; Apache/Plesk liefert per `.htaccess` die Default-Seite aus.
+
+Unter 700 px werden Online-/Offline-Status, Preisliste, Info und Hilfe in einem Hamburger-Dropdown zusammengefasst. Desktop-Icons bleiben separat; `ConfigPicker` verwendet `SlidersHorizontal`. Die Bratwurst-Form wurde als eigene geschwungene Illustration verbessert, statt ein urheberrechtlich fremdes Vektorwerk zu kopieren. Die bisher doppelte Spielmannszug-Datei `spmz_wm_2026.json` wurde entfernt, `default.json` trägt wieder den Kundennamen ohne `(Default)`. Favicon, Menü und Next-Routing vor Deployment auf eidolon überprüfen.

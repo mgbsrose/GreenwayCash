@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Check, ListFilter, X } from 'lucide-react';
+import { Check, SlidersHorizontal, X } from 'lucide-react';
 
 type ConfigEntry = { id: string; customer: string };
 
@@ -14,7 +14,7 @@ function validEntries(value: unknown): value is ConfigEntry[] {
 }
 
 /** Simple navigation modal: all available configurations come from the build manifest. */
-export function ConfigPicker({ activeTenant }: { activeTenant: string }) {
+export function ConfigPicker({ activeTenant, compact = false }: { activeTenant: string; compact?: boolean }) {
   const [open, setOpen] = useState(false);
   const [entries, setEntries] = useState<ConfigEntry[] | null>(null);
   const [error, setError] = useState(false);
@@ -54,13 +54,14 @@ export function ConfigPicker({ activeTenant }: { activeTenant: string }) {
     <>
       <button
         type="button"
-        className="icon-btn header-icon-btn"
+        className={compact ? "mobile-menu-action" : "icon-btn header-icon-btn"}
         onClick={() => setOpen(true)}
         aria-label="Preisliste"
         title="Preisliste"
         aria-haspopup="dialog"
       >
-        <ListFilter />
+        <SlidersHorizontal size={compact ? 20 : 24} />
+        {compact && <span>Preisliste</span>}
       </button>
 
       {open && (

@@ -5,6 +5,7 @@ import {
   Check,
   ChevronDown,
   HelpCircle,
+  Menu,
   Info,
   ReceiptText,
   RotateCcw,
@@ -67,6 +68,7 @@ export default function Home() {
   const [money, setMoney] = useState<Counts>({});
   const [open, setOpen] = useState(false);
   const [help, setHelp] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [size, setSize] = useState({ w: 1024, h: 768 });
   const [online, setOnline] = useState(true);
@@ -210,7 +212,7 @@ export default function Home() {
             <small className="customer-name">{config.customer}</small>
           </div>
         </div>
-        <div className="header-actions">
+        <div className="header-actions desktop-header-actions">
           <span className="connection">{online ? '● Online' : '○ Offline'}</span>
           <ConfigPicker activeTenant={tenant} />
           <a className="icon-btn header-icon-btn" href="/impressum/" aria-label="Informationen und Impressum" title="Informationen und Impressum">
@@ -219,6 +221,30 @@ export default function Home() {
           <button className="icon-btn header-icon-btn" onClick={() => setHelp(true)} aria-label="Hilfe">
             <HelpCircle />
           </button>
+        </div>
+        <div className="mobile-header-menu">
+          <button
+            type="button"
+            className="icon-btn header-icon-btn"
+            aria-label="Menü öffnen"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-header-dropdown"
+            onClick={() => setMobileMenuOpen((current) => !current)}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+          {mobileMenuOpen && (
+            <div id="mobile-header-dropdown" className="mobile-header-dropdown">
+              <div className="mobile-menu-status">{online ? '● Online' : '○ Offline'}</div>
+              <ConfigPicker activeTenant={tenant} compact />
+              <a href="/impressum/" className="mobile-menu-action">
+                <Info size={20} /><span>Informationen</span>
+              </a>
+              <button type="button" className="mobile-menu-action" onClick={() => { setMobileMenuOpen(false); setHelp(true); }}>
+                <HelpCircle size={20} /><span>Hilfe</span>
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
