@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/0zbq0d-zw7wj1.css","style"]
+:HL["/_next/static/chunks/2h2gs5bioadl0.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
-1:[["children",{"s":{"n":"config","t":"d","k":"stmagnus_wm_speisen_2026","s":["impressum"]},"h":65632,"c":"$Q2"}]]
-0:{"b":"Z0Xx1cQEtr4wd6S9IRl0O","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+1:[["children",{"s":{"n":"config","t":"d","k":"stmagnus_wm_speisen_2026","s":[]},"h":65632,"c":"$Q2"}]]
+0:{"b":"PbE49nlyIz7Kz5-z-nN8x","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

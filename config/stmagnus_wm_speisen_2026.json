@@ -19,7 +19,7 @@
     {
       "id": "bratwurst-brot",
       "title": "Bratwurst mit Brot",
-      "icon": "sandwich",
+      "icon": "bratwurst",
       "priceCents": 250,
       "deposit": false,
       "type": "product",
@@ -54,7 +54,7 @@
     {
       "id": "currywurst-brot",
       "title": "Currywurst mit Brot",
-      "icon": "cooking-pot",
+      "icon": "currywurst",
       "priceCents": 270,
       "deposit": false,
       "type": "product",
@@ -89,7 +89,7 @@
     {
       "id": "pommes-frites",
       "title": "Pommes Frites",
-      "icon": "utensils-crossed",
+      "icon": "fries",
       "priceCents": 300,
       "deposit": false,
       "type": "product",
@@ -124,7 +124,7 @@
     {
       "id": "mantaplatte",
       "title": "Mantaplatte",
-      "icon": "utensils-crossed",
+      "icon": "mantaplatte",
       "priceCents": 600,
       "deposit": false,
       "type": "product",

@@ -54,7 +54,7 @@
     {
       "id": "westheimer-alkoholfrei",
       "title": "Westheimer Alkoholfrei\n0,33 l Flasche",
-      "icon": "beer",
+      "icon": "bottle",
       "priceCents": 200,
       "deposit": false,
       "type": "product",
@@ -89,7 +89,7 @@
     {
       "id": "westheimer-radler",
       "title": "Westheimer Radler\n0,33 l Flasche",
-      "icon": "beer",
+      "icon": "bottle",
       "priceCents": 200,
       "deposit": false,
       "type": "product",
