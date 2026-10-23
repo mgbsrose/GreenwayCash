@@ -42,3 +42,8 @@ Rechts oben das **Preislisten-Symbol** öffnen; im Modal **„Stand auswählen�
 ## Kopfzeile auf dem Smartphone (Version 1.1)
 
 Auf Bildschirmen unter 700 Pixeln enthält die Kopfzeile nur noch das **Hamburger-Menü (☰)**. Darin stehen **Online-/Offline-Status**, **Preisliste** (mit Regler-Symbol), **Informationen** und **Hilfe**. Das Preislisten-Modal bleibt unverändert; zum Wechsel den Eintrag wählen, dann die gewünschte Konfiguration anklicken. Auf breiteren Geräten stehen die Aktionen weiterhin direkt nebeneinander. Die Standard-Preisliste ist der **Spielmannszug Weihnachtsmarkt 2026** unter `/`; die separate Route `spmz_wm_2026` entfällt.
+
+
+### Dialoge (23.10.2026)
+
+**Preislisten** öffnet das Modal zur Auswahl eines anderen Mandanten. Das X ist schwarz. **Informationen** öffnet das Modal mit Projektinformationen, Impressum und Datenschutzhinweisen, ohne die aktuelle Rechnung oder URL zu verlassen. Auf kleinen Displays stehen beide Aktionen im Hamburger-Menü. Beide Dialoge lassen sich mit X, Escape oder Tippen außerhalb schließen. Die frühere separate Seite `/impressum/` entfällt.

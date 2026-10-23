@@ -15,6 +15,7 @@ import {
 import defaultConfig from '@/config/default.json';
 import { ProductTile } from '@/components/ProductTile';
 import { ConfigPicker } from '@/components/ConfigPicker';
+import { LegalModal } from '@/components/LegalModal';
 import { InstallPrompt } from '@/components/InstallPrompt';
 import { LongPress } from '@/components/LongPress';
 import { calculate, euro, type Counts, type Item } from '@/lib/calculator';
@@ -68,6 +69,7 @@ export default function Home() {
   const [money, setMoney] = useState<Counts>({});
   const [open, setOpen] = useState(false);
   const [help, setHelp] = useState(false);
+  const [showLegal, setShowLegal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [size, setSize] = useState({ w: 1024, h: 768 });
@@ -215,9 +217,9 @@ export default function Home() {
         <div className="header-actions desktop-header-actions">
           <span className="connection">{online ? '● Online' : '○ Offline'}</span>
           <ConfigPicker activeTenant={tenant} />
-          <a className="icon-btn header-icon-btn" href="/impressum/" aria-label="Informationen und Impressum" title="Informationen und Impressum">
+          <button type="button" className="icon-btn header-icon-btn" onClick={() => setShowLegal(true)} aria-label="Informationen und Impressum" title="Informationen und Impressum">
             <Info />
-          </a>
+          </button>
           <button className="icon-btn header-icon-btn" onClick={() => setHelp(true)} aria-label="Hilfe">
             <HelpCircle />
           </button>
@@ -237,9 +239,9 @@ export default function Home() {
             <div id="mobile-header-dropdown" className="mobile-header-dropdown">
               <div className="mobile-menu-status">{online ? '● Online' : '○ Offline'}</div>
               <ConfigPicker activeTenant={tenant} compact />
-              <a href="/impressum/" className="mobile-menu-action">
+              <button type="button" className="mobile-menu-action" onClick={() => { setMobileMenuOpen(false); setShowLegal(true); }}>
                 <Info size={20} /><span>Informationen</span>
-              </a>
+              </button>
               <button type="button" className="mobile-menu-action" onClick={() => { setMobileMenuOpen(false); setHelp(true); }}>
                 <HelpCircle size={20} /><span>Hilfe</span>
               </button>
@@ -431,6 +433,8 @@ export default function Home() {
       )}
 
       <InstallPrompt />
+
+      {showLegal && <LegalModal onClose={() => setShowLegal(false)} />}
 
       {help && (
         <div className="overlay" onClick={() => setHelp(false)}>

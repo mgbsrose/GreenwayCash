@@ -78,3 +78,6 @@ Die gültigen URL-Segmente lauten nun `spmz_wm_2026`, `stmagnus_wm_getraenke_202
 
 
 **Änderungen 23.10.2026:** `spmz_wm_2026.json` wurde entfernt. Spielmannszug ist ausschließlich die Default-Konfiguration, `customer: Spielmannszug Weihnachtsmarkt 2026`. Das vom Nutzer gelieferte transparente Euro-Symbol wurde als echtes `src/app/favicon.ico` hinterlegt, wodurch `/favicon.ico` nicht mehr von `/[config]` abgefangen werden soll. Bratwurst-SVG ist nun eine eigenständige gebogene, farbige Wurst, inspiriert von klassischer Symbolik, keine Kopie eines fremden Vektors. Schmale Header (<700px) nutzen Hamburger-Dropdown für Netzwerkstatus, Preisliste (`SlidersHorizontal`), Informationen und Hilfe. Desktop zeigt diese weiterhin separat. Build/visuelle Testprüfung weiterhin auf eidolon notwendig.
+
+
+**Stand 23.10.2026: Modale Informationen.** `src/app/impressum/page.tsx` ist entfernt; die bisherigen Anbieter- und Datenschutzhinweise sind unverändert in `src/components/LegalModal.tsx` übernommen und werden in der Kassenansicht über Info-Button bzw. mobilen Menüeintrag geöffnet. Keine eigenständige Impressumsroute oder Navigation. `ConfigPicker.tsx` zeigt „Preislisten“ und ein schwarzes Schließen-X. Nach Änderungen an Rechtstexten nur noch `LegalModal.tsx` bearbeiten. PWA-Cache und Dokumentation angepasst. Der Browser/Buildtest steht noch aus.

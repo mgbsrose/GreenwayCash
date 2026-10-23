@@ -90,3 +90,8 @@ Das Auswahlmodal heißt **„Preisliste“** (schwarze Überschrift); der Standa
 Auf schmalen Displays (unter 700 px) ersetzt ein Hamburger-Menü die vier einzelnen Kopfzeilenaktionen: Netzwerkstatus, „Preisliste“ (Symbol `sliders-horizontal`), Informationen und Hilfe. Der Preislisten-Dialog bleibt erhalten. Desktop zeigt weiterhin Einzelsymbole. Das Favicon ist das vom Betreiber bereitgestellte transparente Euro-Symbol. Die Bratwurst-Illustration wurde als deutlich gebogene, warme Wurstgrafik neu gezeichnet – eigenständig, nicht aus einer externen Vektordatei übernommen.
 
 `spmz_wm_2026.json` wurde entfernt; die einzige Spielmannszug-Konfiguration ist `default.json` mit `customer: "Spielmannszug Weihnachtsmarkt 2026"`. Die Default-App ist unter `/` erreichbar. Der Next.js-Dev-Server erzeugt nach Neustart nur Routen der tatsächlich vorhandenen anderen Konfigurationen. Zum statischen Export gehört ein echtes `favicon.ico`; unter Apache bleibt der unbekannte-Routen-Fallback aktiv.
+
+
+### Modal-Dialoge statt separater Informationsseite (23.10.2026)
+
+Die Auswahl heißt jetzt **„Preislisten“** (Icon, mobiles Menü, Modal-Überschrift). Das X im Preislisten-Dialog ist schwarz. **Informationen, Impressum und Datenschutz** werden vollständig im Dialog auf der jeweiligen Kassenansicht angezeigt; `/impressum/` wird nicht mehr als separate Next.js-Seite exportiert. Das Info-Symbol und der mobile Menüpunkt öffnen denselben Dialog. Die Texte stammen aus der bisherigen statischen Seite und wurden unverändert übernommen. Für die rechtliche Auffindbarkeit der Angaben bleibt das Info-Symbol auf allen Mandantenrouten verfügbar. Der Service-Worker-Cache wurde angehoben.

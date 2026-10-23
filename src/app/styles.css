@@ -214,3 +214,18 @@ header{padding:7px 18px}
   }
   .mobile-menu-action:hover,.mobile-menu-action:focus-visible{background:#e5f0e8}
 }
+
+/* Modals contain their own title/close controls, never inherit header foreground. */
+.dialog-close-btn{color:#111!important}
+.dialog-close-btn svg{display:block}
+.legal-overlay{z-index:40}
+.legal-dialog{width:min(760px,100%);max-width:760px;max-height:min(90dvh,900px);overflow-y:auto;color:#19362e}
+.legal-dialog-head{position:sticky;top:-22px;z-index:1;padding:4px 0 12px;background:white;gap:16px}
+.legal-dialog-head h2{margin:0;font-size:20px;color:#111}
+.legal-dialog .legal-page{padding:0;max-width:none}
+.legal-dialog .legal-page .legal-card{margin:12px 0;padding:16px}
+@media(max-width:699px){
+  .legal-dialog{padding:14px;max-height:90dvh}
+  .legal-dialog-head{top:-14px}
+  .legal-dialog .legal-page .legal-card{padding:12px}
+}

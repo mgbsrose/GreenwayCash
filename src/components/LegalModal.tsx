@@ -1,19 +1,39 @@
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Informationen & Impressum | GreenwayCash',
-  description: 'Informationen, Anbieterkennzeichnung und Datenschutzhinweise zu GreenwayCash',
-};
+import { useEffect, useRef } from 'react';
+import { X } from 'lucide-react';
 
-/**
- * Statically generated legal information page.
- * Replace the visibly marked placeholders with verified owner contact details
- * before considering the public legal notice complete.
- */
-export default function ImprintPage() {
+type LegalModalProps = { onClose: () => void };
+
+/** The complete legal notice and privacy information, now within an in-app dialog. */
+export function LegalModal({ onClose }: LegalModalProps) {
+  const closeButton = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    closeButton.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [onClose]);
+
   return (
-    <main className="legal-page">
-      <a href="/">← Zurück zu GreenwayCash</a>
+    <div className="overlay legal-overlay" onClick={onClose}>
+      <section
+        className="dialog legal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="legal-dialog-title"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="dialog-head legal-dialog-head">
+          <h2 id="legal-dialog-title">Informationen & Impressum</h2>
+          <button ref={closeButton} type="button" className="icon-btn dialog-close-btn" onClick={onClose} aria-label="Informationen schließen">
+            <X />
+          </button>
+        </div>
+        <div className="legal-page">
       <div className="legal-card">
         <h1>GreenwayCash</h1>
         <p>
@@ -104,6 +124,8 @@ export default function ImprintPage() {
           </a>.
         </p>
       </div>
-    </main>
+        </div>
+      </section>
+    </div>
   );
 }

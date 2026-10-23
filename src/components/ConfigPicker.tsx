@@ -56,12 +56,12 @@ export function ConfigPicker({ activeTenant, compact = false }: { activeTenant: 
         type="button"
         className={compact ? "mobile-menu-action" : "icon-btn header-icon-btn"}
         onClick={() => setOpen(true)}
-        aria-label="Preisliste"
-        title="Preisliste"
+        aria-label="Preislisten"
+        title="Preislisten"
         aria-haspopup="dialog"
       >
         <SlidersHorizontal size={compact ? 20 : 24} />
-        {compact && <span>Preisliste</span>}
+        {compact && <span>Preislisten</span>}
       </button>
 
       {open && (
@@ -74,11 +74,11 @@ export function ConfigPicker({ activeTenant, compact = false }: { activeTenant: 
             onClick={(event) => event.stopPropagation()}
           >
             <div className="dialog-head">
-              <h2 id="config-dialog-title">Preisliste</h2>
+              <h2 id="config-dialog-title">Preislisten</h2>
               <button
                 ref={closeRef}
                 type="button"
-                className="icon-btn"
+                className="icon-btn dialog-close-btn"
                 onClick={() => setOpen(false)}
                 aria-label="Auswahl schließen"
               >
@@ -88,7 +88,7 @@ export function ConfigPicker({ activeTenant, compact = false }: { activeTenant: 
             {entries === null && !error && <p>Konfigurationen werden geladen …</p>}
             {error && <p>Die Konfigurationen konnten nicht geladen werden. Bitte die Verbindung prüfen.</p>}
             {entries && (
-              <nav className="config-options" aria-label="Verfügbare Preislisten">
+              <nav className="config-options" aria-label="Verfügbare Preislistenn">
                 {entries.map(({ id, customer }) => (
                   <a
                     className={id === activeTenant ? 'config-option is-active' : 'config-option'}
