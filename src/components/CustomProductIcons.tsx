@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+import type { ReactNode, SVGProps } from 'react';
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 
@@ -8,7 +8,7 @@ function FoodIcon({
   size = 24,
   children,
   ...props
-}: IconProps & { children: React.ReactNode }) {
+}: IconProps & { children: ReactNode }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -75,3 +75,8 @@ Das Build-Script `scripts/sync-config.mjs` erzeugt aus allen `src/config/*.json`
 
 
 **Version 1.1.0:** Die `customer`-Eigenschaft in `default.json` endet auf `(Default)`, während `spmz_wm_2026.json` unverändert bleibt. So werden die zwei ansonsten identischen Sortimente in der **„Preisliste“**-Auswahl unterscheidbar angezeigt.
+
+
+### Eigene Produktpiktogramme (Version 1.1)
+
+Für die vier St.-Magnus-Speisen werden die `icon`-Kennungen `bratwurst`, `currywurst`, `fries` und `mantaplatte` verwendet. Die beiden Getränke **Westheimer Alkoholfrei** und **Westheimer Radler** verwenden `bottle`. Die fünf eigens erstellten SVG-Komponenten sind in `src/components/CustomProductIcons.tsx` implementiert und über `src/components/ProductTile.tsx` dem bestehenden Icon-Mapping hinzugefügt. Für Westheimer Pilsener bleibt das Glas-/Biersymbol unverändert. Die anderen Produktdaten, Pfandregeln, Preise und Layout-Koordinaten wurden nicht verändert.

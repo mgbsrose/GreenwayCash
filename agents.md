@@ -72,3 +72,6 @@ Die gültigen URL-Segmente lauten nun `spmz_wm_2026`, `stmagnus_wm_getraenke_202
 
 
 **Version 1.1.0 (22.10.2026):** Modal heißt „Preisliste“ und verwendet eine explizit schwarze Überschrift; Default-`customer` ist `Spielmannszug Weihnachtsmarkt 2026 (Default)`. Der Inhalt von `spmz_wm_2026.json` selbst ist nicht geändert. Paketversion 1.1.0 und Infoseite Version 1.1. Bitte bei Wiederaufnahme den tatsächlichen Git-/Deploymentstand prüfen, nicht frühere Betatest-Stichtagsangaben als aktuelle Version auslegen.
+
+
+**Custom-Icons für St. Magnus (v1.1, Oktober 2026):** `src/components/CustomProductIcons.tsx` enthält fünf eigenständige SVG-Komponenten mit Lucide-kompatiblem 24x24-ViewBox (`bratwurst`, `currywurst`, `fries`, `mantaplatte`, `bottle`). Vier Speisen-Kacheln und Westheimer Alkoholfrei/Radler wurden darauf umgestellt; Westheimer Pilsener bleibt `beer`. Die JSON-Icon-IDs werden durch `ProductTile.tsx` auf Komponenten gemappt. SVG-Stil bei zukünftigen Änderungen konsistent halten, keine externen Bilddienste benötigen.

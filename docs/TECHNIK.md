@@ -92,3 +92,8 @@ Die aktiven Mandanten heißen jetzt `spmz_wm_2026`, `stmagnus_wm_getraenke_2026`
 ### Versionsstand 1.1.0 (22.10.2026)
 
 Das Header-Modal zur Konfigurationsauswahl trägt jetzt den Titel **„Preisliste“**, mit ausdrücklich dunkler Schrift vor hellem Dialoghintergrund. `src/config/default.json` trägt im `customer`-Feld den Zusatz `(Default)`, damit der Eintrag vom gleich sortierten Spielmannszug-Mandanten unterschieden werden kann. `package.json`/`package-lock.json` enthalten 1.1.0, die Infoseite zeigt Version 1.1. Vor produktiver Freigabe Typecheck, Build, Konfigurationsindex und Modal auf Zielgeräten prüfen.
+
+
+### Custom-SVG-Icons (v1.1)
+
+Die vier Speisen-Bratwurst/Currywurst/Pommes/Mantaplatte sowie die Westheimer-Flasche verwenden jetzt die eigenen `currentColor`-SVG-React-Komponenten aus `src/components/CustomProductIcons.tsx`; `ProductTile.tsx` löst sie über die JSON-Eigenschaft `icon` auf. Es werden keine externen Icons geladen. Für die Auslieferung wurde die Service-Worker-Cachekennung angehoben. Darstellung auf dem Zielgerät nach Build/Deployment prüfen.
