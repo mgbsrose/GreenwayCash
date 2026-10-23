@@ -34,12 +34,10 @@ export function BratwurstIcon(props: IconProps) {
     <FoodIcon {...props}>
       <path
         d="M3.2 8.9c-.9-1.4-.3-3.2 1.2-3.8 1.2-.5 2.2 0 3.1 1.1 2.2 2.8 5.3 4.3 8.5 3.5 1.5-.4 2.6-1.5 3.3-2.9.7-1.4 2.6-1.8 3.6-.7 1.3 1.4.5 3.3-.3 4.7-2 3.6-5.2 5.6-8.9 5.7-4.7.1-8.9-2.3-11.8-6.1Z"
-        fill="#C96B3B"
-        stroke="#77391E"
-        strokeWidth="1.35"
+        strokeWidth="1.8"
       />
-      <path d="m7.1 7.2-1.3 2.1m4.5.7-1.4 2.6m4.8-.6-.9 2.8m5-4.7 1.3 1.7" stroke="#77391E" strokeWidth="1.4" />
-      <path d="M3.3 8.9 2.1 9.6m19.3-1.8 1.2-.7" stroke="#77391E" strokeWidth="1.2" />
+      <path d="m7.1 7.2-1.3 2.1m4.5.7-1.4 2.6m4.8-.6-.9 2.8m5-4.7 1.3 1.7" strokeWidth="1.4" />
+      <path d="M3.3 8.9 2.1 9.6m19.3-1.8 1.2-.7" strokeWidth="1.2" />
     </FoodIcon>
   );
 }

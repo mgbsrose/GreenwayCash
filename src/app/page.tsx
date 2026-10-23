@@ -210,12 +210,16 @@ export default function Home() {
         <div className="brand">
           <img className="brand-icon" src="/app-icons/market-stall.svg" alt="" />
           <div>
-            <strong>GreenwayCash</strong>
+            <strong className="brand-name">Greenway<span
+              className={online ? 'brand-status is-online' : 'brand-status is-offline'}
+              role="img"
+              aria-label={online ? 'Online' : 'Offline'}
+              title={online ? 'Online – Netzwerkverbindung vorhanden' : 'Offline – keine Netzwerkverbindung'}
+            >.</span>Cash</strong>
             <small className="customer-name">{config.customer}</small>
           </div>
         </div>
         <div className="header-actions desktop-header-actions">
-          <span className="connection">{online ? '● Online' : '○ Offline'}</span>
           <ConfigPicker activeTenant={tenant} />
           <button type="button" className="icon-btn header-icon-btn" onClick={() => setShowLegal(true)} aria-label="Informationen und Impressum" title="Informationen und Impressum">
             <Info />
@@ -237,7 +241,6 @@ export default function Home() {
           </button>
           {mobileMenuOpen && (
             <div id="mobile-header-dropdown" className="mobile-header-dropdown">
-              <div className="mobile-menu-status">{online ? '● Online' : '○ Offline'}</div>
               <ConfigPicker activeTenant={tenant} compact />
               <button type="button" className="mobile-menu-action" onClick={() => { setMobileMenuOpen(false); setShowLegal(true); }}>
                 <Info size={20} /><span>Informationen</span>

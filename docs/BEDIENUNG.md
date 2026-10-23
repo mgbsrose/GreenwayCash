@@ -47,3 +47,6 @@ Auf Bildschirmen unter 700 Pixeln enthält die Kopfzeile nur noch das **Hamburge
 ### Dialoge (23.10.2026)
 
 **Preislisten** öffnet das Modal zur Auswahl eines anderen Mandanten. Das X ist schwarz. **Informationen** öffnet das Modal mit Projektinformationen, Impressum und Datenschutzhinweisen, ohne die aktuelle Rechnung oder URL zu verlassen. Auf kleinen Displays stehen beide Aktionen im Hamburger-Menü. Beide Dialoge lassen sich mit X, Escape oder Tippen außerhalb schließen. Die frühere separate Seite `/impressum/` entfällt.
+
+
+**UI-Anpassung (23.10.2026):** Der Punkt in **Greenway.Cash** ist grün (Online) bzw. rot (Offline) und zeigt als Tooltip den Klartextstatus. Diese Anzeige gibt nur den vom Browser gemeldeten Netzwerkstatus wieder. Der Mandantenname darunter erscheint weiß. Im Informationsmodal scrollt nur der Text; Titel und X bleiben sichtbar.

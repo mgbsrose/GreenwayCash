@@ -81,3 +81,6 @@ Die gültigen URL-Segmente lauten nun `spmz_wm_2026`, `stmagnus_wm_getraenke_202
 
 
 **Stand 23.10.2026: Modale Informationen.** `src/app/impressum/page.tsx` ist entfernt; die bisherigen Anbieter- und Datenschutzhinweise sind unverändert in `src/components/LegalModal.tsx` übernommen und werden in der Kassenansicht über Info-Button bzw. mobilen Menüeintrag geöffnet. Keine eigenständige Impressumsroute oder Navigation. `ConfigPicker.tsx` zeigt „Preislisten“ und ein schwarzes Schließen-X. Nach Änderungen an Rechtstexten nur noch `LegalModal.tsx` bearbeiten. PWA-Cache und Dokumentation angepasst. Der Browser/Buildtest steht noch aus.
+
+
+**UI-Stand 23.10.2026:** App-Marke `Greenway.Cash`: Punkt farblich nach `navigator.onLine` (grün/rot), `title` plus ARIA-Klartext; keine separaten Online-/Offline-Zeilen im Desktop-/Mobilmenü. Kunde unterhalb der Marke explizit weiß. `LegalModal` hat unbeweglichen Dialogkopf und innen scrollbaren Content `legal-modal-scroll`. Bratwurst-`CustomProductIcons.tsx` ist wieder monochrom/currentColor. Service-Worker-Cache entsprechend erhöht.

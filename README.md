@@ -95,3 +95,8 @@ Auf schmalen Displays (unter 700 px) ersetzt ein Hamburger-Menü die vier einzel
 ### Modal-Dialoge statt separater Informationsseite (23.10.2026)
 
 Die Auswahl heißt jetzt **„Preislisten“** (Icon, mobiles Menü, Modal-Überschrift). Das X im Preislisten-Dialog ist schwarz. **Informationen, Impressum und Datenschutz** werden vollständig im Dialog auf der jeweiligen Kassenansicht angezeigt; `/impressum/` wird nicht mehr als separate Next.js-Seite exportiert. Das Info-Symbol und der mobile Menüpunkt öffnen denselben Dialog. Die Texte stammen aus der bisherigen statischen Seite und wurden unverändert übernommen. Für die rechtliche Auffindbarkeit der Angaben bleibt das Info-Symbol auf allen Mandantenrouten verfügbar. Der Service-Worker-Cache wurde angehoben.
+
+
+### UI-Korrekturen (23.10.2026)
+
+„Greenway.Cash“ zeigt den Netzwerkstatus direkt über den farbigen Punkt im Markennamen: grün für Online, rot für Offline, mit Klartext-Tooltip/Accessible Label. Die bisher separaten Statusanzeigen in Desktop-Header und Hamburger-Menü sind entfallen. Der `customer`-Name darunter ist weiß. Im Impressumsmodal bleiben Titel und Schließen-X fest; nur der Informations-/Datenschutzinhalt scrollt. Das Bratwurst-Icon ist wieder monochrom (`currentColor`).

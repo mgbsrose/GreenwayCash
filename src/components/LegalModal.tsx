@@ -33,7 +33,7 @@ export function LegalModal({ onClose }: LegalModalProps) {
             <X />
           </button>
         </div>
-        <div className="legal-page">
+        <div className="legal-modal-scroll"><div className="legal-page">
       <div className="legal-card">
         <h1>GreenwayCash</h1>
         <p>
@@ -124,7 +124,7 @@ export function LegalModal({ onClose }: LegalModalProps) {
           </a>.
         </p>
       </div>
-        </div>
+        </div></div>
       </section>
     </div>
   );

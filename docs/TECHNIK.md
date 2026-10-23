@@ -109,3 +109,8 @@ Unter 700 px werden Online-/Offline-Status, Preisliste, Info und Hilfe in einem 
 ### Information/Impressum als Modal (23.10.2026)
 
 Die frühere `src/app/impressum/page.tsx` wurde entfernt. Ihr vollständiger Inhalt liegt nun in `src/components/LegalModal.tsx` und wird über `showLegal` in `src/app/page.tsx` als scrollbarer `role=dialog`-Dialog mit X/Escape/Backdrop-Schließen eingeblendet, auf Desktop und Mobil. Die URL ändert sich nicht. Die separate `/impressum/`-Route ist entfallen und wird nicht mehr precached. `ConfigPicker.tsx` verwendet jetzt durchgängig **„Preislisten“**, das Dialog-X hat explizit schwarze Schriftfarbe. Die Legal-Texte wurden unverändert migriert. Funktion, Tastaturbedienung und Textlesbarkeit bei kleinen Displays prüfen.
+
+
+### Header und Modal-Scrolling (23.10.2026)
+
+Die App-Kopfzeile setzt den Online-/Offline-Punkt als `span.brand-status` zwischen „Greenway“ und „Cash“. `navigator.onLine` steuert grün/rot und den Klartext-`title`; diese Information zeigt nur den Browser-Netzwerkstatus, keine erfolgreiche Server-Erreichbarkeitsprüfung. Separate Header-/Hamburger-Statusanzeigen sind entfernt. `customer-name` ist explizit weiß. Das Impressumsmodal hat nun ein nicht scrollendes Flex-Headersegment und eine eigenständige scrollbare `legal-modal-scroll`-Fläche, damit Titel und Schließen-X sichtbar bleiben. Bratwurst-SVG verwendet ausschließlich `currentColor` statt eigener Farben.
