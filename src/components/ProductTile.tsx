@@ -10,13 +10,11 @@ import {
   GlassWater,
   IceCreamBowl,
   Plus,
-  Sandwich,
-  CookingPot,
-  UtensilsCrossed,
   Undo2,
   Wine,
 } from 'lucide-react';
 import { LongPress } from '@/components/LongPress';
+import { BratwurstIcon, CurrywurstIcon, FriesIcon, MantaplatteIcon, BottleIcon } from '@/components/CustomProductIcons';
 import { euro, type Item } from '@/lib/calculator';
 
 type LayoutName =
@@ -42,9 +40,11 @@ const icons: Record<string, ComponentType<{ size?: number }>> = {
   'glass-water': GlassWater,
   'ice-cream-bowl': IceCreamBowl,
   plus: Plus,
-  sandwich: Sandwich,
-  'cooking-pot': CookingPot,
-  'utensils-crossed': UtensilsCrossed,
+  bratwurst: BratwurstIcon,
+  currywurst: CurrywurstIcon,
+  fries: FriesIcon,
+  mantaplatte: MantaplatteIcon,
+  bottle: BottleIcon,
   'undo-2': Undo2,
   wine: Wine,
 };
