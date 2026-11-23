@@ -297,41 +297,6 @@
       }
     },
     {
-      "id": "schnaps",
-      "title": "Schnaps",
-      "icon": "glass-water",
-      "priceCents": 150,
-      "deposit": false,
-      "type": "product",
-      "color": "purple",
-      "layout": {
-        "tabletLandscape": [
-          9,
-          7,
-          4,
-          3
-        ],
-        "tabletPortrait": [
-          9,
-          7,
-          4,
-          3
-        ],
-        "mobilePortrait": [
-          1,
-          9,
-          6,
-          2
-        ],
-        "mobileLandscape": [
-          9,
-          7,
-          4,
-          3
-        ]
-      }
-    },
-    {
       "id": "kaffee",
       "title": "Kaffee",
       "icon": "coffee",
@@ -341,6 +306,41 @@
       "color": "coffee",
       "layout": {
         "tabletLandscape": [
+          9,
+          7,
+          4,
+          3
+        ],
+        "tabletPortrait": [
+          9,
+          7,
+          4,
+          3
+        ],
+        "mobilePortrait": [
+          1,
+          9,
+          6,
+          2
+        ],
+        "mobileLandscape": [
+          9,
+          7,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "id": "schnaps",
+      "title": "Schnaps",
+      "icon": "glass-water",
+      "priceCents": 150,
+      "deposit": false,
+      "type": "product",
+      "color": "purple",
+      "layout": {
+        "tabletLandscape": [
           1,
           10,
           4,
@@ -353,13 +353,48 @@
           3
         ],
         "mobilePortrait": [
-          7,
-          9,
+          1,
+          11,
           6,
           2
         ],
         "mobileLandscape": [
           1,
+          10,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "id": "schnaps-warm",
+      "title": "Schnaps (warm)",
+      "icon": "glass-water",
+      "priceCents": 200,
+      "deposit": false,
+      "type": "product",
+      "color": "purple",
+      "layout": {
+        "tabletLandscape": [
+          5,
+          10,
+          4,
+          3
+        ],
+        "tabletPortrait": [
+          5,
+          10,
+          4,
+          3
+        ],
+        "mobilePortrait": [
+          7,
+          11,
+          6,
+          2
+        ],
+        "mobileLandscape": [
+          5,
           10,
           4,
           3
@@ -368,43 +403,8 @@
     },
     {
       "id": "softdrinks",
-      "title": "Softdrinks",
+      "title": "Softdrinks / Wasser",
       "icon": "glass-water",
-      "priceCents": 100,
-      "deposit": false,
-      "type": "product",
-      "color": "blue",
-      "layout": {
-        "tabletLandscape": [
-          5,
-          10,
-          4,
-          3
-        ],
-        "tabletPortrait": [
-          5,
-          10,
-          4,
-          3
-        ],
-        "mobilePortrait": [
-          1,
-          11,
-          6,
-          2
-        ],
-        "mobileLandscape": [
-          5,
-          10,
-          4,
-          3
-        ]
-      }
-    },
-    {
-      "id": "wasser",
-      "title": "Wasser",
-      "icon": "droplets",
       "priceCents": 100,
       "deposit": false,
       "type": "product",
@@ -424,7 +424,7 @@
         ],
         "mobilePortrait": [
           7,
-          11,
+          9,
           6,
           2
         ],
