@@ -80,3 +80,10 @@ Das Build-Script `scripts/sync-config.mjs` erzeugt aus allen `src/config/*.json`
 ### Eigene Produktpiktogramme (Version 1.1)
 
 Für die vier St.-Magnus-Speisen werden die `icon`-Kennungen `bratwurst`, `currywurst`, `fries` und `mantaplatte` verwendet. Die beiden Getränke **Westheimer Alkoholfrei** und **Westheimer Radler** verwenden `bottle`. Die fünf eigens erstellten SVG-Komponenten sind in `src/components/CustomProductIcons.tsx` implementiert und über `src/components/ProductTile.tsx` dem bestehenden Icon-Mapping hinzugefügt. Für Westheimer Pilsener bleibt das Glas-/Biersymbol unverändert. Die anderen Produktdaten, Pfandregeln, Preise und Layout-Koordinaten wurden nicht verändert.
+
+
+### Spielmannszug: Getränkesortiment aktualisiert (22.11.2026)
+
+**Nur `src/config/default.json`** wurde angepasst. Kaffee (1,50 €, inkl. 2,00 € Pfand) und Schnaps (1,50 €, kein Pfand) tauschen in den breiten Layouts ihre Plätze: Kaffee steht in der dritten Produktreihe rechts, Schnaps in der vierten Produktreihe links. Daneben steht **Schnaps (warm), 2,00 €, ohne Pfand**, mit eigenständiger Artikel-ID `schnaps-warm`, gleichem Symbol/Farbton wie Schnaps. **Softdrinks / Wasser, 1,00 €, ohne Pfand** ist eine gemeinsame Kachel mit der bestehenden ID `softdrinks`; `wasser` wurde als eigener Artikel entfernt. Die gemeinsame Kachel steht bei Desktop/Tablet in der vierten Reihe rechts. In der Smartphone-Hochansicht befinden sich Schnaps und warmer Schnaps nebeneinander in der letzten Produktreihe, Kaffee und Softdrinks/Wasser in der Reihe darüber. Pfandrückgabe (Zeile 13) und Clear (Zeile 13) bleiben unverändert.
+
+**Lokaler Bestand:** Ein vor der Änderung unter `rosi-v1` gespeicherter `wasser`-Eintrag wird nicht mehr angezeigt oder berechnet; `softdrinks` bleibt als ID erhalten und umfasst künftig auch Wasser. Vor einem produktiven Update offene Rechnungen abschließen. Für die zwei St.-Magnus-Preislisten gelten weiterhin ihre eigenen unveränderten JSON-Dateien.

@@ -84,3 +84,6 @@ Die gültigen URL-Segmente lauten nun `spmz_wm_2026`, `stmagnus_wm_getraenke_202
 
 
 **UI-Stand 23.10.2026:** App-Marke `Greenway.Cash`: Punkt farblich nach `navigator.onLine` (grün/rot), `title` plus ARIA-Klartext; keine separaten Online-/Offline-Zeilen im Desktop-/Mobilmenü. Kunde unterhalb der Marke explizit weiß. `LegalModal` hat unbeweglichen Dialogkopf und innen scrollbaren Content `legal-modal-scroll`. Bratwurst-`CustomProductIcons.tsx` ist wieder monochrom/currentColor. Service-Worker-Cache entsprechend erhöht.
+
+
+**Spielmannszug-Update 22.11.2026:** In `src/config/default.json` Kaffee/Schnaps im Desktop-/Tablet-/Mobilquer-Raster getauscht. In Mobilhochformat stehen Schnaps und neuer **Schnaps (warm), 2,00 €**, nebeneinander in Reihe 6; die gemeinsame Kachel **Softdrinks / Wasser, 1,00 €** steht neben Kaffee in Reihe 5. Warmen Schnaps ohne Pfand mit ID `schnaps-warm` einführen, die bisherige ID `softdrinks` für die zusammengefasste Kachel beibehalten, `wasser` entfernen. Achtung: Alte gespeicherte Wasser-Mengen unter `rosi-v1` sind nicht mehr aktiv; offene Rechnungen vor Deployment abschließen. Die St.-Magnus-Mandanten-JSONs bleiben unverändert.

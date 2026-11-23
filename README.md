@@ -100,3 +100,8 @@ Die Auswahl heißt jetzt **„Preislisten“** (Icon, mobiles Menü, Modal-Über
 ### UI-Korrekturen (23.10.2026)
 
 „Greenway.Cash“ zeigt den Netzwerkstatus direkt über den farbigen Punkt im Markennamen: grün für Online, rot für Offline, mit Klartext-Tooltip/Accessible Label. Die bisher separaten Statusanzeigen in Desktop-Header und Hamburger-Menü sind entfallen. Der `customer`-Name darunter ist weiß. Im Impressumsmodal bleiben Titel und Schließen-X fest; nur der Informations-/Datenschutzinhalt scrollt. Das Bratwurst-Icon ist wieder monochrom (`currentColor`).
+
+
+### Aktualisierte Spielmannszug-Preisliste (22.11.2026)
+
+In der ausschließlich für den Spielmannszug verwendeten `src/config/default.json` sind **Kaffee und Schnaps umplatziert**, **Softdrinks und Wasser** zu einer Kachel für **1,00 €** zusammengefasst und **Schnaps (warm)** mit **2,00 €** neu aufgenommen. Der warme Schnaps hat **kein Pfand**; Kaffee behält sein automatisches Pfand. Das Layout wurde in allen vier Bildschirmvarianten ohne Kachelüberschneidungen angepasst. St. Magnus ist davon nicht betroffen.
